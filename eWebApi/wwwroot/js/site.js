@@ -32,7 +32,7 @@
 
             if (codigo == 0) {
 
-                window.location.href = '/Tablero/Ver';
+                window.location.href = '/Portal/Inicio';
 
             } else {
 

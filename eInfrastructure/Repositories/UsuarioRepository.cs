@@ -55,7 +55,7 @@ namespace eInfrastructure.Repositories
 
             ///vemos primeramente si el usuario existe 
             ///
-            int vExiste = dbContext.Usuarios.Where(xx => xx.Cedula == _usuario.Cedula).Count();
+            int vExiste = dbContext.Usuarios.Where(xx => xx.Cedula.ToUpper() == _usuario.Cedula.ToUpper()).Count();
 
             if (vExiste == 0)
             {
@@ -69,7 +69,7 @@ namespace eInfrastructure.Repositories
             ///controlamos que la contrase#a sea la adecuada
             ///
             var usuario = dbContext.Usuarios.Include(ee => ee.Estado)
-                                            .Where(u => u.Cedula == _usuario.Cedula).First();
+                                            .Where(u => u.Cedula.ToUpper() == _usuario.Cedula.ToUpper()).First();
 
             if (!BCrypt.Net.BCrypt.Verify(_usuario.Password, usuario.Contraseña))
             {
