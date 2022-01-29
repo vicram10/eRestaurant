@@ -42,9 +42,12 @@ namespace eWebApi.Filters
                 }
                 else
                 {
+                    ///aca validamos que sea el administrador que usa algunos controladores/acciones
+                    ///
 
-
-
+                    
+                    ///vemos algunos datos extras para trasladar a todos los controladores
+                    ///
                     ConfiguracionesModel configuraciones = new ConfiguracionesModel();
 
                     try

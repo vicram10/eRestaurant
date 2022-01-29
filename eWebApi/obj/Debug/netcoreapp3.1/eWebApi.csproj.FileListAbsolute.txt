@@ -152,3 +152,4 @@ E:\Proyectos\0-NetCore\eRestaurant\eWebApi\obj\Debug\netcoreapp3.1\eWebApi.Views
 E:\Proyectos\0-NetCore\eRestaurant\eWebApi\obj\Debug\netcoreapp3.1\eWebApi.csproj.CopyComplete
 E:\Proyectos\0-NetCore\eRestaurant\eWebApi\obj\Debug\netcoreapp3.1\eWebApi.genruntimeconfig.cache
 E:\Proyectos\0-NetCore\eRestaurant\eWebApi\obj\Debug\netcoreapp3.1\eWebApi.csproj.AssemblyReference.cache
+E:\Proyectos\0-NetCore\eRestaurant\eWebApi\obj\Debug\netcoreapp3.1\Razor\Views\Producto\Index.cshtml.g.cs

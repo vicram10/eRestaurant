@@ -24,8 +24,4 @@
     <ProjectReference Include="..\eService\eService.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Producto\" />
-  </ItemGroup>
-
 </Project>
