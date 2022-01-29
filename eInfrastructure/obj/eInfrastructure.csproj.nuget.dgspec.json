@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "/Library/WebServer/Documents/Proyectos/NetCore/eRestaurant/eInfrastructure/eInfrastructure.csproj": {}
+    "E:\\Proyectos\\0-NetCore\\eRestaurant\\eInfrastructure\\eInfrastructure.csproj": {}
   },
   "projects": {
-    "/Library/WebServer/Documents/Proyectos/NetCore/eRestaurant/eInfrastructure/eInfrastructure.csproj": {
+    "E:\\Proyectos\\0-NetCore\\eRestaurant\\eInfrastructure\\eInfrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Library/WebServer/Documents/Proyectos/NetCore/eRestaurant/eInfrastructure/eInfrastructure.csproj",
+        "projectUniqueName": "E:\\Proyectos\\0-NetCore\\eRestaurant\\eInfrastructure\\eInfrastructure.csproj",
         "projectName": "eInfrastructure",
-        "projectPath": "/Library/WebServer/Documents/Proyectos/NetCore/eRestaurant/eInfrastructure/eInfrastructure.csproj",
-        "packagesPath": "/Users/vicram10/.nuget/packages/",
-        "outputPath": "/Library/WebServer/Documents/Proyectos/NetCore/eRestaurant/eInfrastructure/obj/",
+        "projectPath": "E:\\Proyectos\\0-NetCore\\eRestaurant\\eInfrastructure\\eInfrastructure.csproj",
+        "packagesPath": "C:\\Users\\vicram10\\.nuget\\packages\\",
+        "outputPath": "E:\\Proyectos\\0-NetCore\\eRestaurant\\eInfrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/vicram10/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\vicram10\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -98,7 +100,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.201/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

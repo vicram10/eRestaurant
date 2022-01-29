@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eInfrastructure.Contexts;
 
 namespace eInfrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220129203438_AlterProducto001")]
+    partial class AlterProducto001
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -170,9 +172,9 @@ namespace eInfrastructure.Migrations
                         {
                             IdUsuario = 1,
                             Cedula = "ADM001",
-                            Contraseña = "$2a$11$S7jKJEhPCxZb66jBYdoGMewYAEKBBnk6Uwm3zacKsBYDLRgt3b9ju",
+                            Contraseña = "$2a$11$9V2Gta9diId1BvYf8OV20OINvKoXyBPuRzpjoqwkdL8OY4GDrU.Ga",
                             Correo = "vicram10@gmail.com",
-                            FechaRegistro = new DateTime(2022, 1, 29, 17, 37, 26, 876, DateTimeKind.Local).AddTicks(7041),
+                            FechaRegistro = new DateTime(2022, 1, 29, 17, 34, 38, 430, DateTimeKind.Local).AddTicks(9825),
                             IdEstado = 1,
                             IdUsuarioRegistro = 1,
                             IdiomaElegido = "ES",

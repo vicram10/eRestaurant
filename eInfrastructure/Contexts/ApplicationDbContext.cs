@@ -18,6 +18,8 @@ namespace eInfrastructure.Contexts
 
         public DbSet<Producto> Productos { get; set; }
 
+        public DbSet<CategoriaProducto> CategoriaProducto { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             ///insertamos valores por defecto

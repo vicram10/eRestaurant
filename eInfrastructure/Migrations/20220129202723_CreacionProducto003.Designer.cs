@@ -2,34 +2,22 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eInfrastructure.Contexts;
 
 namespace eInfrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220129202723_CreacionProducto003")]
+    partial class CreacionProducto003
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.12")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
-
-            modelBuilder.Entity("eInfrastructure.Entities.CategoriaProducto", b =>
-                {
-                    b.Property<int>("IdCategoria")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("DescripcionCategoria")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.HasKey("IdCategoria");
-
-                    b.ToTable("CategoriaProducto");
-                });
 
             modelBuilder.Entity("eInfrastructure.Entities.Estado", b =>
                 {
@@ -102,9 +90,6 @@ namespace eInfrastructure.Migrations
                     b.Property<string>("DescripcionProducto")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("IdCategoria")
-                        .HasColumnType("int");
-
                     b.Property<int>("IdEstadoProducto")
                         .HasColumnType("int");
 
@@ -112,8 +97,6 @@ namespace eInfrastructure.Migrations
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("IdProducto");
-
-                    b.HasIndex("IdCategoria");
 
                     b.HasIndex("IdEstadoProducto");
 
@@ -170,9 +153,9 @@ namespace eInfrastructure.Migrations
                         {
                             IdUsuario = 1,
                             Cedula = "ADM001",
-                            Contraseña = "$2a$11$S7jKJEhPCxZb66jBYdoGMewYAEKBBnk6Uwm3zacKsBYDLRgt3b9ju",
+                            Contraseña = "$2a$11$IMrkJDdihaoSKavK84ruluaH14jyU3pwxSVo70zZQC5C7I6PdnLwu",
                             Correo = "vicram10@gmail.com",
-                            FechaRegistro = new DateTime(2022, 1, 29, 17, 37, 26, 876, DateTimeKind.Local).AddTicks(7041),
+                            FechaRegistro = new DateTime(2022, 1, 29, 17, 27, 23, 183, DateTimeKind.Local).AddTicks(2414),
                             IdEstado = 1,
                             IdUsuarioRegistro = 1,
                             IdiomaElegido = "ES",
@@ -183,12 +166,6 @@ namespace eInfrastructure.Migrations
 
             modelBuilder.Entity("eInfrastructure.Entities.Producto", b =>
                 {
-                    b.HasOne("eInfrastructure.Entities.CategoriaProducto", "Categoria")
-                        .WithMany()
-                        .HasForeignKey("IdCategoria")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("eInfrastructure.Entities.EstadoProducto", "EstadoProducto")
                         .WithMany()
                         .HasForeignKey("IdEstadoProducto")

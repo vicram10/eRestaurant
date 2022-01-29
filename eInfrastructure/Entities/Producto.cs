@@ -14,6 +14,11 @@ namespace eInfrastructure.Entities
 
         public string ImagenProducto {get; set;}
 
+        public int IdCategoria { get; set; }
+
+        [ForeignKey("IdCategoria")]
+        public CategoriaProducto Categoria { get; set; }
+
         public int IdEstadoProducto { get; set; }
 
         [ForeignKey("IdEstadoProducto")]
