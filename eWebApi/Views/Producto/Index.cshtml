@@ -1,0 +1,16 @@
+﻿@using eInfrastructure.Models
+
+@using eInfrastructure.Languages
+
+@using Microsoft.AspNetCore.Http
+
+@inject IHttpContextAccessor httpContextAccessor
+
+@{ 
+    
+    Localization language = new Localization(httpContextAccessor);
+
+    ViewBag.Title = language.getText("menuProducto");
+
+    DatosUsuarioModel datosUsuario = (DatosUsuarioModel)ViewBag.DatosUsuario;
+}

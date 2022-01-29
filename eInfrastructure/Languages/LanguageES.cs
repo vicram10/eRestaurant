@@ -11,5 +11,7 @@ namespace eInfrastructure.Languages
         public string menuIniciarSesion { get { return "Iniciar Sesion"; } }
 
         public string btnSalir { get { return "Salir"; } }
+
+        public string menuProducto { get { return "Productos"; } }
     }
 }

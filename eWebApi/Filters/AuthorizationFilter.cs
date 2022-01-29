@@ -43,6 +43,8 @@ namespace eWebApi.Filters
                 else
                 {
 
+
+
                     ConfiguracionesModel configuraciones = new ConfiguracionesModel();
 
                     try
