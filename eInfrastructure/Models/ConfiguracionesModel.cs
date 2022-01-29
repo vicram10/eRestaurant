@@ -9,5 +9,7 @@ namespace eInfrastructure.Models
         public string UrlPrincipal { get; set; }
 
         public string DirectorioAdjuntos { get; set; }
+
+        public int TiempoSesionHora { get; set; }
     }    
 }

@@ -1,0 +1,18 @@
+﻿@using eInfrastructure.Languages
+
+@using eInfrastructure.Models
+
+@using Microsoft.AspNetCore.Http
+
+@inject IHttpContextAccessor HttpContextAccessor
+
+@{
+    Localization language = new Localization(HttpContextAccessor);
+
+    ViewBag.Title = language.getText("menuInicio");
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    DatosUsuarioModel datosUsuario = (DatosUsuarioModel)ViewBag.DatosUsuario;
+    
+}

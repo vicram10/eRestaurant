@@ -1,4 +1,6 @@
 ﻿using eInfrastructure.Languages;
+using eService.Implementations;
+using eService.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -14,7 +16,7 @@ namespace edWebApi.Middlewares
 
             ///para poder usar las interfaces
             ///
-            //services.AddTransient<IApiUsuario, ImplApiUsuario>();
+            services.AddTransient<IUsuario, ImplUsuario>();
 
             ///para poder usar las variables de session
             ///

@@ -1,0 +1,28 @@
+2022-01-29 14:19:20.7950|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-29 14:19:20.8152|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-29 14:19:20.8152|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-29 14:20:26.2490|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-29 14:20:26.2643|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-29 14:20:26.2643|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-29 14:22:35.1884|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-29 14:22:35.2046|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-29 14:22:35.2046|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-29 14:25:10.8252|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-29 14:25:10.8390|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-29 14:25:10.8390|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-29 14:25:13.5294|ERROR|Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor|The view 'Iniciar' was not found. Searched locations: /Views/Usuario/Iniciar.cshtml, /Views/Shared/Iniciar.cshtml
+2022-01-29 14:25:13.5294|ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware|An unhandled exception has occurred while executing the request.
+2022-01-29 14:25:54.7948|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-29 14:25:54.8086|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-29 14:25:54.8086|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-29 14:25:54.9029|ERROR|Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor|The view 'Iniciar' was not found. Searched locations: /Views/Usuario/Iniciar.cshtml, /Views/Shared/Iniciar.cshtml
+2022-01-29 14:25:54.9029|ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware|An unhandled exception has occurred while executing the request.
+2022-01-29 14:25:59.9352|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-29 14:25:59.9490|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-29 14:25:59.9490|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-29 14:26:09.9609|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-29 14:26:09.9747|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-29 14:26:09.9747|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-29 14:26:18.6270|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-29 14:26:18.6408|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-29 14:26:18.6408|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
