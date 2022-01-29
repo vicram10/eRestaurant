@@ -4727,37 +4727,35 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\vicram10\\.nuget\\packages\\": {}
+    "/Users/vicram10/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Proyectos\\0-NetCore\\eRestaurant\\eWebApi\\eWebApi.csproj",
+      "projectUniqueName": "/Library/WebServer/Documents/Proyectos/NetCore/eRestaurant/eWebApi/eWebApi.csproj",
       "projectName": "eWebApi",
-      "projectPath": "E:\\Proyectos\\0-NetCore\\eRestaurant\\eWebApi\\eWebApi.csproj",
-      "packagesPath": "C:\\Users\\vicram10\\.nuget\\packages\\",
-      "outputPath": "E:\\Proyectos\\0-NetCore\\eRestaurant\\eWebApi\\obj\\",
+      "projectPath": "/Library/WebServer/Documents/Proyectos/NetCore/eRestaurant/eWebApi/eWebApi.csproj",
+      "packagesPath": "/Users/vicram10/.nuget/packages/",
+      "outputPath": "/Library/WebServer/Documents/Proyectos/NetCore/eRestaurant/eWebApi/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\vicram10\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/vicram10/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "E:\\Proyectos\\0-NetCore\\eRestaurant\\eInfrastructure\\eInfrastructure.csproj": {
-              "projectPath": "E:\\Proyectos\\0-NetCore\\eRestaurant\\eInfrastructure\\eInfrastructure.csproj"
+            "/Library/WebServer/Documents/Proyectos/NetCore/eRestaurant/eInfrastructure/eInfrastructure.csproj": {
+              "projectPath": "/Library/WebServer/Documents/Proyectos/NetCore/eRestaurant/eInfrastructure/eInfrastructure.csproj"
             },
-            "E:\\Proyectos\\0-NetCore\\eRestaurant\\eService\\eService.csproj": {
-              "projectPath": "E:\\Proyectos\\0-NetCore\\eRestaurant\\eService\\eService.csproj"
+            "/Library/WebServer/Documents/Proyectos/NetCore/eRestaurant/eService/eService.csproj": {
+              "projectPath": "/Library/WebServer/Documents/Proyectos/NetCore/eRestaurant/eService/eService.csproj"
             }
           }
         }
@@ -4819,7 +4817,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.201/RuntimeIdentifierGraph.json"
       }
     }
   }

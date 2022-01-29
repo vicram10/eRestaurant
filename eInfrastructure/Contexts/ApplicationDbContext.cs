@@ -14,6 +14,10 @@ namespace eInfrastructure.Contexts
 
         public DbSet<Usuario> Usuarios { get; set; }
 
+        public DbSet<EstadoProducto> EstadosProductos { get; set;}
+
+        public DbSet<Producto> Productos { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             ///insertamos valores por defecto
@@ -30,6 +34,19 @@ namespace eInfrastructure.Contexts
                 }
             );
 
+            ///insertamos los estados por defecto de los productos
+            /// 
+            modelBuilder.Entity<EstadoProducto>().HasData(
+                new EstadoProducto[]
+                {
+                    new EstadoProducto{ IdEstadoProducto = 1, DescripcionProducto = "ACTIVO" },
+
+                    new EstadoProducto{ IdEstadoProducto = 2, DescripcionProducto = "INACTIVO" },
+
+                    new EstadoProducto{ IdEstadoProducto = 99, DescripcionProducto = "BORRADO" },
+                }
+            );
+            
             ///usuario administrador
             ///
             modelBuilder.Entity<Usuario>().HasData(

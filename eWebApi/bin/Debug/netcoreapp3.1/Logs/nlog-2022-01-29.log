@@ -144,3 +144,16 @@
 2022-01-29 16:08:23.6368|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
 2022-01-29 16:08:23.6510|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
 2022-01-29 16:08:23.6510|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-29 16:25:59.2228|WARN|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager|No XML encryptor configured. Key {73549429-1806-4005-a11f-60face500fe8} may be persisted to storage in unencrypted form.
+2022-01-29 16:25:59.4499|INFO|Microsoft.Hosting.Lifetime|Now listening on: http://localhost:5000
+2022-01-29 16:25:59.4514|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-29 16:25:59.4519|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-29 16:25:59.4519|INFO|Microsoft.Hosting.Lifetime|Content root path: /Library/WebServer/Documents/Proyectos/NetCore/eRestaurant/eWebApi
+2022-01-29 16:27:46.0852|INFO|Microsoft.Hosting.Lifetime|Now listening on: http://localhost:5000
+2022-01-29 16:27:46.1208|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-29 16:27:46.1216|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-29 16:27:46.1216|INFO|Microsoft.Hosting.Lifetime|Content root path: /Library/WebServer/Documents/Proyectos/NetCore/eRestaurant/eWebApi
+2022-01-29 16:28:46.6953|INFO|Microsoft.Hosting.Lifetime|Now listening on: http://localhost:15299
+2022-01-29 16:28:46.7254|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-29 16:28:46.7262|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-29 16:28:46.7262|INFO|Microsoft.Hosting.Lifetime|Content root path: /Library/WebServer/Documents/Proyectos/NetCore/eRestaurant/eWebApi

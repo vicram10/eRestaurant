@@ -1,8 +1,8 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "C:\\Users\\vicram10\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\vicram10\\.nuget\\packages"
+      "/Users/vicram10/.dotnet/store/|arch|/|tfm|",
+      "/Users/vicram10/.nuget/packages"
     ]
   }
 }

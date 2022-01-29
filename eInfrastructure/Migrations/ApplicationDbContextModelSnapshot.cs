@@ -48,6 +48,59 @@ namespace eInfrastructure.Migrations
                         });
                 });
 
+            modelBuilder.Entity("eInfrastructure.Entities.EstadoProducto", b =>
+                {
+                    b.Property<int>("IdEstadoProducto")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("DescripcionProducto")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("IdEstadoProducto");
+
+                    b.ToTable("EstadosProductos");
+
+                    b.HasData(
+                        new
+                        {
+                            IdEstadoProducto = 1,
+                            DescripcionProducto = "ACTIVO"
+                        },
+                        new
+                        {
+                            IdEstadoProducto = 2,
+                            DescripcionProducto = "INACTIVO"
+                        },
+                        new
+                        {
+                            IdEstadoProducto = 99,
+                            DescripcionProducto = "BORRADO"
+                        });
+                });
+
+            modelBuilder.Entity("eInfrastructure.Entities.Producto", b =>
+                {
+                    b.Property<int>("IdProducto")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("DescripcionProducto")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("IdEstadoProducto")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ImagenProducto")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("IdProducto");
+
+                    b.HasIndex("IdEstadoProducto");
+
+                    b.ToTable("Productos");
+                });
+
             modelBuilder.Entity("eInfrastructure.Entities.Usuario", b =>
                 {
                     b.Property<int>("IdUsuario")
@@ -98,15 +151,24 @@ namespace eInfrastructure.Migrations
                         {
                             IdUsuario = 1,
                             Cedula = "ADM001",
-                            Contraseña = "$2a$11$8/PkXNoq6m5WStzQGAKnPeX6chh7B1lWDfY3QzEmPf/01HUqZMjke",
+                            Contraseña = "$2a$11$RIEg1wnt1jw/uAKtrPMmUem6JaY/h5mUDSGrhffMDhabDFVApNacy",
                             Correo = "vicram10@gmail.com",
-                            FechaRegistro = new DateTime(2022, 1, 29, 12, 11, 27, 620, DateTimeKind.Local).AddTicks(1503),
+                            FechaRegistro = new DateTime(2022, 1, 29, 16, 43, 40, 989, DateTimeKind.Local).AddTicks(7900),
                             IdEstado = 1,
                             IdUsuarioRegistro = 1,
                             IdiomaElegido = "ES",
                             Nombre = "ADMINISTRADOR GENERAL",
                             esAdministrador = true
                         });
+                });
+
+            modelBuilder.Entity("eInfrastructure.Entities.Producto", b =>
+                {
+                    b.HasOne("eInfrastructure.Entities.EstadoProducto", "EstadoProducto")
+                        .WithMany()
+                        .HasForeignKey("IdEstadoProducto")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("eInfrastructure.Entities.Usuario", b =>
