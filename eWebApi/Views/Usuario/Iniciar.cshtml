@@ -1,1 +1,28 @@
-﻿Iniciar Sesion
+﻿@using eInfrastructure.Languages
+
+@using Microsoft.AspNetCore.Http
+
+@inject IHttpContextAccessor httpContextAccessor
+
+@{
+    Localization language = new Localization(httpContextAccessor);
+
+    ViewBag.Title = language.getText("menuIniciarSesion");
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-lg-6">
+    <form id="FormLogin" action="@Url.Action("IniciarSesion", "Usuario")" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="cedula" class="form-label">@language.getText("lbCedula", "Usuario")</label>
+            <input type="text" class="form-control" id="Cedula" name="Cedula" aria-describedby="CedulaHelp">
+            <div id="CedulaHelp" class="form-text">@language.getText("lbCedulaHelp", "Usuario")</div>
+        </div>
+        <div class="mb-3">
+            <label for="TextPassword" class="form-label">@language.getText("lbPassword", "Usuario")</label>
+            <input type="password" class="form-control" id="Password" name="Password">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

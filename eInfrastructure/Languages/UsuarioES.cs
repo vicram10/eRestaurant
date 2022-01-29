@@ -6,6 +6,12 @@ namespace eInfrastructure.Languages
 {
     public class UsuarioES
     {
+        public string lbCedula { get { return "Nro.Cedula"; } }
+
+        public string lbCedulaHelp { get { return "Introduce tu Nro. de Cedula para poder iniciar sesion."; } }
+
+        public string lbPassword { get { return "Contraseña"; } }
+
         public string msgNoUsuarioLogin { get { return "Debe estipular los datos del usuario para poder iniciar sesion"; } } 
 
         public string msgUsuarioNoExiste { get { return  "Usuario no Existe, verifique!!!"; } }

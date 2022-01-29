@@ -6,8 +6,10 @@ namespace eInfrastructure.Languages
 {
     public class LanguageES
     {
-        public string menuInicio { get { return "Inicio"; } }
+        public string menuInicio { get { return "Portal"; } }
 
         public string menuIniciarSesion { get { return "Iniciar Sesion"; } }
+
+        public string btnSalir { get { return "Salir"; } }
     }
 }

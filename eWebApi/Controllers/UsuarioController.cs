@@ -1,4 +1,5 @@
 ﻿using eInfrastructure.Models;
+using eInfrastructure.Models.Usuario;
 using eService.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -47,7 +48,30 @@ namespace eWebApi.Controllers
                 return RedirectToAction("Inicio", "Portal");
             }
 
+            ViewBag.DatosUsuario = datosUsuario;
+
             return View();
+        }
+
+        [HttpPost]
+        public JsonResult IniciarSesion([FromForm] UsuarioLoginModel usuario)
+        {
+            ResponseModel respuesta = new ResponseModel();
+
+            respuesta = apiUsuario.Login(usuario);
+
+            return Json(JsonConvert.SerializeObject(respuesta));
+        }
+
+        /// <summary>
+        /// Cerramos la sesion del usuario
+        /// </summary>
+        /// <returns></returns>
+        public IActionResult Salir()
+        {
+            HttpContext.Session.Clear();
+
+            return RedirectToAction("Inicio", "Portal");
         }
     }
 }
