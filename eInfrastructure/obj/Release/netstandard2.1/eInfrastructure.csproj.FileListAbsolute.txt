@@ -1,0 +1,12 @@
+E:\Proyectos\0-NetCore\eRestaurant\eInfrastructure\bin\Release\netstandard2.1\eInfrastructure.deps.json
+E:\Proyectos\0-NetCore\eRestaurant\eInfrastructure\bin\Release\netstandard2.1\eInfrastructure.dll
+E:\Proyectos\0-NetCore\eRestaurant\eInfrastructure\bin\Release\netstandard2.1\eInfrastructure.pdb
+E:\Proyectos\0-NetCore\eRestaurant\eInfrastructure\bin\Release\netstandard2.1\eGeek.ApiWebClient.dll
+E:\Proyectos\0-NetCore\eRestaurant\eInfrastructure\obj\Release\netstandard2.1\eInfrastructure.csproj.AssemblyReference.cache
+E:\Proyectos\0-NetCore\eRestaurant\eInfrastructure\obj\Release\netstandard2.1\eInfrastructure.GeneratedMSBuildEditorConfig.editorconfig
+E:\Proyectos\0-NetCore\eRestaurant\eInfrastructure\obj\Release\netstandard2.1\eInfrastructure.AssemblyInfoInputs.cache
+E:\Proyectos\0-NetCore\eRestaurant\eInfrastructure\obj\Release\netstandard2.1\eInfrastructure.AssemblyInfo.cs
+E:\Proyectos\0-NetCore\eRestaurant\eInfrastructure\obj\Release\netstandard2.1\eInfrastructure.csproj.CoreCompileInputs.cache
+E:\Proyectos\0-NetCore\eRestaurant\eInfrastructure\obj\Release\netstandard2.1\eInfrastructure.csproj.CopyComplete
+E:\Proyectos\0-NetCore\eRestaurant\eInfrastructure\obj\Release\netstandard2.1\eInfrastructure.dll
+E:\Proyectos\0-NetCore\eRestaurant\eInfrastructure\obj\Release\netstandard2.1\eInfrastructure.pdb
