@@ -104,5 +104,44 @@ namespace eWebApi.Controllers
 
             return RedirectToAction("Inicio", "Portal");
         }
+
+        /// <summary>
+        /// Registro de Usuario
+        /// </summary>
+        /// <returns></returns>
+        public IActionResult Registro()
+        {
+            datosUsuario = new DatosUsuarioModel();
+
+            try
+            {
+                datosUsuario = JsonConvert.DeserializeObject<DatosUsuarioModel>(session.GetString("datosUsuario"));
+            }
+            catch { }
+
+            if (datosUsuario.IdUsuario != 0)
+            {
+                return RedirectToAction("Inicio", "Portal");
+            }
+
+            ViewBag.DatosUsuario = datosUsuario;
+
+            return View();
+        }
+
+        /// <summary>
+        /// para poder dar de alta el usuario
+        /// </summary>
+        /// <param name="param"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public JsonResult Crear([FromForm] ParamUsuarioRegistroModel param)
+        {
+            ResponseModel respuesta = new ResponseModel();
+
+            respuesta = apiUsuario.Registrar(param);
+
+            return Json(JsonConvert.SerializeObject(respuesta));
+        }
     }
 }

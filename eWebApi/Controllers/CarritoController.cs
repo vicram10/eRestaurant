@@ -114,7 +114,7 @@ namespace eWebApi.Controllers
                         {
                             respuesta = apiCarrito.ActualizarPago(response.debt.docId);
 
-                            return RedirectToAction("Inicio", "Portal");
+                            return RedirectToAction("Pedidos", "Carrito");
                         }
                     }
                 }
@@ -162,7 +162,7 @@ namespace eWebApi.Controllers
                 {
                     respuesta = apiCarrito.ActualizarPago(IdPago);
 
-                    return RedirectToAction("Inicio", "Portal");
+                    return RedirectToAction("Pedidos", "Carrito");
                 }
             }
 

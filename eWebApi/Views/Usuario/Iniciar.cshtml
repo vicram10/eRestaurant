@@ -23,6 +23,7 @@
             <label for="TextPassword" class="form-label">@language.getText("lbPassword", "Usuario")</label>
             <input type="password" class="form-control" id="Password" name="Password">
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">@language.getText("menuIniciarSesion")</button>
+        <a href="@Url.Action("Registro", "Usuario")" class="btn btn-success">@language.getText("lbRegistroUsuario", "Usuario")</a>
     </form>
 </div>

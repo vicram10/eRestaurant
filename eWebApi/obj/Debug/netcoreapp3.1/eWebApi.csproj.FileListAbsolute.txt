@@ -159,3 +159,4 @@ E:\Proyectos\0-NetCore\eRestaurant\eWebApi\obj\Debug\netcoreapp3.1\Razor\Views\P
 E:\Proyectos\0-NetCore\eRestaurant\eWebApi\obj\Debug\netcoreapp3.1\Razor\Views\Carrito\Index.cshtml.g.cs
 E:\Proyectos\0-NetCore\eRestaurant\eWebApi\bin\Debug\netcoreapp3.1\eGeek.ApiWebClient.dll
 E:\Proyectos\0-NetCore\eRestaurant\eWebApi\obj\Debug\netcoreapp3.1\Razor\Views\Carrito\Pedidos.cshtml.g.cs
+E:\Proyectos\0-NetCore\eRestaurant\eWebApi\obj\Debug\netcoreapp3.1\Razor\Views\Usuario\Registro.cshtml.g.cs

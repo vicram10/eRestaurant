@@ -22,10 +22,16 @@ namespace eInfrastructure.Languages
 
         public string lbAgregar { get { return "Añadir"; } }
 
+        public string lbBienvenida { get { return "Bienvenido {0}, ahora puede realizar los pedidos."; } }
+
         ///botones
         ///
         public string btnAgregar { get { return "Agregar"; } }
 
+        public string btnCancelar { get { return "Cancelar"; } }
+
+        public string btnCrear { get { return "Crear"; } }
+                
         /// mensajes
         ///
         public string msgRegistroOK { get { return "Registrado con exito!!"; } }

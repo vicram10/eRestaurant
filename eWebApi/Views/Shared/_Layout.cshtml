@@ -21,7 +21,7 @@
 
         configuraciones = JsonConvert.DeserializeObject<ConfiguracionesModel>(httpContextAccessor.HttpContext.Session.GetString("Configuraciones"));
     }
-    catch {}
+    catch { }
 }
 
 <!DOCTYPE html>
@@ -90,6 +90,16 @@
         </nav>
     </header>
     <div class="container">
+
+        @if (datosUsuario.IdUsuario != 0)
+        {
+            <div class="mt-2 mb-3">
+                <div class="alert alert-success" role="alert">
+                    @(String.Format(language.getText("lbBienvenida"), $"{datosUsuario.IdUsuario} - {datosUsuario.NombreUsuario}"))
+                </div>
+            </div>
+        }
+
         <main role="main" class="pb-3">
             @RenderBody()
         </main>

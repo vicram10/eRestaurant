@@ -113,39 +113,42 @@ namespace eInfrastructure.Repositories
 
             string v_fileName = "";
 
-            foreach (var blobImagen in producto.ImagenProducto)
+            if (producto.ImagenProducto != null)
             {
-                ///hay algo que subir?
-                ///
-                if (blobImagen.Length > 0)
+                foreach (var blobImagen in producto.ImagenProducto)
                 {
-                    string fileName = blobImagen.FileName;
-
-                    try
+                    ///hay algo que subir?
+                    ///
+                    if (blobImagen.Length > 0)
                     {
+                        string fileName = blobImagen.FileName;
 
-                        v_fileName = $"{DateTime.Now.Ticks}-{fileName}";
-
-                        using (var writer = new FileStream(Path.Combine(configuraciones.DirectorioAdjuntos, v_fileName), FileMode.Create))
+                        try
                         {
 
-                            blobImagen.CopyTo(writer);
+                            v_fileName = $"{DateTime.Now.Ticks}-{fileName}";
 
-                            respuesta.CodRespuesta = EstadoRespuesta.Ok;
+                            using (var writer = new FileStream(Path.Combine(configuraciones.DirectorioAdjuntos, v_fileName), FileMode.Create))
+                            {
+
+                                blobImagen.CopyTo(writer);
+
+                                respuesta.CodRespuesta = EstadoRespuesta.Ok;
+                            }
                         }
-                    }
-                    catch (Exception ex)
-                    {
+                        catch (Exception ex)
+                        {
 
-                        string msgExtendido = ex.InnerException != null ? "\r\n" + ex.InnerException.Message.Trim() : "";
+                            string msgExtendido = ex.InnerException != null ? "\r\n" + ex.InnerException.Message.Trim() : "";
 
-                        respuesta.CodRespuesta = EstadoRespuesta.Error;
+                            respuesta.CodRespuesta = EstadoRespuesta.Error;
 
-                        respuesta.MensajeRespuesta = $"Error al subir el archivo: {ex.Message}{msgExtendido}";
+                            respuesta.MensajeRespuesta = $"Error al subir el archivo: {ex.Message}{msgExtendido}";
 
-                        logger.Error(respuesta.MensajeRespuesta);
+                            logger.Error(respuesta.MensajeRespuesta);
 
-                        break;
+                            break;
+                        }
                     }
                 }
             }

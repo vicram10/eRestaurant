@@ -44,7 +44,7 @@ namespace eWebApi.Filters
                 {
                     ///aca validamos que sea el administrador que usa algunos controladores/acciones
                     ///
-                    string[] acciones = { "Producto-Alta" };
+                    string[] acciones = { "Producto-Alta", "Producto-Index" };
 
                     string controlador = controller.ControllerContext.ActionDescriptor.ControllerName;
 

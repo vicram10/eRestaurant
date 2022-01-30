@@ -1,0 +1,39 @@
+﻿@using Microsoft.AspNetCore.Http
+
+@inject IHttpContextAccessor httpContextAccessor
+
+@using eInfrastructure.Languages
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    Localization language = new Localization(httpContextAccessor);
+
+    ViewBag.Title = language.getText("lbRegistroUsuario", "Usuario");
+
+}
+
+<div class="col-lg-6">
+    <form id="FormRegistro" action="@Url.Action("Crear", "Usuario")" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="cedula" class="form-label">@language.getText("lbCedula", "Usuario")</label>
+            <input type="text" class="form-control" id="Cedula" name="Cedula" aria-describedby="CedulaHelp">
+            <div id="CedulaHelp" class="form-text">@language.getText("lbCedulaHelp", "Usuario")</div>
+        </div>
+        <div class="mb-3">
+            <label for="nombre" class="form-label">@language.getText("lbNombre", "Usuario")</label>
+            <input type="text" class="form-control" id="Nombre" name="Nombre" aria-describedby="NombreHelp">
+        </div>
+        <div class="mb-3">
+            <label for="TextPassword" class="form-label">@language.getText("lbPassword", "Usuario")</label>
+            <input type="password" class="form-control" id="Password" name="Password">
+        </div>
+        <div class="mb-3">
+            <label for="correo" class="form-label">@language.getText("lbCorreo", "Usuario")</label>
+            <input type="text" class="form-control" id="Correo" name="Correo" aria-describedby="CorreoHelp">
+        </div>
+        <button type="submit" class="btn btn-primary">@language.getText("btnCrear")</button>
+        <a href="@Url.Action("Inicio", "Portal")" class="btn btn-danger">@language.getText("btnCancelar")</a>
+    </form>
+</div>
+

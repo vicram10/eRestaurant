@@ -1,4 +1,5 @@
 ﻿using eInfrastructure.Contexts;
+using eInfrastructure.Entities;
 using eInfrastructure.Languages;
 using eInfrastructure.Models;
 using eInfrastructure.Models.Usuario;
@@ -145,7 +146,46 @@ namespace eInfrastructure.Repositories
         {
             ResponseModel respuesta = new ResponseModel();
 
+            if (String.IsNullOrEmpty(parametros.Cedula) || String.IsNullOrEmpty(parametros.Nombre) || String.IsNullOrEmpty(parametros.Password) || String.IsNullOrEmpty(parametros.Correo))
+            {
+                respuesta.CodRespuesta = EstadoRespuesta.Error;
 
+                respuesta.MensajeRespuesta = language.getText("msgNoPuedeDejarVacio", "Usuario");
+
+                return respuesta;
+            }
+
+            Usuario tabla = new Usuario();
+
+            tabla.IdUsuario = 0;
+
+            tabla.Cedula = parametros.Cedula.ToUpper();
+
+            tabla.Nombre = parametros.Nombre.ToUpper();
+
+            string password = BCrypt.Net.BCrypt.HashPassword(parametros.Password);
+
+            tabla.Contraseña = password;
+
+            tabla.Correo = parametros.Correo;
+
+            tabla.IdUsuarioRegistro = 1;
+
+            tabla.FechaRegistro = DateTime.Now;
+
+            tabla.IdiomaElegido = "ES";
+
+            tabla.esAdministrador = false;
+
+            tabla.IdEstado = 1;
+
+            dbContext.Entry(tabla).State = EntityState.Added;
+
+            dbContext.SaveChanges();
+
+            respuesta.CodRespuesta = EstadoRespuesta.Ok;
+
+            respuesta.MensajeRespuesta = language.getText("msgRegistroOK");
 
             return respuesta;
         }

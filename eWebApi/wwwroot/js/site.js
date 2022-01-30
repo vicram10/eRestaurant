@@ -46,6 +46,45 @@
             console.log('finalizamos la consulta para inicio de sesion');
         });
     });
+
+    $('#FormRegistro').submit(function (evento) {
+
+        evento.preventDefault();
+
+        loader.show("slow");
+
+        console.log('procesando el registro del usuario');
+
+        //hacemos ahora el trabajo del login
+        var $form = $(this),
+            accion = '/Usuario/Crear',
+            codigo = "",
+            mensaje = "";
+
+        var posting = $.post(accion, $form.serialize());
+
+        posting.done(function (data) {
+
+            console.log(data);
+
+            var respuesta = JSON.parse(data);
+
+            codigo = respuesta['CodRespuesta'];
+
+            mensaje = respuesta['MensajeRespuesta'];
+
+            loader.fadeOut("slow");
+
+            if (codigo == 0) {
+
+                NotificacionOk(mensaje, false, '/Usuario/Iniciar');
+
+            } else {
+
+                NotificacionError(mensaje);
+            }
+        });
+    });
     
     $(".displayDataTableSearch").DataTable({
 
