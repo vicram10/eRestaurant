@@ -155,6 +155,17 @@ namespace eInfrastructure.Repositories
                 return respuesta;
             }
 
+            int existeUsuario = dbContext.Usuarios.Where(pp => pp.Cedula.ToUpper() == parametros.Cedula.ToUpper()).Count();
+
+            if (existeUsuario > 0)
+            {
+                respuesta.CodRespuesta = EstadoRespuesta.Error;
+
+                respuesta.MensajeRespuesta = language.getText("msgUsuarioExiste", "Usuario");
+
+                return respuesta;
+            }
+
             Usuario tabla = new Usuario();
 
             tabla.IdUsuario = 0;

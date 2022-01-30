@@ -27,5 +27,7 @@ namespace eInfrastructure.Languages
         public string msgUsuarioNoActivo { get { return  "No puede iniciar sesion, el estado actual de tu usuario es {0}"; } }
 
         public string msgNoPuedeDejarVacio { get { return "No puede dejar vacios los campos!!!!"; } }        
+
+        public string msgUsuarioExiste { get { return "Usuario con esa cedula ya existe"; } }
     }
 }
