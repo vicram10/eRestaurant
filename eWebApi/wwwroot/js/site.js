@@ -107,6 +107,10 @@ function AgregarCarrito(IdProducto)
 
             console.log('Ok agregado al carrito con exito');
 
+            var cantidad = $("#CantidadCarrito").val();
+
+            $("#CantidadCarrito").val(cantidad++);
+
             NotificacionOk(mensaje);
 
         } else {

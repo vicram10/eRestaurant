@@ -85,7 +85,7 @@ namespace eInfrastructure.Repositories
 
             ///si ya existe un documentoID entonces pisamos
             ///
-            if (carritoExiste.Where(pp => !String.IsNullOrEmpty(pp.UrlPago)).Count() > 0)
+            if (carritoExiste.Where(pp => !String.IsNullOrEmpty(pp.DocIDAdamsPay)).Count() > 0)
             {
                 urlPago = carritoExiste.First().UrlPago;
 
@@ -332,6 +332,12 @@ namespace eInfrastructure.Repositories
             dbContext.UpdateRange(listaNueva);
 
             dbContext.SaveChanges();
+
+            int Existencia = Listar(new ParamFiltroBusquedaCarritoModel { IdUsuario = datosUsuario.IdUsuario, EstadoCarrito = EstadoCarritoModel.Pendiente }).Count();
+
+            datosUsuario.CantidadCarrito = Existencia;
+
+            session.SetString("datosUsuario", JsonConvert.SerializeObject(datosUsuario));
 
             return respuesta;
         }
