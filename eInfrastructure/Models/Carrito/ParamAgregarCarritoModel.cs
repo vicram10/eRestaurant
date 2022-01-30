@@ -6,6 +6,6 @@ namespace eInfrastructure.Models.Carrito
 {
     public class ParamAgregarCarritoModel
     {
-
+        
     }
 }
