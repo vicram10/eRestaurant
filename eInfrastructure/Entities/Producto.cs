@@ -10,6 +10,8 @@ namespace eInfrastructure.Entities
         [Key]
         public int IdProducto { get; set; }
 
+        public string NombreProducto { get; set; }
+
         public string DescripcionProducto { get; set; }  
 
         public string ImagenProducto {get; set;}
@@ -23,5 +25,12 @@ namespace eInfrastructure.Entities
 
         [ForeignKey("IdEstadoProducto")]
         public EstadoProducto EstadoProducto { get; set;}
+
+        public int IdUsuarioRegistro { get; set; }
+
+        [ForeignKey("IdUsuarioRegistro")]
+        public Usuario UsuarioRegistro { get; set; }
+
+        public DateTime FechaRegistro { get; set; }
     }
 }

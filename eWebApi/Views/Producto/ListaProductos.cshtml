@@ -1,0 +1,85 @@
+﻿@using eInfrastructure.Models
+
+@using eInfrastructure.Languages
+
+@using eInfrastructure.Entities
+
+@using Microsoft.AspNetCore.Http
+
+@inject IHttpContextAccessor httpContextAccessor
+
+@{
+    Localization language = new Localization(httpContextAccessor);
+
+    List<Producto> ListadoProductos = ViewBag.ListadoProductos as List<Producto>;
+
+    List<CategoriaProducto> ListadoCategoria = ViewBag.ListadoCategoria as List<CategoriaProducto>;
+
+    DatosUsuarioModel datosUsuario = (DatosUsuarioModel)ViewBag.DatosUsuario;
+}
+
+@foreach (CategoriaProducto categoria in ListadoCategoria)
+{
+    <p class="lead fw-bold">
+        @($"{categoria.IdCategoria} - {categoria.DescripcionCategoria}")
+    </p>
+    <div class="mt-2 border p-3 table-responsive">
+        <table class="table table-striped displayDataTableSearch" style="width:100%">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">@language.getText("colImagen", "Producto")</th>
+                    <th scope="col">@language.getText("colProducto", "Producto")</th>
+                    <th scope="col">@language.getText("lbOpciones")</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <td scope="col">#</td>
+                    <td scope="col">@language.getText("colImagen", "Producto")</td>
+                    <td scope="col">@language.getText("colProducto", "Producto")</td>
+                    <td scope="col">@language.getText("lbOpciones")</td>
+                </tr>
+            </tfoot>
+            <tbody>
+                @if (ListadoProductos.Where(ll => ll.IdCategoria == categoria.IdCategoria).Count() > 0)
+                {
+                    foreach (Producto prod in ListadoProductos.Where(ll => ll.IdCategoria == categoria.IdCategoria))
+                    {
+                        <tr>
+                            <td>@prod.IdProducto</td>
+                            <td>
+                                <div class="text-center">
+                                    @if (prod.ImagenProducto.Contains("no-imagen"))
+                                    {
+                                        <img src="https://via.placeholder.com/100" width="100" height="100" class="rounded" alt="@prod.NombreProducto" />
+                                    }
+                                    else
+                                    {
+                                        <img src="~/Imagenes/Adjuntos/@prod.ImagenProducto" width="100" height="100" class="rounded" alt="@prod.NombreProducto" />
+                                    }
+
+                                </div>
+                            </td>
+                            <td>
+                                <p><strong>@prod.NombreProducto</strong></p>
+                                <hr />
+                                <p>@prod.DescripcionProducto</p>
+                            </td>
+                            <td>
+                                @if (datosUsuario.IdUsuario != 0)
+                                {
+                                    <a href="javascript::;" class="btn-warning btn-sm text-decoration-none">@language.getText("lbAgregar")</a>
+                                }
+                                else
+                                {
+                                    <span class="text-center text-danger fw-light">@language.getText("msgDebeIniciarSesion")</span>
+                                }
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+}

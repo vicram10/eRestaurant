@@ -13,5 +13,27 @@ namespace eInfrastructure.Languages
         public string btnSalir { get { return "Salir"; } }
 
         public string menuProducto { get { return "Productos"; } }
+
+        ///labels
+        ///
+        public string lbMensajeErrorHelp { get { return "Error en el Sistema"; } }
+
+        public string lbOpciones { get { return "Opciones"; } }
+
+        public string lbAgregar { get { return "Añadir"; } }
+
+        ///botones
+        ///
+        public string btnAgregar { get { return "Agregar"; } }
+
+        /// mensajes
+        ///
+        public string msgRegistroOK { get { return "Registrado con exito!!"; } }
+
+        public string msgNoExisteRegistro { get { return "No existen registros."; } }
+
+        public string msgNoPermiso { get { return "No tiene los permisos necesarios para poder utilizar <b>{0}</b>"; } }
+
+        public string msgDebeIniciarSesion { get { return "Debe iniciar sesion para poder empezar a Solicitar"; } }
     }
 }

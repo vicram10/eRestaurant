@@ -12,4 +12,15 @@ namespace eInfrastructure.Models
 
         public int TiempoSesionHora { get; set; }
     }    
+
+    public enum CodEstadoProducto
+    {
+        Activo = 1,
+
+        Inactivo = 2,
+
+        Borrado = 99,
+
+        Todos = 100
+    }
 }

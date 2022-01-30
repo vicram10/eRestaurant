@@ -1,0 +1,187 @@
+﻿@using eInfrastructure.Entities
+
+@using eInfrastructure.Languages
+
+@using eInfrastructure.Models
+
+@using Microsoft.AspNetCore.Http
+
+@inject IHttpContextAccessor httpContextAccessor
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    Localization language = new Localization(httpContextAccessor);
+
+    ViewBag.Title = language.getText("lbAltaProducto", "Producto");
+
+    DatosUsuarioModel datosUsuario = (DatosUsuarioModel)ViewBag.DatosUsuario;
+
+    List<CategoriaProducto> Categorias = ViewBag.Categorias as List<CategoriaProducto>;
+}
+
+<form id="FormAltaProducto" action="@Url.Action("Registrar", "Producto")" method="post" enctype="multipart/form-data">
+    <div class="card">
+        <div class="card-header">
+            @language.getText("lbAltaProducto", "Producto")
+        </div>
+        <div class="card-body">
+            <div class="mb-3">
+                <label for="FormControlNombreProducto" class="form-label">@language.getText("lbNombreProducto", "Producto")</label>
+                <input type="text" class="form-control" id="FormControlNombreProducto" name="NombreProducto">
+            </div>
+            <div class="mb-3">
+                <label for="FormControlDescripcionProducto" class="form-label">@language.getText("colProducto", "Producto")</label>
+                <textarea class="form-control" id="FormControlDescripcionProducto" name="DescripcionProducto" rows="3"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="txtImagen" class="form-label">@language.getText("colImagen", "Producto")</label>
+                <input type="file" id="Imagen" name="ImagenProducto" data-preview-file-type="text" />
+            </div>
+            <div class="mb-3">
+
+                <label for="TxtListadoCategorias" class="form-label">@language.getText("lbCategoria", "Producto")</label> <a href="javascript::;" id="btnAgregarCategoria" class="btn btn-sm btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" title="[+] @language.getText("lbAltaCategoria", "Producto")"><i class="bi-plus"></i></a>
+
+                <select class="form-select" aria-label="" name="IdCategoriaProducto" id="IdCategoriaProducto">
+                    @if (Categorias.Count > 0)
+                    {
+                        @foreach (CategoriaProducto categoria in Categorias)
+                        {
+                            <option value="@categoria.IdCategoria">@($"[{categoria.IdCategoria}] {categoria.DescripcionCategoria}")</option>
+                        }
+                    }
+                </select>
+
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-outline-success btn-sm">
+                <i class="bi bi-check-all"></i> @language.getText("btnAgregar")
+            </button>
+        </div>
+    </div>
+</form>
+
+<!-- Modal -->
+<div class="modal fade" id="formParameterGenerico" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="formParameterGenericoLabel" aria-hidden="true">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <form role="form" id="FormularioGenerico" action="@Url.Action("AgregarCategoria", "Producto")" name="FormularioGenerico" method="post" enctype="multipart/form-data">
+
+                <div class="modal-header">
+
+                    <h5 class="modal-title" id="formParameterGenericoLabelTitulo">@language.getText("lbAltaCategoria", "Producto")</h5>
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="mb-3">
+
+                        <label class="form-label">@language.getText("lbCategoria", "Producto")</label>
+
+                        <input class="form-control" name="DescripcionCategoria" id="DescripcionCategoria" value="" placeholder="Descripcion del Parametro" />
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+
+                    <button type="submit" class="btn btn-success btn-sm"><i class="bi-plus me-3"></i>@language.getText("btnAgregar")</button>
+
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            const loader = $(".se-pre-con");
+
+            //imagenes
+            $('#Imagen').fileinput({
+                'language': 'es',
+                'dropZoneEnabled': false,
+                'showUpload': false,
+                'previewFileType': 'any',
+            });
+
+            var myModalGenerico = new bootstrap.Modal(document.getElementById('formParameterGenerico'), {
+                keyboard: false
+            });
+
+            $("#btnAgregarCategoria").click(function (evento) {
+
+                evento.preventDefault();
+
+                $("#formParameterGenericoLabelTitulo").html("@(language.getText("lbAltaCategoria", "Producto"))");
+
+                myModalGenerico.show();
+
+            });
+
+            $("#FormularioGenerico").submit(function (event) {
+
+                event.preventDefault();
+
+                loader.show("slow");
+
+                //hacemos ahora el trabajo
+                var $form = $(this),
+                    accion = $(this).attr("action"),
+                    codigo = "",
+                    mensaje = "";
+
+                var posting = $.post(accion, $form.serialize());
+
+                posting.done(function (data) {
+
+                    console.log(data);
+
+                    var respuesta = JSON.parse(data);
+
+                    codigo = respuesta['CodRespuesta'];
+
+                    mensaje = respuesta['MensajeRespuesta'];
+
+                    loader.fadeOut("slow");
+
+                    if (codigo == 0) {
+
+                        NotificacionOk("@language.getText("msgRegistroOK")", false, "");
+
+                        Id = mensaje.split(';')[0];
+
+                        Descripcion = mensaje.split(';')[1].toUpperCase();
+
+                        console.log(Id + ";" + Descripcion);
+
+                        $('#DescripcionCategoria').val("");
+
+                        var newOption = new Option("[" + Id + "] " + Descripcion, Id, false, false);
+
+                        //es categoria el modal que estamos viendo
+                        $('#IdCategoriaProducto').append(newOption).val(Id).trigger('change');
+
+                        myModalGenerico.hide();
+
+                    } else {
+
+                        NotificacionError(mensaje);
+
+                    }
+                });
+
+            });
+        });
+    </script>
+}

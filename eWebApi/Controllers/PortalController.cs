@@ -1,4 +1,5 @@
-﻿using eInfrastructure.Models;
+﻿using eInfrastructure.Entities;
+using eInfrastructure.Models;
 using eService.Interfaces;
 using eWebApi.Filters;
 using Microsoft.AspNetCore.Http;
@@ -17,7 +18,9 @@ namespace eWebApi.Controllers
 
         private readonly DatosUsuarioModel datosUsuario;
 
-        public PortalController(IHttpContextAccessor httpContextAccessor)
+        private readonly IProductos apiProducto;
+
+        public PortalController(IHttpContextAccessor httpContextAccessor, IProductos apiProducto)
         {
             session = httpContextAccessor.HttpContext.Session;
 
@@ -28,11 +31,25 @@ namespace eWebApi.Controllers
                 datosUsuario = JsonConvert.DeserializeObject<DatosUsuarioModel>(session.GetString("datosUsuario"));
             }
             catch {}
+
+            this.apiProducto = apiProducto;
         }
 
+        /// <summary>
+        /// Inicio
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Inicio()
         {
             ViewBag.DatosUsuario = datosUsuario;
+
+            List<Producto> ListadoProductos = apiProducto.Listar(IdProducto: 0, IdEstado: CodEstadoProducto.Todos);
+
+            List<CategoriaProducto> ListadoCategoria = apiProducto.ListarCategoria();
+
+            ViewBag.ListadoProductos = ListadoProductos;
+
+            ViewBag.ListadoCategoria = ListadoCategoria;
 
             return View();
         }

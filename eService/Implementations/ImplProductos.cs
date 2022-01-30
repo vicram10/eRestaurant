@@ -1,4 +1,5 @@
 ﻿using eInfrastructure.Contexts;
+using eInfrastructure.Entities;
 using eInfrastructure.Models;
 using eInfrastructure.Models.Producto;
 using eService.Interfaces;
@@ -34,6 +35,37 @@ namespace eService.Implementations
         public ResponseModel Alta(ParamProductoAltaModel producto)
         {
             return services.Alta(producto);
+        }
+
+        /// <summary>
+        /// listamos los productos
+        /// </summary>
+        /// <param name="IdProducto"></param>
+        /// <param name="IdEstado"></param>
+        /// <returns></returns>
+        public List<Producto> Listar(int IdProducto = 0, CodEstadoProducto IdEstado = CodEstadoProducto.Activo)
+        {
+            return services.Listar(IdProducto, IdEstado);
+        }
+
+        /// <summary>
+        /// Para poder dar de alta categorias
+        /// </summary>
+        /// <param name="parametro"></param>
+        /// <returns></returns>
+        public ResponseModel AgregarCategoria(ParamAltaCategoriaModel parametro)
+        {
+            return services.AgregarCategoria(parametro);
+        }
+
+        /// <summary>
+        /// Listado de categorias
+        /// </summary>
+        /// <param name="IdCategoria"></param>
+        /// <returns></returns>
+        public List<CategoriaProducto> ListarCategoria(int IdCategoria = 0)
+        {
+            return services.ListarCategoria(IdCategoria);
         }
     }
 }

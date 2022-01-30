@@ -18,6 +18,8 @@ namespace edWebApi.Middlewares
             ///
             services.AddTransient<IUsuario, ImplUsuario>();
 
+            services.AddTransient<IProductos, ImplProductos>();
+
             ///para poder usar las variables de session
             ///
             services.AddTransient<IHttpContextAccessor, HttpContextAccessor>(); //Para las variables de session

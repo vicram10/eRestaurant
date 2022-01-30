@@ -2,15 +2,36 @@
 
 @using eInfrastructure.Languages
 
+@using eInfrastructure.Entities
+
 @using Microsoft.AspNetCore.Http
 
 @inject IHttpContextAccessor httpContextAccessor
 
-@{ 
-    
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
     Localization language = new Localization(httpContextAccessor);
 
     ViewBag.Title = language.getText("menuProducto");
 
-    DatosUsuarioModel datosUsuario = (DatosUsuarioModel)ViewBag.DatosUsuario;
+    string MensajeAlta = ViewBag.MensajeAlta;
+
+    string CodigoMensaje = ViewBag.CodigoMensaje;
 }
+
+@if (CodigoMensaje == "OK")
+{
+    <div class="alert alert-success d-flex align-items-center" role="alert">
+        <i class="bi bi-check-circle fw-bold me-3"></i>
+        <div>
+            @(String.IsNullOrEmpty(MensajeAlta) ? language.getText("msgRegistroOK") : MensajeAlta)
+        </div>
+    </div>
+}
+
+<div class="mb-2">
+    <a href="@Url.Action("Alta", "Producto")" class="btn btn-outline-success btn-sm"><i class="bi bi-plus-circle-fill me-2"></i>@language.getText("btnAgregar")</a>
+</div>
+
+@await Html.PartialAsync("ListaProductos.cshtml")

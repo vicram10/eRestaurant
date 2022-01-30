@@ -44,21 +44,33 @@ namespace eWebApi.Filters
                 {
                     ///aca validamos que sea el administrador que usa algunos controladores/acciones
                     ///
+                    string[] acciones = { "Producto-Alta" };
 
-                    
-                    ///vemos algunos datos extras para trasladar a todos los controladores
-                    ///
-                    ConfiguracionesModel configuraciones = new ConfiguracionesModel();
+                    string controlador = controller.ControllerContext.ActionDescriptor.ControllerName;
 
-                    try
+                    string accion = controller.ControllerContext.ActionDescriptor.ActionName;
+
+                    if (!datosUsuario.esAdministrador && acciones.Contains($"{controlador}-{accion}"))
                     {
-                        configuraciones = JsonConvert.DeserializeObject<ConfiguracionesModel>(context.HttpContext.Session.GetString("Configuraciones"));
+                        context.Result = controller.RedirectToAction("Inicio", "Error", new { msg = "msgNoPermiso", accion = accion });
                     }
-                    catch { }
+                    else
+                    {
 
-                    controller.ViewBag.DatosUsuario = datosUsuario;
+                        ///vemos algunos datos extras para trasladar a todos los controladores
+                        ///
+                        ConfiguracionesModel configuraciones = new ConfiguracionesModel();
 
-                    controller.ViewBag.Configuraciones = configuraciones;
+                        try
+                        {
+                            configuraciones = JsonConvert.DeserializeObject<ConfiguracionesModel>(context.HttpContext.Session.GetString("Configuraciones"));
+                        }
+                        catch { }
+
+                        controller.ViewBag.DatosUsuario = datosUsuario;
+
+                        controller.ViewBag.Configuraciones = configuraciones;
+                    }
                 }
             }
         }

@@ -1,0 +1,21 @@
+﻿@using Microsoft.AspNetCore.Http;
+
+@inject IHttpContextAccessor httpContextAccessor;
+
+@{
+    ViewBag.Title = "Mensaje de Error";
+
+    ViewBag.Description = "Pagina para poder mostrar los mensajes de errores que emite el Sistema";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    eInfrastructure.Languages.Localization language = new eInfrastructure.Languages.Localization(httpContextAccessor);
+
+}
+
+<div class="alert alert-success" role="alert">
+    <h4 class="alert-heading">@(ViewBag.Title)!</h4>
+    <p>@Html.Raw(ViewBag.MensajeError)</p>
+    <hr>
+    <p class="mb-0">@language.getText("lbMensajeErrorHelp")</p>
+</div>

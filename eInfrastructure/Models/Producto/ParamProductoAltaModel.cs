@@ -7,6 +7,8 @@ namespace eInfrastructure.Models.Producto
 {
     public class ParamProductoAltaModel
     {
+        public string NombreProducto { get; set; }
+
         public string DescripcionProducto { get; set; }
 
         public int IdCategoriaProducto { get; set; }

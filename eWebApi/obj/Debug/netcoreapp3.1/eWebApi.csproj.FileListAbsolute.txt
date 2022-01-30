@@ -153,3 +153,6 @@ E:\Proyectos\0-NetCore\eRestaurant\eWebApi\obj\Debug\netcoreapp3.1\eWebApi.cspro
 E:\Proyectos\0-NetCore\eRestaurant\eWebApi\obj\Debug\netcoreapp3.1\eWebApi.genruntimeconfig.cache
 E:\Proyectos\0-NetCore\eRestaurant\eWebApi\obj\Debug\netcoreapp3.1\eWebApi.csproj.AssemblyReference.cache
 E:\Proyectos\0-NetCore\eRestaurant\eWebApi\obj\Debug\netcoreapp3.1\Razor\Views\Producto\Index.cshtml.g.cs
+E:\Proyectos\0-NetCore\eRestaurant\eWebApi\obj\Debug\netcoreapp3.1\Razor\Views\Error\Inicio.cshtml.g.cs
+E:\Proyectos\0-NetCore\eRestaurant\eWebApi\obj\Debug\netcoreapp3.1\Razor\Views\Producto\Alta.cshtml.g.cs
+E:\Proyectos\0-NetCore\eRestaurant\eWebApi\obj\Debug\netcoreapp3.1\Razor\Views\Producto\ListaProductos.cshtml.g.cs

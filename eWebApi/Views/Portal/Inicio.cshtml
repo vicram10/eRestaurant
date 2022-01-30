@@ -14,5 +14,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 
     DatosUsuarioModel datosUsuario = (DatosUsuarioModel)ViewBag.DatosUsuario;
-    
+
 }
+
+@await Html.PartialAsync("~/Views/Producto/ListaProductos.cshtml")

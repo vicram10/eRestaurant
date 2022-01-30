@@ -6,7 +6,23 @@ namespace eInfrastructure.Languages
 {
     public class ProductoES
     {
-        public string msgNoDescripcionProducto { get { return "No puede dejar vacio el campo Descripcion del Producto.!!!"; } }
+        ///labels
+        ///
+        public string lbNombreProducto { get { return "Nombre Producto"; } }
+
+        public string colProducto { get { return "Descripcion Producto"; } }
+
+        public string colImagen { get { return "Imagen Producto"; } }
+        
+        public string lbAltaProducto { get { return "Alta de Producto"; } }
+
+        public string lbAltaCategoria { get { return "Alta de Categoria del Producto"; } }
+
+        public string lbCategoria { get { return "Categoria del Producto"; } }
+
+        /// mensajes
+        /// 
+        public string msgNoDescripcionProducto { get { return "No puede dejar vacio el campo Descripcion/Nombre del Producto.!!!"; } }
 
         public string msgNoCategoriaProducto { get { return "No puede dejar vacio el campo Categoria del Producto.!!!"; } }
     }

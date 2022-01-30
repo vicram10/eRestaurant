@@ -36,10 +36,77 @@
 
             } else {
 
-                Notificaciones(mensaje, 'error');
+                NotificacionError(mensaje);
             }
             console.log('finalizamos la consulta para inicio de sesion');
         });
+    });
+
+    /*
+    $('#FormAltaProducto').submit(function (evento) {
+
+        evento.preventDefault();
+
+        loader.show("slow");
+
+        console.log('procesando el alta del producto');
+
+        //hacemos ahora el trabajo del login
+        var $form = $(this),
+            accion = $(this).attr("action"),
+            codigo = "",
+            mensaje = "";
+
+        var posting = $.post(accion, $form.serialize());
+
+        posting.done(function (data) {
+
+            console.log(data);
+
+            var respuesta = JSON.parse(data);
+
+            codigo = respuesta['CodRespuesta'];
+
+            mensaje = respuesta['MensajeRespuesta'];
+
+            loader.fadeOut("slow");
+
+            if (codigo == 0) {
+
+                window.location.href = '/Producto/Index';
+
+            } else {
+
+                NotificacionError(mensaje);
+            }            
+        });        
+    });
+    */
+
+    $(".displayDataTableSearch").DataTable({
+
+        language: {
+            url: HOST_URL + '/js/datatable.es.json'
+        },
+
+    });
+
+    $(".displayDataTableSearch2").DataTable({
+
+        language: {
+            url: HOST_URL + '/js/datatable.es.json'
+        },
+
+        scrollY: '50vh',
+
+        scrollX: true,
+
+        scrollCollapse: true,
+
+        paging: false,
+
+        ordering: false
+
     });
 });
 

@@ -26,7 +26,15 @@ namespace eInfrastructure.Migrations
                     b.Property<string>("DescripcionCategoria")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
+                    b.Property<DateTime>("FechaRegistro")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("IdUsuarioRegistro")
+                        .HasColumnType("int");
+
                     b.HasKey("IdCategoria");
+
+                    b.HasIndex("IdUsuarioRegistro");
 
                     b.ToTable("CategoriaProducto");
                 });
@@ -102,13 +110,22 @@ namespace eInfrastructure.Migrations
                     b.Property<string>("DescripcionProducto")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
+                    b.Property<DateTime>("FechaRegistro")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<int>("IdCategoria")
                         .HasColumnType("int");
 
                     b.Property<int>("IdEstadoProducto")
                         .HasColumnType("int");
 
+                    b.Property<int>("IdUsuarioRegistro")
+                        .HasColumnType("int");
+
                     b.Property<string>("ImagenProducto")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("NombreProducto")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("IdProducto");
@@ -116,6 +133,8 @@ namespace eInfrastructure.Migrations
                     b.HasIndex("IdCategoria");
 
                     b.HasIndex("IdEstadoProducto");
+
+                    b.HasIndex("IdUsuarioRegistro");
 
                     b.ToTable("Productos");
                 });
@@ -170,15 +189,24 @@ namespace eInfrastructure.Migrations
                         {
                             IdUsuario = 1,
                             Cedula = "ADM001",
-                            Contraseña = "$2a$11$S7jKJEhPCxZb66jBYdoGMewYAEKBBnk6Uwm3zacKsBYDLRgt3b9ju",
+                            Contraseña = "$2a$11$AxnlY/yU81nd1ID6m0LzVeBH2oi0NDFp4NzjBVC8/50UdwIA66Amu",
                             Correo = "vicram10@gmail.com",
-                            FechaRegistro = new DateTime(2022, 1, 29, 17, 37, 26, 876, DateTimeKind.Local).AddTicks(7041),
+                            FechaRegistro = new DateTime(2022, 1, 30, 0, 12, 6, 801, DateTimeKind.Local).AddTicks(2425),
                             IdEstado = 1,
                             IdUsuarioRegistro = 1,
                             IdiomaElegido = "ES",
                             Nombre = "ADMINISTRADOR GENERAL",
                             esAdministrador = true
                         });
+                });
+
+            modelBuilder.Entity("eInfrastructure.Entities.CategoriaProducto", b =>
+                {
+                    b.HasOne("eInfrastructure.Entities.Usuario", "UsuarioRegistro")
+                        .WithMany()
+                        .HasForeignKey("IdUsuarioRegistro")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("eInfrastructure.Entities.Producto", b =>
@@ -192,6 +220,12 @@ namespace eInfrastructure.Migrations
                     b.HasOne("eInfrastructure.Entities.EstadoProducto", "EstadoProducto")
                         .WithMany()
                         .HasForeignKey("IdEstadoProducto")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("eInfrastructure.Entities.Usuario", "UsuarioRegistro")
+                        .WithMany()
+                        .HasForeignKey("IdUsuarioRegistro")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
