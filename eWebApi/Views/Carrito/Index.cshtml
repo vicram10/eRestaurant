@@ -1,0 +1,102 @@
+﻿@using eInfrastructure.Entities
+
+@using eInfrastructure.Models
+
+@using eInfrastructure.Languages
+
+@using eInfrastructure.Models.Carrito
+
+@using Microsoft.AspNetCore.Http
+
+@inject IHttpContextAccessor httpContextAccessor
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    Localization language = new Localization(httpContextAccessor);
+
+    ViewBag.Title = language.getText("CarritoTitle", "Carrito");
+
+    DatosUsuarioModel datosUsuario = (DatosUsuarioModel)ViewBag.DatosUsuario;
+
+    List<Carrito> ListadoCarrito = ViewBag.ListadoCarrito as List<Carrito>;
+
+    double TotalCarrito = 0;
+}
+
+@if (ListadoCarrito.Count == 0)
+{
+
+    <div class="alert alert-secondary" role="alert">
+        @language.getText("msgNoExisteRegistro")
+    </div>
+
+}
+else
+{
+    <div class="mt-2 border p-3 table-responsive">
+        <table class="table table-striped displayDataTableSearch" style="width:100%">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">@language.getText("colImagen", "Producto")</th>
+                    <th scope="col">@language.getText("colProducto", "Producto")</th>
+                    <th scope="col">@language.getText("lbPrecio", "Producto")</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <td scope="col">#</td>
+                    <td scope="col">@language.getText("colImagen", "Producto")</td>
+                    <td scope="col">@language.getText("colProducto", "Producto")</td>
+                    <td scope="col">@language.getText("lbPrecio", "Producto")</td>
+                </tr>
+            </tfoot>
+            <tbody>                
+                @foreach (Carrito carro in ListadoCarrito)
+                {
+                    TotalCarrito += carro.Producto.Precio;
+
+                    <tr>
+                        <td>@carro.IdCarrito</td>
+                        <td>
+                            <div class="text-center">
+                                @if (carro.Producto.ImagenProducto.Contains("no-imagen"))
+                                {
+                                    <img src="https://via.placeholder.com/50" width="50" height="50" class="rounded" alt="@carro.Producto.NombreProducto" />
+                                }
+                                else
+                                {
+                                    <img src="~/Imagenes/Adjuntos/@carro.Producto.ImagenProducto" width="50" height="50" class="rounded" alt="@carro.Producto.NombreProducto" />
+                                }
+
+                            </div>
+                        </td>
+                        <td>
+                            <p>@carro.Producto.NombreProducto</p>
+                        </td>
+                        <td>
+                            @carro.Producto.Precio.ToString("n0")
+                        </td>
+                    </tr>
+                }                
+            </tbody>
+        </table>
+    </div>
+    <div class="col-lg-6 mt-5">
+        <ol class="list-group list-group-numbered">
+            <li class="list-group-item  list-group-item-light d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">@language.getText("lbTotalCarrito", "Carrito")</div>
+                    @TotalCarrito.ToString("n0")
+                </div>                
+            </li>
+            <li class="list-group-item  list-group-item-light d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold mb-2">@language.getText("lbCheckOut", "Carrito")</div>
+                    <a href="#" class="btn btn-secondary btn-sm">@language.getText("lbFinalizarCompra", "Carrito")</a>
+                </div>
+            </li>
+        </ol>
+    </div>
+}

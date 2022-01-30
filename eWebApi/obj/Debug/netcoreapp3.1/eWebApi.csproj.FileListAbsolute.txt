@@ -156,3 +156,4 @@ E:\Proyectos\0-NetCore\eRestaurant\eWebApi\obj\Debug\netcoreapp3.1\Razor\Views\P
 E:\Proyectos\0-NetCore\eRestaurant\eWebApi\obj\Debug\netcoreapp3.1\Razor\Views\Error\Inicio.cshtml.g.cs
 E:\Proyectos\0-NetCore\eRestaurant\eWebApi\obj\Debug\netcoreapp3.1\Razor\Views\Producto\Alta.cshtml.g.cs
 E:\Proyectos\0-NetCore\eRestaurant\eWebApi\obj\Debug\netcoreapp3.1\Razor\Views\Producto\ListaProductos.cshtml.g.cs
+E:\Proyectos\0-NetCore\eRestaurant\eWebApi\obj\Debug\netcoreapp3.1\Razor\Views\Carrito\Index.cshtml.g.cs
