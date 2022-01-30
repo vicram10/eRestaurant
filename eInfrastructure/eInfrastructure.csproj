@@ -26,6 +26,7 @@
   <ItemGroup>
     <Reference Include="eGeek.ApiWebClient">
       <HintPath>..\eGeek.ApiWebClient.dll</HintPath>
+      <Private>true</Private>
     </Reference>
   </ItemGroup>
 

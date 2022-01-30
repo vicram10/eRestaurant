@@ -9,7 +9,8 @@
     ".NETStandard,Version=v2.1/": {
       "eService/1.0.0": {
         "dependencies": {
-          "eInfrastructure": "1.0.0"
+          "eInfrastructure": "1.0.0",
+          "eGeek.ApiWebClient": "1.0.0.0"
         },
         "runtime": {
           "eService.dll": {}
@@ -1164,6 +1165,14 @@
         "runtime": {
           "eInfrastructure.dll": {}
         }
+      },
+      "eGeek.ApiWebClient/1.0.0.0": {
+        "runtime": {
+          "eGeek.ApiWebClient.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
       }
     }
   },
@@ -1889,6 +1898,11 @@
     },
     "eInfrastructure/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "eGeek.ApiWebClient/1.0.0.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

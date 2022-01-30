@@ -6,6 +6,11 @@ namespace eInfrastructure.Models.Carrito
 {
     public class ParametrosAdamsPayModel
     {
+        public Deuda debt { get; set; }
+    }
+
+    public class Deuda
+    {
         public string docId { get; set; }
 
         public string label { get; set; }

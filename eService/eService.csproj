@@ -8,4 +8,11 @@
     <ProjectReference Include="..\eInfrastructure\eInfrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="eGeek.ApiWebClient">
+      <HintPath>..\eGeek.ApiWebClient.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+  </ItemGroup>
+
 </Project>

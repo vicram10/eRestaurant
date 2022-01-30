@@ -62,6 +62,8 @@ namespace eWebApi.Controllers
         {
             ResponseModel respuesta = new ResponseModel();
 
+            respuesta = apiCarrito.PrepararPago();
+
             return Json(JsonConvert.SerializeObject(respuesta));
         }
     }

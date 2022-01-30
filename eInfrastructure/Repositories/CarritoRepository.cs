@@ -175,7 +175,21 @@ namespace eInfrastructure.Repositories
                 return respuesta;
             }
 
-            string docID = $"{DateTime.Now}Usuario{datosUsuario.IdUsuario.ToString().PadLeft(5, '0')}";
+            string docID = $"{DateTime.Now.Ticks}Usuario{datosUsuario.IdUsuario.ToString().PadLeft(5, '0')}";
+
+            Amount amount = new Amount() 
+            {
+                currency = "PYG",
+
+                value = totalPagar.ToString()
+            };
+
+            ValidezPeriodo validPeriod = new ValidezPeriodo() 
+            {
+                start = DateTime.UtcNow,
+
+                end = DateTime.UtcNow.AddHours(12)
+            };
 
             ParametrosAdamsPayModel parametros = new ParametrosAdamsPayModel() 
             { 
@@ -183,19 +197,9 @@ namespace eInfrastructure.Repositories
 
                 label = $"{language.getText("lbAdamsPay", "Carrito")}/{docID}",
 
-                amount =
-                {
-                    currency = "PYG",
+                amount = amount,
 
-                    value = totalPagar.ToString()
-                },
-
-                validPeriod =
-                {
-                    start = DateTime.UtcNow,
-
-                    end = DateTime.UtcNow.AddHours(12)
-                }
+                validPeriod = validPeriod
             };
             
             
