@@ -20,6 +20,8 @@ namespace eInfrastructure.Contexts
 
         public DbSet<CategoriaProducto> CategoriaProducto { get; set; }
 
+        public DbSet<Carrito> Carrito { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             ///insertamos valores por defecto

@@ -1,5 +1,6 @@
 ﻿using eInfrastructure.Contexts;
 using eInfrastructure.Models;
+using eInfrastructure.Models.Carrito;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using System;
@@ -41,8 +42,12 @@ namespace eInfrastructure.Repositories
             catch { }
         }
 
-
-        public ResponseModel Agregar()
+        /// <summary>
+        /// Agregar al Carrito
+        /// </summary>
+        /// <param name="parametro"></param>
+        /// <returns></returns>
+        public ResponseModel Agregar(ParamAgregarCarritoModel parametro )
         {
             ResponseModel respuesta = new ResponseModel();
 

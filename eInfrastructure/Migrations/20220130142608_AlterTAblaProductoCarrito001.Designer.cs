@@ -2,50 +2,22 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eInfrastructure.Contexts;
 
 namespace eInfrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220130142608_AlterTAblaProductoCarrito001")]
+    partial class AlterTAblaProductoCarrito001
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.12")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
-
-            modelBuilder.Entity("eInfrastructure.Entities.Carrito", b =>
-                {
-                    b.Property<int>("IdCarrito")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("Estado")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("FechaRegistros")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<int>("IdProducto")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdUsuario")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("UsuarioSolicitoIdUsuario")
-                        .HasColumnType("int");
-
-                    b.HasKey("IdCarrito");
-
-                    b.HasIndex("IdProducto");
-
-                    b.HasIndex("UsuarioSolicitoIdUsuario");
-
-                    b.ToTable("Carrito");
-                });
 
             modelBuilder.Entity("eInfrastructure.Entities.CategoriaProducto", b =>
                 {
@@ -222,28 +194,15 @@ namespace eInfrastructure.Migrations
                         {
                             IdUsuario = 1,
                             Cedula = "ADM001",
-                            Contraseña = "$2a$11$GzAjFZyEX.JcmJR7SKj/z.T2AR0WOXuaRbLhVIVK2PxCSXsU/qe/.",
+                            Contraseña = "$2a$11$9P8Aqqh6r3ZZGs.0dbY8l.yZSjSejXwfezK.BgnGAoYW6sOjoBhQi",
                             Correo = "vicram10@gmail.com",
-                            FechaRegistro = new DateTime(2022, 1, 30, 11, 28, 36, 714, DateTimeKind.Local).AddTicks(8668),
+                            FechaRegistro = new DateTime(2022, 1, 30, 11, 26, 7, 790, DateTimeKind.Local).AddTicks(4960),
                             IdEstado = 1,
                             IdUsuarioRegistro = 1,
                             IdiomaElegido = "ES",
                             Nombre = "ADMINISTRADOR GENERAL",
                             esAdministrador = true
                         });
-                });
-
-            modelBuilder.Entity("eInfrastructure.Entities.Carrito", b =>
-                {
-                    b.HasOne("eInfrastructure.Entities.Producto", "Producto")
-                        .WithMany()
-                        .HasForeignKey("IdProducto")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("eInfrastructure.Entities.Usuario", "UsuarioSolicito")
-                        .WithMany()
-                        .HasForeignKey("UsuarioSolicitoIdUsuario");
                 });
 
             modelBuilder.Entity("eInfrastructure.Entities.CategoriaProducto", b =>

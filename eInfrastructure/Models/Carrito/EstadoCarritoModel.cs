@@ -4,8 +4,9 @@ using System.Text;
 
 namespace eInfrastructure.Models.Carrito
 {
-    public class ParamAgregarCarritoModel
+    public enum EstadoCarritoModel
     {
-        public int IdProducto { get; set; }
+        Pendiente=1,
+        Pagado=2
     }
 }
