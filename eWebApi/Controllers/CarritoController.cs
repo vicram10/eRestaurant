@@ -58,13 +58,29 @@ namespace eWebApi.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public JsonResult PrepararPago()
+        public IActionResult PrepararPago()
         {
             ResponseModel respuesta = new ResponseModel();
 
             respuesta = apiCarrito.PrepararPago();
 
-            return Json(JsonConvert.SerializeObject(respuesta));
+            if (respuesta.CodRespuesta == EstadoRespuesta.Error)
+            {
+                return RedirectToAction("Inicio", "Error", new { msg = respuesta.MensajeRespuesta });
+            }
+            else
+            {
+                AdamsPayResponseModel response = JsonConvert.DeserializeObject<AdamsPayResponseModel>(respuesta.MensajeRespuesta.Split(";")[1]);
+
+                if (response.meta.status == "error")
+                {
+                    return RedirectToAction("Inicio", "Error", new { msg = response.meta.description });
+                }
+                else
+                {
+                    return Redirect(response.debt.payUrl);
+                }
+            }
         }
     }
 }

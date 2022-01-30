@@ -64,7 +64,10 @@ namespace eInfrastructure.Repositories
                 if (responseMessage.StatusCode == System.Net.HttpStatusCode.OK
                     || responseMessage.StatusCode == System.Net.HttpStatusCode.Forbidden
                     || responseMessage.StatusCode == System.Net.HttpStatusCode.Unauthorized
-                    || responseMessage.StatusCode == System.Net.HttpStatusCode.BadRequest)
+                    || responseMessage.StatusCode == System.Net.HttpStatusCode.BadRequest
+                    || responseMessage.StatusCode == System.Net.HttpStatusCode.Created
+                    || responseMessage.StatusCode == System.Net.HttpStatusCode.Accepted
+                    || responseMessage.StatusCode == System.Net.HttpStatusCode.Conflict)
                 {
                     result = responseMessage.Content.ReadAsStringAsync().Result;
                 }

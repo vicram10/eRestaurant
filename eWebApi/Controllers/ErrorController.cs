@@ -1,6 +1,8 @@
 ﻿using eInfrastructure.Languages;
+using eInfrastructure.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +14,19 @@ namespace eWebApi.Controllers
     {
         private readonly Localization language;
 
+        private DatosUsuarioModel datosUsuario;
+
         public ErrorController(IHttpContextAccessor httpContextAccessor)
         {
             language = new Localization(httpContextAccessor);
+
+            datosUsuario = new DatosUsuarioModel();
+
+            try
+            {
+                datosUsuario = JsonConvert.DeserializeObject<DatosUsuarioModel>(httpContextAccessor.HttpContext.Session.GetString("datosUsuario"));
+            }
+            catch { }
         }
 
         /// <summary>
@@ -33,17 +45,20 @@ namespace eWebApi.Controllers
             }
             else
             {
-                try
+                /*try
                 {
                     mensaje = language.getText(msg);
                 }
                 catch
                 {
                     mensaje = msg; //es el mensaje en si ya
-                }
+                }*/
+                mensaje = msg;
             }
 
             ViewBag.MensajeError = mensaje;
+
+            ViewBag.DatosUsuario = datosUsuario;
 
             return View();
         }

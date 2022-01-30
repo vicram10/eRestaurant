@@ -22,6 +22,10 @@ namespace eInfrastructure.Entities
         [ForeignKey("IdUsuario")]
         public Usuario UsuarioSolicito { get; set; }
 
+        public string UrlPago { get; set; }
+
+        public string DocIDAdamsPay { get; set; }
+
         public DateTime FechaRegistro { get; set; }
 
         public EstadoCarritoModel Estado { get; set; }

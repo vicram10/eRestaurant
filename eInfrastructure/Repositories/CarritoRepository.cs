@@ -30,6 +30,8 @@ namespace eInfrastructure.Repositories
 
         private ApiConnect api;
 
+        private string apiKey = "ap-6462542fb0fd35f6b18aea5b";
+
         /// <summary>
         /// constructor
         /// </summary>
@@ -75,6 +77,21 @@ namespace eInfrastructure.Repositories
                 return respuesta;
             }
 
+            var carritoExiste = Listar(new ParamFiltroBusquedaCarritoModel { IdUsuario = datosUsuario.IdUsuario, EstadoCarrito = EstadoCarritoModel.Pendiente });
+
+            string urlPago = "";
+
+            string documentoID = $"{DateTime.Now.Ticks}Usuario{datosUsuario.IdUsuario.ToString().PadLeft(5, '0')}";
+
+            ///si ya existe un documentoID entonces pisamos
+            ///
+            if (carritoExiste.Where(pp => !String.IsNullOrEmpty(pp.UrlPago)).Count() > 0)
+            {
+                urlPago = carritoExiste.First().UrlPago;
+
+                documentoID = carritoExiste.First().DocIDAdamsPay;
+            }
+
             ///ok hacemos el insert en el carrito
             ///
 
@@ -92,6 +109,10 @@ namespace eInfrastructure.Repositories
                 tabla.FechaRegistro = DateTime.Now;
 
                 tabla.Estado = EstadoCarritoModel.Pendiente;
+
+                tabla.UrlPago = urlPago;
+
+                tabla.DocIDAdamsPay = documentoID;
 
                 dbContext.Entry(tabla).State = EntityState.Added;
 
@@ -154,7 +175,9 @@ namespace eInfrastructure.Repositories
 
             Dictionary<string, string> header = new Dictionary<string, string>();
 
-            header.Add("apiKey", "ap-6462542fb0fd35f6b18aea5b");
+            header.Add("apiKey", apiKey);
+
+            header.Add("x-if-exists", "update");
 
             ///traemos la deuda total del cliente
             ///
@@ -175,8 +198,6 @@ namespace eInfrastructure.Repositories
                 return respuesta;
             }
 
-            string docID = $"{DateTime.Now.Ticks}Usuario{datosUsuario.IdUsuario.ToString().PadLeft(5, '0')}";
-
             Amount amount = new Amount() 
             {
                 currency = "PYG",
@@ -184,25 +205,35 @@ namespace eInfrastructure.Repositories
                 value = totalPagar.ToString()
             };
 
+            DateTime inicio = DateTime.Now;
+            
             ValidezPeriodo validPeriod = new ValidezPeriodo() 
             {
-                start = DateTime.UtcNow,
+                start = inicio.ToString("yyyy-MM-dd'T'hh:mm:ss"),
 
-                end = DateTime.UtcNow.AddHours(12)
+                end = inicio.AddHours(12).ToString("yyyy-MM-dd'T'hh:mm:ss")
             };
 
-            ParametrosAdamsPayModel parametros = new ParametrosAdamsPayModel() 
-            { 
-                docId = docID,
+            string documentoID = "";
 
-                label = $"{language.getText("lbAdamsPay", "Carrito")}/{docID}",
+            if (carrito.Where(pp => !String.IsNullOrEmpty(pp.DocIDAdamsPay)).Count() > 0)
+            {
+                documentoID = carrito.First().DocIDAdamsPay;
+            }
+
+            Deuda deuda = new Deuda
+            {
+                docId = documentoID,
+
+                label = $"{language.getText("lbAdamsPay", "Carrito")}/{documentoID}",
 
                 amount = amount,
 
                 validPeriod = validPeriod
             };
-            
-            
+
+            ParametrosAdamsPayModel parametros = new ParametrosAdamsPayModel() { debt = deuda };
+
             ///ok invocamos
             ///
             string resultado = api.Invocar(
@@ -218,6 +249,52 @@ namespace eInfrastructure.Repositories
                 parameter: parametros, 
                 
                 ref respuesta);
+
+            respuesta.CodRespuesta = EstadoRespuesta.Ok;
+
+            respuesta.MensajeRespuesta = $"[OK];{resultado}";
+
+            AdamsPayResponseModel response = JsonConvert.DeserializeObject<AdamsPayResponseModel>(resultado);
+
+            return respuesta;
+        }
+
+        /// <summary>
+        /// Verificacion de pago
+        /// </summary>
+        /// <param name="DocumentoID"></param>
+        /// <returns></returns>
+        public ResponseModel VerificarPago(string DocumentoID)
+        {
+            ResponseModel respuesta = new ResponseModel();
+
+            api = new ApiConnect();
+
+            Dictionary<string, string> header = new Dictionary<string, string>();
+
+            header.Add("apiKey", apiKey);
+
+            ResponseModel respuestaWS = new ResponseModel();
+
+            ///ok invocamos
+            ///
+            string resultado = api.Invocar(
+
+                header: header,
+
+                metodo: MetodoHttp.Post,
+
+                url: $"https://staging.adamspay.com/api/v1/debts/{DocumentoID}",
+
+                controller: "",
+
+                parameter: null,
+
+                ref respuestaWS);
+
+            respuesta.CodRespuesta = EstadoRespuesta.Ok;
+
+            respuesta.MensajeRespuesta = $"[OK];{resultado}";
 
             return respuesta;
         }

@@ -508,3 +508,101 @@
 2022-01-30 14:32:02.1124|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
 2022-01-30 14:32:02.1280|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
 2022-01-30 14:32:02.1280|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 14:36:05.2998|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 14:36:05.3151|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 14:36:05.3151|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 14:43:07.3415|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 14:43:07.3599|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 14:43:07.3599|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 14:53:19.3580|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 14:53:19.3738|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 14:53:19.3738|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 15:02:09.7845|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 15:02:09.8014|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 15:02:09.8032|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 15:09:45.7263|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 15:09:45.7420|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 15:09:45.7420|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 15:21:05.7906|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 15:21:05.8060|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 15:21:05.8060|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 15:29:50.5708|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 15:29:50.5864|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 15:29:50.5864|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 15:39:27.2376|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 15:39:27.2535|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 15:39:27.2535|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 15:42:53.9893|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 15:42:54.0044|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 15:42:54.0061|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 15:45:25.0929|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 15:45:25.1080|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 15:45:25.1080|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 15:53:47.8979|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 15:53:47.9134|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 15:53:47.9134|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 15:56:43.9286|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 15:56:43.9454|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 15:56:43.9454|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 16:01:28.7836|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 16:01:28.7994|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 16:01:28.7994|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 16:06:17.1665|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 16:06:17.1825|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 16:06:17.1825|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 16:06:37.1152|ERROR|Microsoft.EntityFrameworkCore.Query|An exception occurred while iterating over the results of a query for context type 'eInfrastructure.Contexts.ApplicationDbContext'.
+System.InvalidOperationException: Cannot set MySqlCommand.CommandText when there is an open DataReader for this command; it must be closed first.
+   at MySql.Data.MySqlClient.MySqlCommand.set_CommandText(String value) in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlCommand.cs:line 148
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.CreateCommand(RelationalCommandParameterObject parameterObject, Guid commandId, DbCommandMethod commandMethod)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+2022-01-30 16:06:39.9750|ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware|An unhandled exception has occurred while executing the request.
+2022-01-30 16:07:13.2505|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 16:07:13.2661|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 16:07:13.2661|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 16:07:30.4976|ERROR|Microsoft.EntityFrameworkCore.Query|An exception occurred while iterating over the results of a query for context type 'eInfrastructure.Contexts.ApplicationDbContext'.
+System.InvalidOperationException: Cannot set MySqlCommand.CommandText when there is an open DataReader for this command; it must be closed first.
+   at MySql.Data.MySqlClient.MySqlCommand.set_CommandText(String value) in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlCommand.cs:line 148
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.CreateCommand(RelationalCommandParameterObject parameterObject, Guid commandId, DbCommandMethod commandMethod)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+2022-01-30 16:08:10.5678|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 16:08:10.5833|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 16:08:10.5833|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 16:09:57.3569|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 16:09:57.3723|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 16:09:57.3723|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 16:10:28.5713|ERROR|Microsoft.EntityFrameworkCore.Query|An exception occurred while iterating over the results of a query for context type 'eInfrastructure.Contexts.ApplicationDbContext'.
+System.InvalidOperationException: Cannot set MySqlCommand.CommandText when there is an open DataReader for this command; it must be closed first.
+   at MySql.Data.MySqlClient.MySqlCommand.set_CommandText(String value) in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlCommand.cs:line 148
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.CreateCommand(RelationalCommandParameterObject parameterObject, Guid commandId, DbCommandMethod commandMethod)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+2022-01-30 16:10:30.5004|ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware|An unhandled exception has occurred while executing the request.
+2022-01-30 16:14:27.5755|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 16:14:27.5910|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 16:14:27.5910|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 16:20:53.9196|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 16:20:53.9459|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 16:20:53.9459|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 16:24:40.7394|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 16:24:40.7552|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 16:24:40.7571|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 16:27:00.6604|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 16:27:00.6804|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 16:27:00.6804|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 16:29:47.3166|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 16:29:47.3325|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 16:29:47.3344|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 16:37:51.5625|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 16:37:51.5774|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 16:37:51.5774|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 16:44:21.4387|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 16:44:21.4544|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 16:44:21.4544|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
