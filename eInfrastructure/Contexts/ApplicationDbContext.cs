@@ -80,6 +80,15 @@ namespace eInfrastructure.Contexts
                     }
                 }
             );
+
+            ///unique
+            ///
+            modelBuilder.Entity<Usuario>()
+                .HasIndex(u => u.Cedula)
+                .IsUnique();
+            modelBuilder.Entity<Usuario>()
+                .HasIndex(u => u.Correo)
+                .IsUnique();
         }
     }
 }
