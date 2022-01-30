@@ -14,5 +14,11 @@ namespace eService.Interfaces
         /// <param name="_usuario"></param>
         /// <returns></returns>
         ResponseModel Login(UsuarioLoginModel _usuario);
+
+        /// <summary>
+        /// para poder registrar usuarios
+        /// </summary>
+        /// <returns></returns>
+        ResponseModel Registrar(ParamUsuarioRegistroModel parametros);
     }
 }

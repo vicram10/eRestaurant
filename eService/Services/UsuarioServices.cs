@@ -33,5 +33,14 @@ namespace eService.Services
         {
             return repositorio.Login(_usuario);
         }
+
+        /// <summary>
+        /// para poder registrar usuarios
+        /// </summary>
+        /// <returns></returns>
+        public ResponseModel Registrar(ParamUsuarioRegistroModel parametros)
+        {
+            return repositorio.Registrar(parametros);
+        }
     }
 }

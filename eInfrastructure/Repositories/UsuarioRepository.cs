@@ -136,5 +136,18 @@ namespace eInfrastructure.Repositories
 
             return respuesta;
         }
+
+        /// <summary>
+        /// para poder registrar usuarios
+        /// </summary>
+        /// <returns></returns>
+        public ResponseModel Registrar(ParamUsuarioRegistroModel parametros)
+        {
+            ResponseModel respuesta = new ResponseModel();
+
+
+
+            return respuesta;
+        }
     }
 }

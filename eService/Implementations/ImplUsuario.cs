@@ -35,5 +35,14 @@ namespace eService.Implementations
         {
             return servicio.Login(_usuario);
         }
+
+        /// <summary>
+        /// para poder registrar usuarios
+        /// </summary>
+        /// <returns></returns>
+        public ResponseModel Registrar(ParamUsuarioRegistroModel parametros)
+        {
+            return servicio.Registrar(parametros);
+        }
     }
 }
