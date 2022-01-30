@@ -105,9 +105,14 @@ namespace eWebApi.Controllers
                 {
                     AdamsPayResponseModel response = JsonConvert.DeserializeObject<AdamsPayResponseModel>(respuesta.MensajeRespuesta.Split(";")[1]);
 
-                    if (response.debt.payStatus.status == "paid")
+                    if (response != null)
                     {
-                        respuesta = apiCarrito.ActualizarPago(response.debt.docId);
+                        if (response.debt.payStatus.status == "paid")
+                        {
+                            respuesta = apiCarrito.ActualizarPago(response.debt.docId);
+
+                            return RedirectToAction("Inicio", "Portal");
+                        }
                     }
                 }
 
@@ -153,6 +158,8 @@ namespace eWebApi.Controllers
                 if (response.debt.payStatus.status == "paid")
                 {
                     respuesta = apiCarrito.ActualizarPago(IdPago);
+
+                    return RedirectToAction("Inicio", "Portal");
                 }
             }
 
