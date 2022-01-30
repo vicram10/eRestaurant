@@ -17,3 +17,5 @@ E:\Proyectos\0-NetCore\eRestaurant\eInfrastructure\obj\Debug\netstandard2.1\eInf
 E:\Proyectos\0-NetCore\eRestaurant\eInfrastructure\obj\Debug\netstandard2.1\eInfrastructure.dll
 E:\Proyectos\0-NetCore\eRestaurant\eInfrastructure\obj\Debug\netstandard2.1\eInfrastructure.pdb
 E:\Proyectos\0-NetCore\eRestaurant\eInfrastructure\obj\Debug\netstandard2.1\eInfrastructure.csproj.AssemblyReference.cache
+E:\Proyectos\0-NetCore\eRestaurant\eInfrastructure\bin\Debug\netstandard2.1\eGeek.ApiWebClient.dll
+E:\Proyectos\0-NetCore\eRestaurant\eInfrastructure\obj\Debug\netstandard2.1\eInfrastructure.csproj.CopyComplete

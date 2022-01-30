@@ -22,5 +22,11 @@ namespace eService.Interfaces
         /// <param name="parametro"></param>
         /// <returns></returns>
         List<Carrito> Listar(ParamFiltroBusquedaCarritoModel parametro);
+
+        /// <summary>
+        /// para poder preparar el pago en adamspay
+        /// </summary>
+        /// <returns></returns>
+        ResponseModel PrepararPago();
     }
 }

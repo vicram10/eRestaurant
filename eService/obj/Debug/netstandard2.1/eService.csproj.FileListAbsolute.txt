@@ -23,3 +23,4 @@ E:\Proyectos\0-NetCore\eRestaurant\eService\bin\Debug\netstandard2.1\eInfrastruc
 E:\Proyectos\0-NetCore\eRestaurant\eService\bin\Debug\netstandard2.1\eInfrastructure.pdb
 E:\Proyectos\0-NetCore\eRestaurant\eService\obj\Debug\netstandard2.1\eService.csproj.CopyComplete
 E:\Proyectos\0-NetCore\eRestaurant\eService\obj\Debug\netstandard2.1\eService.csproj.AssemblyReference.cache
+E:\Proyectos\0-NetCore\eRestaurant\eService\bin\Debug\netstandard2.1\eGeek.ApiWebClient.dll

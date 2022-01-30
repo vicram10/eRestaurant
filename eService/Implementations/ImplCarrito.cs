@@ -46,5 +46,14 @@ namespace eService.Implementations
         {
             return services.Listar(parametro);
         }
+
+        /// <summary>
+        /// para poder preparar el pago en adamspay
+        /// </summary>
+        /// <returns></returns>
+        public ResponseModel PrepararPago()
+        {
+            return services.PrepararPago();
+        }
     }
 }

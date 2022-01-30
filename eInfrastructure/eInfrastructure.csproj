@@ -24,6 +24,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="eGeek.ApiWebClient">
+      <HintPath>..\eGeek.ApiWebClient.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Update="..\eWebApi\nlog.config" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 

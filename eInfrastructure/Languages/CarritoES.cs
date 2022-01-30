@@ -16,10 +16,14 @@ namespace eInfrastructure.Languages
 
         public string lbCheckOut { get { return "Ir a Ventana de Cobro"; } }
 
+        public string lbAdamsPay { get { return "Compra Carrito"; } }
+
         ///mensajes
         ///
         public string msgNoSeleccionProducto { get { return "Debe especificar un producto para poder!!!"; } }
 
         public string msgAgregadoOK { get { return "Agreado con exito"; } }
+
+        public string msgNoOkTotalPagar { get { return "Ocurrio un problema la totalidad de la deuda."; } }
     }
 }

@@ -28,6 +28,8 @@ namespace eInfrastructure.Repositories
 
         private Logger logger = LogManager.GetCurrentClassLogger();
 
+        private ApiConnect api;
+
         /// <summary>
         /// constructor
         /// </summary>
@@ -139,5 +141,81 @@ namespace eInfrastructure.Repositories
 
             return listado;
         }     
+
+        /// <summary>
+        /// para poder preparar el pago en adamspay
+        /// </summary>
+        /// <returns></returns>
+        public ResponseModel PrepararPago()
+        {
+            ResponseModel respuesta = new ResponseModel();
+
+            api = new ApiConnect();
+
+            Dictionary<string, string> header = new Dictionary<string, string>();
+
+            header.Add("apiKey", "ap-6462542fb0fd35f6b18aea5b");
+
+            ///traemos la deuda total del cliente
+            ///
+            var carrito = Listar(new ParamFiltroBusquedaCarritoModel { IdUsuario = datosUsuario.IdUsuario, EstadoCarrito = EstadoCarritoModel.Pendiente });
+
+            double totalPagar = 0;
+
+            if (carrito.Count > 0)
+            {
+                totalPagar = carrito.Select(pp => pp.Producto.Precio).Sum();
+            }
+            else
+            {
+                respuesta.CodRespuesta = EstadoRespuesta.Error;
+
+                respuesta.MensajeRespuesta = language.getText("msgNoOkTotalPagar", "Carrito");
+
+                return respuesta;
+            }
+
+            string docID = $"{DateTime.Now}Usuario{datosUsuario.IdUsuario.ToString().PadLeft(5, '0')}";
+
+            ParametrosAdamsPayModel parametros = new ParametrosAdamsPayModel() 
+            { 
+                docId = docID,
+
+                label = $"{language.getText("lbAdamsPay", "Carrito")}/{docID}",
+
+                amount =
+                {
+                    currency = "PYG",
+
+                    value = totalPagar.ToString()
+                },
+
+                validPeriod =
+                {
+                    start = DateTime.UtcNow,
+
+                    end = DateTime.UtcNow.AddHours(12)
+                }
+            };
+            
+            
+            ///ok invocamos
+            ///
+            string resultado = api.Invocar(
+                
+                header: header, 
+                
+                metodo: MetodoHttp.Post, 
+                
+                url: "https://staging.adamspay.com/api/v1/debts", 
+                
+                controller: "", 
+                
+                parameter: parametros, 
+                
+                ref respuesta);
+
+            return respuesta;
+        }
     }
 }

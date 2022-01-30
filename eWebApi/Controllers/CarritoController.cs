@@ -52,5 +52,17 @@ namespace eWebApi.Controllers
 
             return View();
         }
+
+        /// <summary>
+        /// Para poder preparar el pago en AdamsPay
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public JsonResult PrepararPago()
+        {
+            ResponseModel respuesta = new ResponseModel();
+
+            return Json(JsonConvert.SerializeObject(respuesta));
+        }
     }
 }
