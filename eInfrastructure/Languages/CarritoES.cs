@@ -20,6 +20,10 @@ namespace eInfrastructure.Languages
 
         public string lbTusPedidos { get { return "Tus Pedidos"; } }
 
+        public string lbEstado { get { return "Estado del Pedido"; } }
+
+        public string lbDocID { get { return "Codigo Adamspay"; } }
+
         ///mensajes
         ///
         public string msgNoSeleccionProducto { get { return "Debe especificar un producto para poder!!!"; } }

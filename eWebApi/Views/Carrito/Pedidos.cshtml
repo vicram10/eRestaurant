@@ -1,6 +1,10 @@
 ﻿@using Microsoft.AspNetCore.Http
 
+@using eInfrastructure.Entities
+
 @using eInfrastructure.Models
+
+@using eInfrastructure.Models.Carrito
 
 @using eInfrastructure.Languages
 
@@ -14,8 +18,56 @@
 
     ViewBag.Title = language.getText("lbTusPedidos", "Carrito");
 
+    List<Carrito> ListaPedidos = ViewBag.ListaCarrito as List<Carrito>;
 
-
+    string estadoDoc = "";
 }
 
-lista de tus pedidos
+@if (ListaPedidos.Count() > 0)
+{
+    <div class="mt-2 border p-3 table-responsive">
+        <table class="table table-striped displayDataTableSearch" style="width:100%">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">@language.getText("lbTusPedidos", "Carrito")</th>
+                    <th scope="col">@language.getText("lbEstado", "Carrito")</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">@language.getText("lbTusPedidos", "Carrito")</th>
+                    <th scope="col">@language.getText("lbEstado", "Carrito")</th>
+                </tr>
+            </tfoot>
+            <tbody>
+                @foreach(var item in ListaPedidos.GroupBy(pp=> pp.DocIDAdamsPay))
+                {
+                    <tr>
+                        <td>@item.Key.ToString()</td>
+                        <td>
+                            <ul>
+                            @foreach(Carrito itemCarrito in ListaPedidos.Where(pp => pp.DocIDAdamsPay == item.Key.ToString()))
+                            {
+                                <li>@($"{itemCarrito.Producto.NombreProducto} - {itemCarrito.Producto.Precio.ToString("n0")}")</li>
+                                
+                                @(estadoDoc = Enum.GetName(typeof(EstadoCarritoModel), itemCarrito.Estado))
+                            }
+                            </ul>
+                        </td>
+                        <td>
+                            @Html.Raw(estadoDoc.ToUpper() == "PAGADO" ? $"<span class='badge bg-success'>{estadoDoc}</span>" : $"<span class='badge bg-warning'>{estadoDoc}</span>" )
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <div class="alert alert-warning" role="alert">
+        @language.getText("msgNoExisteRegistro")
+    </div>
+}

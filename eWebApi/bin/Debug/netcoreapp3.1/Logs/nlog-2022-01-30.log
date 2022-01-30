@@ -657,3 +657,88 @@ System.InvalidOperationException: Cannot set MySqlCommand.CommandText when there
 2022-01-30 18:58:46.8826|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
 2022-01-30 18:58:46.8966|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
 2022-01-30 18:58:46.8966|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 19:00:56.4921|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 19:00:56.5059|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 19:00:56.5059|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 19:01:06.7400|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 19:01:06.7400|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 19:01:06.7559|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 19:01:55.7070|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 19:01:55.7242|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 19:01:55.7242|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 19:03:32.7754|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 19:03:32.7893|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 19:03:32.7893|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 19:04:26.4111|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 19:04:26.4253|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 19:04:26.4253|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 19:04:32.3427|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 19:04:32.3566|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 19:04:32.3566|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 19:05:40.3631|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 19:05:40.3768|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 19:05:40.3768|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 19:05:57.5228|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 19:05:57.5228|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 19:05:57.5382|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 19:06:13.6938|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 19:06:13.6938|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 19:06:13.7097|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 19:06:20.3481|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 19:06:20.3618|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 19:06:20.3618|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 19:07:35.4299|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 19:07:35.4438|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 19:07:35.4438|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 19:08:00.8376|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 19:08:00.8515|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 19:08:00.8515|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 19:09:00.0872|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 19:09:00.1023|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 19:09:00.1023|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 19:09:10.7915|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 19:09:10.8053|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 19:09:10.8053|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 19:09:29.3704|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 19:09:29.3841|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 19:09:29.3841|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 19:10:08.7736|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 19:10:08.7873|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 19:10:08.7873|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 19:10:44.4020|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 19:10:44.4162|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 19:10:44.4162|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 19:11:00.2278|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 19:11:00.2416|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 19:11:00.2416|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 19:12:33.6465|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 19:12:33.6465|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 19:12:33.6624|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 19:12:42.9544|ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware|An unhandled exception has occurred while executing the request.
+2022-01-30 19:13:49.0697|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 19:13:49.0697|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 19:13:49.0854|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 19:14:44.4118|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 19:14:44.4118|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 19:14:44.4118|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 19:16:27.9118|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 19:16:27.9118|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 19:16:27.9118|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 19:18:12.9806|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 19:18:12.9944|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 19:18:12.9944|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 19:21:27.1218|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 19:21:27.1357|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 19:21:27.1357|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 19:21:35.7356|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 19:21:35.7497|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 19:21:35.7497|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 19:21:42.6005|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 19:21:42.6149|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 19:21:42.6149|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 19:23:25.4705|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 19:23:25.4847|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 19:23:25.4847|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 19:23:48.4591|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 19:23:48.4591|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 19:23:48.4591|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi

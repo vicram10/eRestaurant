@@ -6,6 +6,7 @@ using eWebApi.Filters;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,8 @@ namespace eWebApi.Controllers
         private readonly DatosUsuarioModel datosUsuario;
 
         private readonly ConfiguracionesModel configuraciones;
+
+        private Logger logger = LogManager.GetCurrentClassLogger();
 
         /// <summary>
         /// constructor principal
@@ -175,7 +178,36 @@ namespace eWebApi.Controllers
         {
             if (datosUsuario.IdUsuario == 0) { return RedirectToAction("Iniciar", "Usuario"); }
 
+            List<Carrito> listaCarrito = apiCarrito.Listar(new ParamFiltroBusquedaCarritoModel { IdUsuario = datosUsuario.IdUsuario, EstadoCarrito = EstadoCarritoModel.Todos });
 
+            ///revisamos en adamspay los que estan con estado 1
+            ///
+            foreach(Carrito item in listaCarrito.Where(pp => pp.Estado == EstadoCarritoModel.Pendiente))
+            {
+                ResponseModel respuesta = new ResponseModel();
+
+                respuesta = apiCarrito.VerificarPago(item.DocIDAdamsPay);
+
+                if (respuesta.CodRespuesta == EstadoRespuesta.Error)
+                {
+                    logger.Error($"Error cuando quisimos revisar el pago de un docID ({item.DocIDAdamsPay}).\r\n{respuesta.MensajeRespuesta}");
+                }
+                else
+                {
+                    AdamsPayResponseModel response = JsonConvert.DeserializeObject<AdamsPayResponseModel>(respuesta.MensajeRespuesta.Split(";")[1]);
+
+                    if (response != null)
+                    {
+                        if (response.debt.payStatus.status == "paid")
+                        {
+                            respuesta = new ResponseModel();
+                            respuesta = apiCarrito.ActualizarPago(item.DocIDAdamsPay);
+                        }
+                    }
+                }
+            }
+
+            ViewBag.ListaCarrito = listaCarrito;
 
             return View();
         }
