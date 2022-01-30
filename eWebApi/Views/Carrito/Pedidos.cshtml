@@ -1,0 +1,21 @@
+﻿@using Microsoft.AspNetCore.Http
+
+@using eInfrastructure.Models
+
+@using eInfrastructure.Languages
+
+@inject IHttpContextAccessor httpContextAccessor
+
+@{
+
+    Localization language = new Localization(httpContextAccessor);
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    ViewBag.Title = language.getText("lbTusPedidos", "Carrito");
+
+
+
+}
+
+lista de tus pedidos

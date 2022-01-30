@@ -18,6 +18,8 @@ namespace eInfrastructure.Languages
 
         public string lbAdamsPay { get { return "Compra Carrito"; } }
 
+        public string lbTusPedidos { get { return "Tus Pedidos"; } }
+
         ///mensajes
         ///
         public string msgNoSeleccionProducto { get { return "Debe especificar un producto para poder!!!"; } }

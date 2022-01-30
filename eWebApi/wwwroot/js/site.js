@@ -107,9 +107,9 @@ function AgregarCarrito(IdProducto)
 
             console.log('Ok agregado al carrito con exito');
 
-            var cantidad = $("#CantidadCarrito").val();
+            var cantidad = parseInt($("#CantidadCarrito").html()) + 1;
 
-            $("#CantidadCarrito").val(cantidad++);
+            $("#CantidadCarrito").text(cantidad);
 
             NotificacionOk(mensaje);
 

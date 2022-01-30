@@ -165,5 +165,19 @@ namespace eWebApi.Controllers
 
             return RedirectToAction("Index", "Carrito");
         }
+
+        /// <summary>
+        /// tus pedidos
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public IActionResult Pedidos()
+        {
+            if (datosUsuario.IdUsuario == 0) { return RedirectToAction("Iniciar", "Usuario"); }
+
+
+
+            return View();
+        }
     }
 }
