@@ -282,7 +282,7 @@ namespace eInfrastructure.Repositories
 
                 header: header,
 
-                metodo: MetodoHttp.Post,
+                metodo: MetodoHttp.Get,
 
                 url: $"https://staging.adamspay.com/api/v1/debts/{DocumentoID}",
 
@@ -295,6 +295,43 @@ namespace eInfrastructure.Repositories
             respuesta.CodRespuesta = EstadoRespuesta.Ok;
 
             respuesta.MensajeRespuesta = $"[OK];{resultado}";
+
+            return respuesta;
+        }
+
+        /// <summary>
+        /// actualizacion a pagado
+        /// </summary>
+        /// <param name="DocumentoID"></param>
+        /// <returns></returns>
+        public ResponseModel ActualizarPago(string DocumentoID)
+        {
+            ResponseModel respuesta = new ResponseModel();
+
+            var carrito = dbContext.Carrito.AsNoTracking().Where(pp => pp.DocIDAdamsPay == DocumentoID);
+
+            List<Carrito> listaNueva = new List<Carrito>();
+
+            Carrito tabla = new Carrito();
+
+            foreach(Carrito item in carrito)
+            {
+                tabla = new Carrito();
+
+                tabla = item;
+
+                tabla.Estado = EstadoCarritoModel.Pagado;
+
+                listaNueva.Add(tabla);
+            }
+
+            dbContext.Entry(tabla).State = EntityState.Detached;
+
+            dbContext.Entry(tabla).State = EntityState.Modified;
+
+            dbContext.UpdateRange(listaNueva);
+
+            dbContext.SaveChanges();
 
             return respuesta;
         }

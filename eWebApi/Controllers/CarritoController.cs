@@ -16,9 +16,13 @@ namespace eWebApi.Controllers
     [AuthorizationFilter]
     public class CarritoController : Controller
     {
+        private readonly IHttpContextAccessor httpContextAccessor;
+
         private readonly ICarrito apiCarrito;
 
         private readonly DatosUsuarioModel datosUsuario;
+
+        private readonly ConfiguracionesModel configuraciones;
 
         /// <summary>
         /// constructor principal
@@ -27,15 +31,21 @@ namespace eWebApi.Controllers
         /// <param name="apiCarrito"></param>
         public CarritoController(IHttpContextAccessor httpContextAccessor, ICarrito apiCarrito)
         {
+            this.httpContextAccessor = httpContextAccessor;
+
             this.apiCarrito = apiCarrito;
 
             datosUsuario = new DatosUsuarioModel();
+
+            configuraciones = new ConfiguracionesModel();
 
             ISession session = httpContextAccessor.HttpContext.Session;
 
             try
             {
                 datosUsuario = JsonConvert.DeserializeObject<DatosUsuarioModel>(session.GetString("datosUsuario"));
+
+                configuraciones = JsonConvert.DeserializeObject<ConfiguracionesModel>(session.GetString("Configuraciones"));
             }
             catch { }
         }
@@ -50,6 +60,25 @@ namespace eWebApi.Controllers
 
             ViewBag.ListadoCarrito = listadoCarrito;
 
+            string queryString = "";
+
+            string documentoID = "";
+
+            if (httpContextAccessor.HttpContext.Request.QueryString.HasValue)
+            {
+                queryString = httpContextAccessor.HttpContext.Request.QueryString.Value;
+
+                if (queryString.Contains("doc_id"))
+                {
+                    documentoID = httpContextAccessor.HttpContext.Request.Query["doc_id"];
+                }
+            }
+
+            if (!String.IsNullOrEmpty(documentoID))
+            {
+                return Redirect($"{configuraciones.UrlPrincipal}/Carrito/VerificarPago/{documentoID}");
+            }
+
             return View();
         }
 
@@ -61,6 +90,28 @@ namespace eWebApi.Controllers
         public IActionResult PrepararPago()
         {
             ResponseModel respuesta = new ResponseModel();
+
+            var carrito = apiCarrito.Listar(new ParamFiltroBusquedaCarritoModel { IdUsuario = datosUsuario.IdUsuario, EstadoCarrito = EstadoCarritoModel.Pendiente });
+
+            string documentoID = carrito.FirstOrDefault().DocIDAdamsPay;
+
+            if (!String.IsNullOrEmpty(documentoID))
+            {
+                respuesta = new ResponseModel();
+
+                respuesta = apiCarrito.VerificarPago(documentoID);
+
+                if (respuesta.CodRespuesta == EstadoRespuesta.Ok)
+                {
+                    AdamsPayResponseModel response = JsonConvert.DeserializeObject<AdamsPayResponseModel>(respuesta.MensajeRespuesta.Split(";")[1]);
+
+                    if (response.debt.payStatus.status == "paid")
+                    {
+                        respuesta = apiCarrito.ActualizarPago(response.debt.docId);
+                    }
+                }
+
+            }
 
             respuesta = apiCarrito.PrepararPago();
 
@@ -81,6 +132,31 @@ namespace eWebApi.Controllers
                     return Redirect(response.debt.payUrl);
                 }
             }
+        }
+
+        /// <summary>
+        /// Para poder ver si ya se pago un documento
+        /// </summary>
+        /// <param name="IdPago"></param>
+        /// <returns></returns>
+        [HttpGet("Carrito/VerificarPago/{IdPago}")]
+        public IActionResult VerificarPago(string IdPago)
+        {
+            ResponseModel respuesta = new ResponseModel();
+
+            respuesta = apiCarrito.VerificarPago(IdPago);
+
+            if (respuesta.CodRespuesta == EstadoRespuesta.Ok)
+            {
+                AdamsPayResponseModel response = JsonConvert.DeserializeObject<AdamsPayResponseModel>(respuesta.MensajeRespuesta.Split(";")[1]);
+
+                if (response.debt.payStatus.status == "paid")
+                {
+                    respuesta = apiCarrito.ActualizarPago(IdPago);
+                }
+            }
+
+            return RedirectToAction("Index", "Carrito");
         }
     }
 }

@@ -20,6 +20,8 @@ namespace eInfrastructure.Models.Carrito
         public ValidezPeriodo validPeriod { get; set; }
 
         public string payUrl { get; set; }
+
+        public StatusPago payStatus { get; set; }
     }
 
     public class Amount
@@ -34,5 +36,10 @@ namespace eInfrastructure.Models.Carrito
         public string start { get; set; }
 
         public string end { get; set; }
+    }
+
+    public class StatusPago
+    {
+        public string status { get; set; }
     }
 }

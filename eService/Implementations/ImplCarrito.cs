@@ -55,5 +55,25 @@ namespace eService.Implementations
         {
             return services.PrepararPago();
         }
+
+        /// <summary>
+        /// Verificacion de pago
+        /// </summary>
+        /// <param name="DocumentoID"></param>
+        /// <returns></returns>
+        public ResponseModel VerificarPago(string DocumentoID)
+        {
+            return services.VerificarPago(DocumentoID);
+        }
+
+        /// <summary>
+        /// actualizacion a pagado
+        /// </summary>
+        /// <param name="DocumentoID"></param>
+        /// <returns></returns>
+        public ResponseModel ActualizarPago(string DocumentoID)
+        {
+            return services.ActualizarPago(DocumentoID);
+        }
     }
 }

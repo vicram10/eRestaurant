@@ -28,5 +28,19 @@ namespace eService.Interfaces
         /// </summary>
         /// <returns></returns>
         ResponseModel PrepararPago();
+
+        /// <summary>
+        /// Verificacion de pago
+        /// </summary>
+        /// <param name="DocumentoID"></param>
+        /// <returns></returns>
+        ResponseModel VerificarPago(string DocumentoID);
+
+        /// <summary>
+        /// actualizacion a pagado
+        /// </summary>
+        /// <param name="DocumentoID"></param>
+        /// <returns></returns>
+        ResponseModel ActualizarPago(string DocumentoID);
     }
 }
