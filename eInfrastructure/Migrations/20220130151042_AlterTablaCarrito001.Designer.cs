@@ -9,8 +9,8 @@ using eInfrastructure.Contexts;
 namespace eInfrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220130142608_AlterTAblaProductoCarrito001")]
-    partial class AlterTAblaProductoCarrito001
+    [Migration("20220130151042_AlterTablaCarrito001")]
+    partial class AlterTablaCarrito001
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -18,6 +18,33 @@ namespace eInfrastructure.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.12")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
+
+            modelBuilder.Entity("eInfrastructure.Entities.Carrito", b =>
+                {
+                    b.Property<int>("IdCarrito")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("Estado")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("FechaRegistro")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("IdProducto")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdUsuario")
+                        .HasColumnType("int");
+
+                    b.HasKey("IdCarrito");
+
+                    b.HasIndex("IdProducto");
+
+                    b.HasIndex("IdUsuario");
+
+                    b.ToTable("Carrito");
+                });
 
             modelBuilder.Entity("eInfrastructure.Entities.CategoriaProducto", b =>
                 {
@@ -194,15 +221,30 @@ namespace eInfrastructure.Migrations
                         {
                             IdUsuario = 1,
                             Cedula = "ADM001",
-                            Contraseña = "$2a$11$9P8Aqqh6r3ZZGs.0dbY8l.yZSjSejXwfezK.BgnGAoYW6sOjoBhQi",
+                            Contraseña = "$2a$11$IUH5kqOQufE7MkXhbMFON.tLbs4LRVFOhan0qvP9fVpTR/k0zqUii",
                             Correo = "vicram10@gmail.com",
-                            FechaRegistro = new DateTime(2022, 1, 30, 11, 26, 7, 790, DateTimeKind.Local).AddTicks(4960),
+                            FechaRegistro = new DateTime(2022, 1, 30, 12, 10, 42, 270, DateTimeKind.Local).AddTicks(3210),
                             IdEstado = 1,
                             IdUsuarioRegistro = 1,
                             IdiomaElegido = "ES",
                             Nombre = "ADMINISTRADOR GENERAL",
                             esAdministrador = true
                         });
+                });
+
+            modelBuilder.Entity("eInfrastructure.Entities.Carrito", b =>
+                {
+                    b.HasOne("eInfrastructure.Entities.Producto", "Producto")
+                        .WithMany()
+                        .HasForeignKey("IdProducto")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("eInfrastructure.Entities.Usuario", "UsuarioSolicito")
+                        .WithMany()
+                        .HasForeignKey("IdUsuario")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("eInfrastructure.Entities.CategoriaProducto", b =>

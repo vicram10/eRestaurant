@@ -26,7 +26,7 @@ namespace eInfrastructure.Migrations
                     b.Property<int>("Estado")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("FechaRegistros")
+                    b.Property<DateTime>("FechaRegistro")
                         .HasColumnType("datetime(6)");
 
                     b.Property<int>("IdProducto")
@@ -35,14 +35,11 @@ namespace eInfrastructure.Migrations
                     b.Property<int>("IdUsuario")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UsuarioSolicitoIdUsuario")
-                        .HasColumnType("int");
-
                     b.HasKey("IdCarrito");
 
                     b.HasIndex("IdProducto");
 
-                    b.HasIndex("UsuarioSolicitoIdUsuario");
+                    b.HasIndex("IdUsuario");
 
                     b.ToTable("Carrito");
                 });
@@ -222,9 +219,9 @@ namespace eInfrastructure.Migrations
                         {
                             IdUsuario = 1,
                             Cedula = "ADM001",
-                            Contraseña = "$2a$11$GzAjFZyEX.JcmJR7SKj/z.T2AR0WOXuaRbLhVIVK2PxCSXsU/qe/.",
+                            Contraseña = "$2a$11$IUH5kqOQufE7MkXhbMFON.tLbs4LRVFOhan0qvP9fVpTR/k0zqUii",
                             Correo = "vicram10@gmail.com",
-                            FechaRegistro = new DateTime(2022, 1, 30, 11, 28, 36, 714, DateTimeKind.Local).AddTicks(8668),
+                            FechaRegistro = new DateTime(2022, 1, 30, 12, 10, 42, 270, DateTimeKind.Local).AddTicks(3210),
                             IdEstado = 1,
                             IdUsuarioRegistro = 1,
                             IdiomaElegido = "ES",
@@ -243,7 +240,9 @@ namespace eInfrastructure.Migrations
 
                     b.HasOne("eInfrastructure.Entities.Usuario", "UsuarioSolicito")
                         .WithMany()
-                        .HasForeignKey("UsuarioSolicitoIdUsuario");
+                        .HasForeignKey("IdUsuario")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("eInfrastructure.Entities.CategoriaProducto", b =>

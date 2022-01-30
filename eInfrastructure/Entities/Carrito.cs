@@ -19,9 +19,10 @@ namespace eInfrastructure.Entities
 
         public int IdUsuario { get; set; }
 
+        [ForeignKey("IdUsuario")]
         public Usuario UsuarioSolicito { get; set; }
 
-        public DateTime FechaRegistros { get; set; }
+        public DateTime FechaRegistro { get; set; }
 
         public EstadoCarritoModel Estado { get; set; }
     }

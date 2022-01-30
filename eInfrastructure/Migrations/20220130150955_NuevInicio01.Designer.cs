@@ -9,8 +9,8 @@ using eInfrastructure.Contexts;
 namespace eInfrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220130013407_AlterProducto004")]
-    partial class AlterProducto004
+    [Migration("20220130150955_NuevInicio01")]
+    partial class NuevInicio01
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -18,6 +18,33 @@ namespace eInfrastructure.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.12")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
+
+            modelBuilder.Entity("eInfrastructure.Entities.Carrito", b =>
+                {
+                    b.Property<int>("IdCarrito")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("Estado")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("FechaRegistros")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("IdProducto")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdUsuario")
+                        .HasColumnType("int");
+
+                    b.HasKey("IdCarrito");
+
+                    b.HasIndex("IdProducto");
+
+                    b.HasIndex("IdUsuario");
+
+                    b.ToTable("Carrito");
+                });
 
             modelBuilder.Entity("eInfrastructure.Entities.CategoriaProducto", b =>
                 {
@@ -28,7 +55,15 @@ namespace eInfrastructure.Migrations
                     b.Property<string>("DescripcionCategoria")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
+                    b.Property<DateTime>("FechaRegistro")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("IdUsuarioRegistro")
+                        .HasColumnType("int");
+
                     b.HasKey("IdCategoria");
+
+                    b.HasIndex("IdUsuarioRegistro");
 
                     b.ToTable("CategoriaProducto");
                 });
@@ -104,10 +139,16 @@ namespace eInfrastructure.Migrations
                     b.Property<string>("DescripcionProducto")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
+                    b.Property<DateTime>("FechaRegistro")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<int>("IdCategoria")
                         .HasColumnType("int");
 
                     b.Property<int>("IdEstadoProducto")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdUsuarioRegistro")
                         .HasColumnType("int");
 
                     b.Property<string>("ImagenProducto")
@@ -116,11 +157,16 @@ namespace eInfrastructure.Migrations
                     b.Property<string>("NombreProducto")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
+                    b.Property<double>("Precio")
+                        .HasColumnType("double");
+
                     b.HasKey("IdProducto");
 
                     b.HasIndex("IdCategoria");
 
                     b.HasIndex("IdEstadoProducto");
+
+                    b.HasIndex("IdUsuarioRegistro");
 
                     b.ToTable("Productos");
                 });
@@ -175,15 +221,39 @@ namespace eInfrastructure.Migrations
                         {
                             IdUsuario = 1,
                             Cedula = "ADM001",
-                            Contraseña = "$2a$11$e3YROmjwejs/ej8.RIBnzep1Muy3dCqECP9TOUjlVqtFLBVl7Qjvq",
+                            Contraseña = "$2a$11$oL3cY813TpHCj2IW5yrNo.DNRshXhiFmktVOrktQJC0mdqqr6aY0e",
                             Correo = "vicram10@gmail.com",
-                            FechaRegistro = new DateTime(2022, 1, 29, 22, 34, 7, 594, DateTimeKind.Local).AddTicks(4441),
+                            FechaRegistro = new DateTime(2022, 1, 30, 12, 9, 55, 481, DateTimeKind.Local).AddTicks(7277),
                             IdEstado = 1,
                             IdUsuarioRegistro = 1,
                             IdiomaElegido = "ES",
                             Nombre = "ADMINISTRADOR GENERAL",
                             esAdministrador = true
                         });
+                });
+
+            modelBuilder.Entity("eInfrastructure.Entities.Carrito", b =>
+                {
+                    b.HasOne("eInfrastructure.Entities.Producto", "Producto")
+                        .WithMany()
+                        .HasForeignKey("IdProducto")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("eInfrastructure.Entities.Usuario", "UsuarioSolicito")
+                        .WithMany()
+                        .HasForeignKey("IdUsuario")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("eInfrastructure.Entities.CategoriaProducto", b =>
+                {
+                    b.HasOne("eInfrastructure.Entities.Usuario", "UsuarioRegistro")
+                        .WithMany()
+                        .HasForeignKey("IdUsuarioRegistro")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("eInfrastructure.Entities.Producto", b =>
@@ -197,6 +267,12 @@ namespace eInfrastructure.Migrations
                     b.HasOne("eInfrastructure.Entities.EstadoProducto", "EstadoProducto")
                         .WithMany()
                         .HasForeignKey("IdEstadoProducto")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("eInfrastructure.Entities.Usuario", "UsuarioRegistro")
+                        .WithMany()
+                        .HasForeignKey("IdUsuarioRegistro")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
