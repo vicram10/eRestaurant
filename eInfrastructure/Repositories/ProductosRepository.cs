@@ -75,6 +75,11 @@ namespace eInfrastructure.Repositories
                 msgError = String.IsNullOrEmpty(msgError) ? languages.getText("msgNoCategoriaProducto", "Producto") : $"{msgError}\r\n{languages.getText("msgNoCategoriaProducto", "Producto")}";
             }
 
+            if (producto.Precio == 0)
+            {
+                msgError = String.IsNullOrEmpty(msgError) ? languages.getText("msgNoPrecio", "Producto") : $"{msgError}\r\n{languages.getText("msgNoPrecio", "Producto")}";
+            }
+
             if (!String.IsNullOrEmpty(msgError))
             {
                 respuesta.CodRespuesta = EstadoRespuesta.Error;
@@ -99,6 +104,8 @@ namespace eInfrastructure.Repositories
             tabla.IdCategoria = producto.IdCategoriaProducto;
 
             tabla.NombreProducto = producto.NombreProducto;
+
+            tabla.Precio = producto.Precio;
 
             tabla.FechaRegistro = DateTime.Now;
 

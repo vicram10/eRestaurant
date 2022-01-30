@@ -1,4 +1,5 @@
-﻿using eInfrastructure.Models;
+﻿using eInfrastructure.Entities;
+using eInfrastructure.Models;
 using eInfrastructure.Models.Carrito;
 using System;
 using System.Collections.Generic;
@@ -14,5 +15,12 @@ namespace eService.Interfaces
         /// <param name="parametro"></param>
         /// <returns></returns>
         ResponseModel Agregar(ParamAgregarCarritoModel parametro);
+
+        /// <summary>
+        /// listamos el carrito
+        /// </summary>
+        /// <param name="parametro"></param>
+        /// <returns></returns>
+        List<Carrito> Listar(ParamFiltroBusquedaCarritoModel parametro);
     }
 }

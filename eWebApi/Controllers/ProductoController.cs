@@ -1,5 +1,6 @@
 ﻿using eInfrastructure.Entities;
 using eInfrastructure.Models;
+using eInfrastructure.Models.Carrito;
 using eInfrastructure.Models.Producto;
 using eService.Interfaces;
 using eWebApi.Filters;
@@ -20,7 +21,9 @@ namespace eWebApi.Controllers
         private readonly IHttpContextAccessor httpContextAccessor;
 
         private readonly IProductos apiProducto;
-
+        
+        private readonly ICarrito apiCarrito;
+        
         private readonly DatosUsuarioModel datosUsuario;
 
         /// <summary>
@@ -28,7 +31,7 @@ namespace eWebApi.Controllers
         /// </summary>
         /// <param name="httpContextAccessor"></param>
         /// <param name="apiProducto"></param>
-        public ProductoController(IHttpContextAccessor httpContextAccessor, IProductos apiProducto)
+        public ProductoController(IHttpContextAccessor httpContextAccessor, IProductos apiProducto, ICarrito apiCarrito)
         {
             session = httpContextAccessor.HttpContext.Session;
                         
@@ -36,6 +39,8 @@ namespace eWebApi.Controllers
             
             this.apiProducto = apiProducto;
 
+            this.apiCarrito = apiCarrito;
+            
             datosUsuario = new DatosUsuarioModel();
 
             try
@@ -137,6 +142,22 @@ namespace eWebApi.Controllers
         public JsonResult AgregarCategoria([FromForm] ParamAltaCategoriaModel parametro)
         {
             ResponseModel respuesta = apiProducto.AgregarCategoria(parametro);
+
+            return Json(JsonConvert.SerializeObject(respuesta));
+        }
+
+        /// <summary>
+        /// Para poder agregar al carrito de compras
+        /// </summary>
+        /// <param name="carrito"></param>
+        /// <returns></returns>
+        [AuthorizationFilter]
+        [HttpGet("Producto/AgregarCarrito/{IdProducto}")]
+        public JsonResult AgregarCarrito(int IdProducto)
+        {
+            ParamAgregarCarritoModel carrito = new ParamAgregarCarritoModel() { IdProducto = IdProducto };
+
+            ResponseModel respuesta = apiCarrito.Agregar(carrito);
 
             return Json(JsonConvert.SerializeObject(respuesta));
         }

@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 using NLog;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace eInfrastructure.Repositories
@@ -98,6 +99,10 @@ namespace eInfrastructure.Repositories
 
                 respuesta.MensajeRespuesta = language.getText("msgAgregadoOK", "Carrito");
 
+                datosUsuario.CantidadCarrito++;
+
+                session.SetString("datosUsuario", JsonConvert.SerializeObject(datosUsuario));
+
             }
             catch(Exception ex)
             {
@@ -112,5 +117,27 @@ namespace eInfrastructure.Repositories
             ///
             return respuesta;
         }
+
+        /// <summary>
+        /// listamos el carrito
+        /// </summary>
+        /// <param name="parametro"></param>
+        /// <returns></returns>
+        public List<Carrito> Listar(ParamFiltroBusquedaCarritoModel parametro)
+        {
+            List<Carrito> listado = new List<Carrito>();
+
+            listado = dbContext.Carrito.Include(ii => ii.Producto)
+                                       .Include(ii => ii.UsuarioSolicito)
+                                       .Where(pp => pp.IdUsuario == parametro.IdUsuario || parametro.IdUsuario == 0)
+                                       .ToList();
+
+            if (parametro.EstadoCarrito != EstadoCarritoModel.Todos)
+            {
+                listado = listado.Where(ww => ww.Estado == parametro.EstadoCarrito).ToList();
+            }
+
+            return listado;
+        }     
     }
 }

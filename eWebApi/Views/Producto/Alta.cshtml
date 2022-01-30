@@ -34,6 +34,10 @@
                 <label for="FormControlDescripcionProducto" class="form-label">@language.getText("colProducto", "Producto")</label>
                 <textarea class="form-control" id="FormControlDescripcionProducto" name="DescripcionProducto" rows="3"></textarea>
             </div>
+            <div class="mb-3 col-lg-3">
+                <label for="FormControlPrecioProducto" class="form-label">@language.getText("lbPrecio", "Producto")</label>
+                <input type="number" min="0" max="999999999" class="form-control" id="FormControlPrecioProducto" name="Precio">
+            </div>
             <div class="mb-3">
                 <label for="txtImagen" class="form-label">@language.getText("colImagen", "Producto")</label>
                 <input type="file" id="Imagen" name="ImagenProducto" data-preview-file-type="text" />

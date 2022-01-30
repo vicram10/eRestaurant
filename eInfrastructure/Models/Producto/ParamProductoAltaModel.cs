@@ -11,6 +11,8 @@ namespace eInfrastructure.Models.Producto
 
         public string DescripcionProducto { get; set; }
 
+        public double Precio { get; set; }
+
         public int IdCategoriaProducto { get; set; }
 
         public List<IFormFile> ImagenProducto { get; set; }

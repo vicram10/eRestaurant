@@ -1,4 +1,5 @@
 ﻿using eInfrastructure.Contexts;
+using eInfrastructure.Entities;
 using eInfrastructure.Models;
 using eInfrastructure.Models.Carrito;
 using eService.Interfaces;
@@ -34,6 +35,16 @@ namespace eService.Implementations
         public ResponseModel Agregar(ParamAgregarCarritoModel parametro)
         {
             return services.Agregar(parametro);
+        }
+
+        /// <summary>
+        /// listamos el carrito
+        /// </summary>
+        /// <param name="parametro"></param>
+        /// <returns></returns>
+        public List<Carrito> Listar(ParamFiltroBusquedaCarritoModel parametro)
+        {
+            return services.Listar(parametro);
         }
     }
 }

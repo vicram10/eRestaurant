@@ -7,6 +7,9 @@ namespace eInfrastructure.Models.Carrito
     public enum EstadoCarritoModel
     {
         Pendiente=1,
-        Pagado=2
+        
+        Pagado=2,
+
+        Todos = 100
     }
 }

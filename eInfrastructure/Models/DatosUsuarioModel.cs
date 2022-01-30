@@ -19,6 +19,8 @@ namespace eInfrastructure.Models
         public string Imagen { get; set; }
 
         public bool esAdministrador { get; set; }
+        
+        public int CantidadCarrito { get; set; }
 
         public int IdEstado { get; set; }
 
