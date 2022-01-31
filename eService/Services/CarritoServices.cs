@@ -73,5 +73,15 @@ namespace eService.Services
         {
             return repositorio.ActualizarPago(DocumentoID);
         }
+
+        /// <summary>
+        /// para poder eliminar items
+        /// </summary>
+        /// <param name="IdCarrito"></param>
+        /// <returns></returns>
+        public ResponseModel Eliminar(int IdCarrito)
+        {
+            return repositorio.Eliminar(IdCarrito);
+        }
     }
 }

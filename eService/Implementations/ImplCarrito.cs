@@ -75,5 +75,15 @@ namespace eService.Implementations
         {
             return services.ActualizarPago(DocumentoID);
         }
+
+        /// <summary>
+        /// para poder eliminar items
+        /// </summary>
+        /// <param name="IdCarrito"></param>
+        /// <returns></returns>
+        public ResponseModel Eliminar(int IdCarrito)
+        {
+            return services.Eliminar(IdCarrito);
+        }
     }
 }

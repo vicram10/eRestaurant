@@ -42,5 +42,12 @@ namespace eService.Interfaces
         /// <param name="DocumentoID"></param>
         /// <returns></returns>
         ResponseModel ActualizarPago(string DocumentoID);
+
+        /// <summary>
+        /// para poder eliminar items
+        /// </summary>
+        /// <param name="IdCarrito"></param>
+        /// <returns></returns>
+        ResponseModel Eliminar(int IdCarrito);
     }
 }

@@ -31,5 +31,9 @@ namespace eInfrastructure.Languages
         public string msgAgregadoOK { get { return "Agreado con exito"; } }
 
         public string msgNoOkTotalPagar { get { return "Ocurrio un problema la totalidad de la deuda."; } }
+
+        public string msgNoIDBorrado { get { return "Debe colocar una id para poder borrar!!!"; } }
+
+        public string msgBorradoOK { get { return "Borrado con exito!!"; } }
     }
 }

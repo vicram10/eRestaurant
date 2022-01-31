@@ -341,5 +341,38 @@ namespace eInfrastructure.Repositories
 
             return respuesta;
         }
+
+        /// <summary>
+        /// para poder eliminar items
+        /// </summary>
+        /// <param name="IdCarrito"></param>
+        /// <returns></returns>
+        public ResponseModel Eliminar(int IdCarrito)
+        {
+            ResponseModel respuesta = new ResponseModel();
+
+            if (IdCarrito == 0)
+            {
+                respuesta.CodRespuesta = EstadoRespuesta.Error;
+
+                respuesta.MensajeRespuesta = language.getText("msgNoIDBorrado", "Carrito");
+
+                return respuesta;
+            }
+
+            Carrito tabla = new Carrito();
+
+            tabla.IdCarrito = IdCarrito;
+
+            dbContext.Entry(tabla).State = EntityState.Deleted;
+
+            dbContext.SaveChanges();
+
+            respuesta.CodRespuesta = EstadoRespuesta.Ok;
+
+            respuesta.MensajeRespuesta = language.getText("msgBorradoOK", "Carrito");
+
+            return respuesta;
+        }
     }
 }
