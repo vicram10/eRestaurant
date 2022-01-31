@@ -159,6 +159,51 @@ function AgregarCarrito(IdProducto)
     });
 }
 
+//para poder eliminar los items
+function EliminarItem(IdCarrito) {
+    const loader = $(".se-pre-con");
+
+    loader.show("slow");
+
+    console.log('eliminando item del carrito de compras');
+
+    //hacemos ahora el trabajo del login
+    var $form = $(this),
+        accion = '/Carrito/EliminarItem/' + IdCarrito,
+        codigo = "",
+        mensaje = "";
+
+    var posting = $.get(accion);
+
+    posting.done(function (data) {
+
+        console.log(data);
+
+        var respuesta = JSON.parse(data);
+
+        codigo = respuesta['CodRespuesta'];
+
+        mensaje = respuesta['MensajeRespuesta'];
+
+        loader.fadeOut("slow");
+
+        if (codigo == 0) {
+
+            console.log('Ok eliminado con exito');
+
+            /*var cantidad = parseInt($("#CantidadCarrito").html()) - 1;
+
+            $("#CantidadCarrito").text(cantidad);*/
+
+            NotificacionOk(mensaje, true, '');
+
+        } else {
+
+            NotificacionError(mensaje);
+        }
+    });
+}
+
 //para poder emitir un mensaje de OK
 function NotificacionOk(v_mensaje, reload = false, redireccion = '') {
     const SwalConstante = Swal.mixin({
