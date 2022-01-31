@@ -30,7 +30,7 @@ namespace eInfrastructure.Repositories
 
         private ApiConnect api;
 
-        private string apiKey = "ap-6462542fb0fd35f6b18aea5b";
+        private string apiKey = "tu-api-key";
 
         /// <summary>
         /// constructor
