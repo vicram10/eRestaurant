@@ -212,6 +212,14 @@ namespace eWebApi.Controllers
             return View();
         }
 
-        public JsonResult 
+        [HttpGet("Carrito/EliminarItem/{IdCarrito}")]
+        public JsonResult EliminarItem(int IdCarrito)
+        {
+            ResponseModel respuesta = new ResponseModel();
+
+            respuesta = apiCarrito.Eliminar(IdCarrito);
+
+            return Json(JsonConvert.SerializeObject(respuesta));
+        }
     }
 }
