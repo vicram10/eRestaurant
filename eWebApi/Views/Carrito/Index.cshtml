@@ -42,6 +42,7 @@ else
                     <th scope="col">@language.getText("colImagen", "Producto")</th>
                     <th scope="col">@language.getText("colProducto", "Producto")</th>
                     <th scope="col">@language.getText("lbPrecio", "Producto")</th>
+                    <th scope="col">@language.getText("lbOpciones")</th>
                 </tr>
             </thead>
             <tfoot>
@@ -50,6 +51,7 @@ else
                     <td scope="col">@language.getText("colImagen", "Producto")</td>
                     <td scope="col">@language.getText("colProducto", "Producto")</td>
                     <td scope="col">@language.getText("lbPrecio", "Producto")</td>
+                    <td scope="col">@language.getText("lbOpciones")</td>
                 </tr>
             </tfoot>
             <tbody>                
@@ -77,6 +79,9 @@ else
                         </td>
                         <td>
                             @carro.Producto.Precio.ToString("n0")
+                        </td>
+                        <td>
+                            <a onclick="EliminarItem(@carro.IdCarrito)" href="javascript:;" class="btn btn-danger"><i class="bi bi-trash"></i></a>
                         </td>
                     </tr>
                 }                

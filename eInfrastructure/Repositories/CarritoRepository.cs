@@ -372,6 +372,15 @@ namespace eInfrastructure.Repositories
 
             respuesta.MensajeRespuesta = language.getText("msgBorradoOK", "Carrito");
 
+            datosUsuario.CantidadCarrito -= 1;
+
+            if (datosUsuario.CantidadCarrito < 0)
+            {
+                datosUsuario.CantidadCarrito = 0;
+            }
+
+            session.SetString("datosUsuario", JsonConvert.SerializeObject(datosUsuario));
+
             return respuesta;
         }
     }

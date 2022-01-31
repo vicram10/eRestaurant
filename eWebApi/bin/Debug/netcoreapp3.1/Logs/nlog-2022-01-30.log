@@ -908,3 +908,12 @@ System.InvalidOperationException: Cannot set MySqlCommand.CommandText when there
 2022-01-30 21:13:35.8002|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
 2022-01-30 21:13:35.8146|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
 2022-01-30 21:13:35.8146|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 21:22:49.6598|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 21:22:49.6736|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 21:22:49.6736|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 21:24:10.5580|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 21:24:10.5718|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 21:24:10.5718|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
+2022-01-30 21:24:43.6758|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-01-30 21:24:43.6898|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-01-30 21:24:43.6898|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurant\eWebApi
