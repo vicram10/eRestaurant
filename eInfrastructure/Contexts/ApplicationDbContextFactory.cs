@@ -12,7 +12,7 @@ namespace eInfrastructure.Contexts
         {
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
 
-            optionsBuilder.UseMySql("server=localhost;uid=vicram10;pwd=@@.Vm2530723.--;database=bd_eRestaurant");
+            optionsBuilder.UseMySql("server=localhost;uid=user;pwd=xx;database=base_datos");
 
             return new ApplicationDbContext(optionsBuilder.Options);
         }
