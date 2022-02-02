@@ -1,0 +1,33 @@
+2022-02-02 19:44:12.8302|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-02-02 19:44:12.8634|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-02-02 19:44:12.8694|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurtant.Project\0-eRestaurant.Desa\eWebApi
+2022-02-02 19:44:18.0848|ERROR|Microsoft.EntityFrameworkCore.Database.Connection|An error occurred using the connection to database 'bd_eRestaurant' on server 'localhost'.
+2022-02-02 19:44:18.1842|ERROR|Microsoft.EntityFrameworkCore.Query|An exception occurred while iterating over the results of a query for context type 'eInfrastructure.Contexts.ApplicationDbContext'.
+System.InvalidOperationException: An exception has been raised that is likely due to a transient failure. Consider enabling transient error resiliency by adding 'EnableRetryOnFailure()' to the 'UseMySql' call.
+ ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Unable to connect to any of the specified MySQL hosts.
+   at MySqlConnector.Core.ServerSession.ConnectAsync(ConnectionSettings cs, Int32 startTickCount, ILoadBalancer loadBalancer, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 474
+   at MySqlConnector.Core.ConnectionPool.GetSessionAsync(MySqlConnection connection, Int32 startTickCount, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ConnectionPool.cs:line 112
+   at MySqlConnector.Core.ConnectionPool.GetSessionAsync(MySqlConnection connection, Int32 startTickCount, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ConnectionPool.cs:line 141
+   at MySql.Data.MySqlClient.MySqlConnection.CreateSessionAsync(ConnectionPool pool, Int32 startTickCount, Nullable`1 ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlConnection.cs:line 729
+   at MySql.Data.MySqlClient.MySqlConnection.OpenAsync(Nullable`1 ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlConnection.cs:line 396
+   at MySql.Data.MySqlClient.MySqlConnection.Open() in /_/src/MySqlConnector/MySql.Data.MySqlClient/MySqlConnection.cs:line 362
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlRelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   --- End of inner exception stack trace ---
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+2022-02-02 19:45:44.1324|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-02-02 19:45:44.1515|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-02-02 19:45:44.1515|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurtant.Project\0-eRestaurant.Desa\eWebApi
+2022-02-02 19:46:01.1863|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-02-02 19:46:01.2027|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-02-02 19:46:01.2027|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurtant.Project\0-eRestaurant.Desa\eWebApi
+2022-02-02 19:48:17.5936|ERROR|Microsoft.EntityFrameworkCore.Database.Command|Failed executing DbCommand (9ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE UNIQUE INDEX `IX_Usuarios_Correo` ON `Usuarios` (`Correo`);
+2022-02-02 19:53:26.6253|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-02-02 19:53:26.6412|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-02-02 19:53:26.6412|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurtant.Project\0-eRestaurant.Desa\eWebApi

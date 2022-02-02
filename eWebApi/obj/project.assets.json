@@ -4732,11 +4732,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Proyectos\\0-NetCore\\eRestaurant\\eWebApi\\eWebApi.csproj",
+      "projectUniqueName": "E:\\Proyectos\\0-NetCore\\eRestaurtant.Project\\0-eRestaurant.Desa\\eWebApi\\eWebApi.csproj",
       "projectName": "eWebApi",
-      "projectPath": "E:\\Proyectos\\0-NetCore\\eRestaurant\\eWebApi\\eWebApi.csproj",
+      "projectPath": "E:\\Proyectos\\0-NetCore\\eRestaurtant.Project\\0-eRestaurant.Desa\\eWebApi\\eWebApi.csproj",
       "packagesPath": "C:\\Users\\vicram10\\.nuget\\packages\\",
-      "outputPath": "E:\\Proyectos\\0-NetCore\\eRestaurant\\eWebApi\\obj\\",
+      "outputPath": "E:\\Proyectos\\0-NetCore\\eRestaurtant.Project\\0-eRestaurant.Desa\\eWebApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\vicram10\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -4753,11 +4753,11 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "E:\\Proyectos\\0-NetCore\\eRestaurant\\eInfrastructure\\eInfrastructure.csproj": {
-              "projectPath": "E:\\Proyectos\\0-NetCore\\eRestaurant\\eInfrastructure\\eInfrastructure.csproj"
+            "E:\\Proyectos\\0-NetCore\\eRestaurtant.Project\\0-eRestaurant.Desa\\eInfrastructure\\eInfrastructure.csproj": {
+              "projectPath": "E:\\Proyectos\\0-NetCore\\eRestaurtant.Project\\0-eRestaurant.Desa\\eInfrastructure\\eInfrastructure.csproj"
             },
-            "E:\\Proyectos\\0-NetCore\\eRestaurant\\eService\\eService.csproj": {
-              "projectPath": "E:\\Proyectos\\0-NetCore\\eRestaurant\\eService\\eService.csproj"
+            "E:\\Proyectos\\0-NetCore\\eRestaurtant.Project\\0-eRestaurant.Desa\\eService\\eService.csproj": {
+              "projectPath": "E:\\Proyectos\\0-NetCore\\eRestaurtant.Project\\0-eRestaurant.Desa\\eService\\eService.csproj"
             }
           }
         }

@@ -22,6 +22,8 @@ namespace eInfrastructure.Contexts
 
         public DbSet<Carrito> Carrito { get; set; }
 
+        public DbSet<Notificaciones> Notificaciones { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             ///insertamos valores por defecto
@@ -66,7 +68,7 @@ namespace eInfrastructure.Contexts
 
                         IdEstado = 1,//Activo 
                         
-                        Contraseña = BCrypt.Net.BCrypt.HashPassword("aa.123456"), //@@edigital.2021 (Produccion), aa.123456 (Desarrollo)
+                        Contraseña = BCrypt.Net.BCrypt.HashPassword("aa.123456"), //@@eRestaurant.2021 (Produccion), aa.123456 (Desarrollo)
                         
                         IdUsuarioRegistro = 1,
 
@@ -86,8 +88,13 @@ namespace eInfrastructure.Contexts
             modelBuilder.Entity<Usuario>()
                 .HasIndex(u => u.Cedula)
                 .IsUnique();
+
             modelBuilder.Entity<Usuario>()
                 .HasIndex(u => u.Correo)
+                .IsUnique();
+
+            modelBuilder.Entity<Notificaciones>()
+                .HasIndex(ii => ii.IdNotificacion)
                 .IsUnique();
         }
     }

@@ -188,8 +188,6 @@ namespace eInfrastructure.Repositories
                 listar = listar.Where(pp => pp.IdEstadoProducto == codigoEstado).ToList();
             }
 
-
-
             return listar;
         }
 

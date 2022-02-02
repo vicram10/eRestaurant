@@ -28,9 +28,7 @@ namespace eInfrastructure.Repositories
 
         private Logger logger = LogManager.GetCurrentClassLogger();
 
-        private ApiConnect api;
-
-        private string apiKey = "tu-api-key";
+        private ApiConnect api;        
 
         /// <summary>
         /// constructor
@@ -175,7 +173,7 @@ namespace eInfrastructure.Repositories
 
             Dictionary<string, string> header = new Dictionary<string, string>();
 
-            header.Add("apiKey", apiKey);
+            header.Add("apiKey", configuraciones.ApiKey);
 
             header.Add("x-if-exists", "update");
 
@@ -211,7 +209,7 @@ namespace eInfrastructure.Repositories
             {
                 start = inicio.ToString("yyyy-MM-dd'T'hh:mm:ss"),
 
-                end = inicio.AddHours(12).ToString("yyyy-MM-dd'T'hh:mm:ss")
+                end = inicio.AddHours(configuraciones.TiempoSesionHora).ToString("yyyy-MM-dd'T'hh:mm:ss")
             };
 
             string documentoID = "";
@@ -236,13 +234,16 @@ namespace eInfrastructure.Repositories
 
             ///ok invocamos
             ///
+
+            string urlAdamsPay = configuraciones.EsProduccion ? configuraciones.AdamsPayURL.Produccion : configuraciones.AdamsPayURL.Desarrollo;
+
             string resultado = api.Invocar(
                 
                 header: header, 
                 
                 metodo: MetodoHttp.Post, 
                 
-                url: "https://staging.adamspay.com/api/v1/debts", 
+                url: $"{urlAdamsPay}/debts", 
                 
                 controller: "", 
                 
@@ -250,61 +251,41 @@ namespace eInfrastructure.Repositories
                 
                 ref respuesta);
 
-            respuesta.CodRespuesta = EstadoRespuesta.Ok;
+            if (respuesta.CodRespuesta == EstadoRespuesta.Error)
+            {
+                logger.Error($"Error cuando nos fuimos a AdamsPay. Error: {respuesta.MensajeRespuesta}");
+            }
+            else
+            {
 
-            respuesta.MensajeRespuesta = $"[OK];{resultado}";
+                respuesta.CodRespuesta = EstadoRespuesta.Ok;
 
-            AdamsPayResponseModel response = JsonConvert.DeserializeObject<AdamsPayResponseModel>(resultado);
+                respuesta.MensajeRespuesta = $"[OK]";
 
-            return respuesta;
-        }
+                ///si llegamos aca entonces esta todo ok
+                ///
+                ResponseModel respuestaActualizacion = ActualizarCarrito(parametros.debt.docId, EstadoCarritoModel.CreadaDeuda);
 
-        /// <summary>
-        /// Verificacion de pago
-        /// </summary>
-        /// <param name="DocumentoID"></param>
-        /// <returns></returns>
-        public ResponseModel VerificarPago(string DocumentoID)
-        {
-            ResponseModel respuesta = new ResponseModel();
+                if (respuestaActualizacion.CodRespuesta == EstadoRespuesta.Error)
+                {
+                    ///ok ocurrio error pero ya se fue a AdamsPay, vamos a registrar el error
+                    ///
+                    logger.Error($"Error cuando quisimos actualizar a creada la deuda. DocID: {parametros.debt.docId}. Error: {respuestaActualizacion.MensajeRespuesta}");
+                }
 
-            api = new ApiConnect();
 
-            Dictionary<string, string> header = new Dictionary<string, string>();
-
-            header.Add("apiKey", apiKey);
-
-            ResponseModel respuestaWS = new ResponseModel();
-
-            ///ok invocamos
-            ///
-            string resultado = api.Invocar(
-
-                header: header,
-
-                metodo: MetodoHttp.Get,
-
-                url: $"https://staging.adamspay.com/api/v1/debts/{DocumentoID}",
-
-                controller: "",
-
-                parameter: null,
-
-                ref respuestaWS);
-
-            respuesta.CodRespuesta = EstadoRespuesta.Ok;
-
-            respuesta.MensajeRespuesta = $"[OK];{resultado}";
+            }
 
             return respuesta;
         }
 
         /// <summary>
-        /// actualizacion a pagado
+        /// actualizacion estado carrito
         /// </summary>
         /// <param name="DocumentoID"></param>
+        /// <param name="estadoCarrito"></param>
         /// <returns></returns>
-        public ResponseModel ActualizarPago(string DocumentoID)
+        public ResponseModel ActualizarCarrito(string DocumentoID, EstadoCarritoModel estadoCarrito)
         {
             ResponseModel respuesta = new ResponseModel();
 
@@ -320,7 +301,7 @@ namespace eInfrastructure.Repositories
 
                 tabla = item;
 
-                tabla.Estado = EstadoCarritoModel.Pagado;
+                tabla.Estado = estadoCarrito;
 
                 listaNueva.Add(tabla);
             }

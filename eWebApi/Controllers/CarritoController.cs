@@ -63,25 +63,6 @@ namespace eWebApi.Controllers
 
             ViewBag.ListadoCarrito = listadoCarrito;
 
-            string queryString = "";
-
-            string documentoID = "";
-
-            if (httpContextAccessor.HttpContext.Request.QueryString.HasValue)
-            {
-                queryString = httpContextAccessor.HttpContext.Request.QueryString.Value;
-
-                if (queryString.Contains("doc_id"))
-                {
-                    documentoID = httpContextAccessor.HttpContext.Request.Query["doc_id"];
-                }
-            }
-
-            if (!String.IsNullOrEmpty(documentoID))
-            {
-                return Redirect($"{configuraciones.UrlPrincipal}/Carrito/VerificarPago/{documentoID}");
-            }
-
             return View();
         }
 
@@ -93,33 +74,6 @@ namespace eWebApi.Controllers
         public IActionResult PrepararPago()
         {
             ResponseModel respuesta = new ResponseModel();
-
-            var carrito = apiCarrito.Listar(new ParamFiltroBusquedaCarritoModel { IdUsuario = datosUsuario.IdUsuario, EstadoCarrito = EstadoCarritoModel.Pendiente });
-
-            string documentoID = carrito.FirstOrDefault().DocIDAdamsPay;
-
-            if (!String.IsNullOrEmpty(documentoID))
-            {
-                respuesta = new ResponseModel();
-
-                respuesta = apiCarrito.VerificarPago(documentoID);
-
-                if (respuesta.CodRespuesta == EstadoRespuesta.Ok)
-                {
-                    AdamsPayResponseModel response = JsonConvert.DeserializeObject<AdamsPayResponseModel>(respuesta.MensajeRespuesta.Split(";")[1]);
-
-                    if (response != null)
-                    {
-                        if (response.debt.payStatus.status == "paid")
-                        {
-                            respuesta = apiCarrito.ActualizarPago(response.debt.docId);
-
-                            return RedirectToAction("Pedidos", "Carrito");
-                        }
-                    }
-                }
-
-            }
 
             respuesta = apiCarrito.PrepararPago();
 
@@ -143,33 +97,6 @@ namespace eWebApi.Controllers
         }
 
         /// <summary>
-        /// Para poder ver si ya se pago un documento
-        /// </summary>
-        /// <param name="IdPago"></param>
-        /// <returns></returns>
-        [HttpGet("Carrito/VerificarPago/{IdPago}")]
-        public IActionResult VerificarPago(string IdPago)
-        {
-            ResponseModel respuesta = new ResponseModel();
-
-            respuesta = apiCarrito.VerificarPago(IdPago);
-
-            if (respuesta.CodRespuesta == EstadoRespuesta.Ok)
-            {
-                AdamsPayResponseModel response = JsonConvert.DeserializeObject<AdamsPayResponseModel>(respuesta.MensajeRespuesta.Split(";")[1]);
-
-                if (response.debt.payStatus.status == "paid")
-                {
-                    respuesta = apiCarrito.ActualizarPago(IdPago);
-
-                    return RedirectToAction("Pedidos", "Carrito");
-                }
-            }
-
-            return RedirectToAction("Index", "Carrito");
-        }
-
-        /// <summary>
         /// tus pedidos
         /// </summary>
         /// <returns></returns>
@@ -179,33 +106,6 @@ namespace eWebApi.Controllers
             if (datosUsuario.IdUsuario == 0) { return RedirectToAction("Iniciar", "Usuario"); }
 
             List<Carrito> listaCarrito = apiCarrito.Listar(new ParamFiltroBusquedaCarritoModel { IdUsuario = datosUsuario.IdUsuario, EstadoCarrito = EstadoCarritoModel.Todos });
-
-            ///revisamos en adamspay los que estan con estado 1
-            ///
-            foreach(Carrito item in listaCarrito.Where(pp => pp.Estado == EstadoCarritoModel.Pendiente))
-            {
-                ResponseModel respuesta = new ResponseModel();
-
-                respuesta = apiCarrito.VerificarPago(item.DocIDAdamsPay);
-
-                if (respuesta.CodRespuesta == EstadoRespuesta.Error)
-                {
-                    logger.Error($"Error cuando quisimos revisar el pago de un docID ({item.DocIDAdamsPay}).\r\n{respuesta.MensajeRespuesta}");
-                }
-                else
-                {
-                    AdamsPayResponseModel response = JsonConvert.DeserializeObject<AdamsPayResponseModel>(respuesta.MensajeRespuesta.Split(";")[1]);
-
-                    if (response != null)
-                    {
-                        if (response.debt.payStatus.status == "paid")
-                        {
-                            respuesta = new ResponseModel();
-                            respuesta = apiCarrito.ActualizarPago(item.DocIDAdamsPay);
-                        }
-                    }
-                }
-            }
 
             ViewBag.ListaCarrito = listaCarrito;
 

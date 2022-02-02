@@ -30,18 +30,12 @@ namespace eService.Interfaces
         ResponseModel PrepararPago();
 
         /// <summary>
-        /// Verificacion de pago
+        /// actualizacion estado carrito
         /// </summary>
         /// <param name="DocumentoID"></param>
+        /// <param name="estadoCarrito"></param>
         /// <returns></returns>
-        ResponseModel VerificarPago(string DocumentoID);
-
-        /// <summary>
-        /// actualizacion a pagado
-        /// </summary>
-        /// <param name="DocumentoID"></param>
-        /// <returns></returns>
-        ResponseModel ActualizarPago(string DocumentoID);
+        ResponseModel ActualizarCarrito(string DocumentoID, EstadoCarritoModel estadoCarrito);
 
         /// <summary>
         /// para poder eliminar items

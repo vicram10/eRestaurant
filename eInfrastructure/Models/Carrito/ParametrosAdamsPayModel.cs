@@ -13,6 +13,8 @@ namespace eInfrastructure.Models.Carrito
     {
         public string docId { get; set; }
 
+        public StatusPago objStatus { get; set; }
+
         public string label { get; set; }
 
         public Amount amount { get; set; }
@@ -41,5 +43,7 @@ namespace eInfrastructure.Models.Carrito
     public class StatusPago
     {
         public string status { get; set; }
+
+        public string time { get; set; }
     }
 }

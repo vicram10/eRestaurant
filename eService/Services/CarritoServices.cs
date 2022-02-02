@@ -55,23 +55,14 @@ namespace eService.Services
         }
 
         /// <summary>
-        /// Verificacion de pago
+        /// actualizacion estado carrito
         /// </summary>
         /// <param name="DocumentoID"></param>
+        /// <param name="estadoCarrito"></param>
         /// <returns></returns>
-        public ResponseModel VerificarPago(string DocumentoID)
+        public ResponseModel ActualizarCarrito(string DocumentoID, EstadoCarritoModel estadoCarrito)
         {
-            return repositorio.VerificarPago(DocumentoID);
-        }
-
-        /// <summary>
-        /// actualizacion a pagado
-        /// </summary>
-        /// <param name="DocumentoID"></param>
-        /// <returns></returns>
-        public ResponseModel ActualizarPago(string DocumentoID)
-        {
-            return repositorio.ActualizarPago(DocumentoID);
+            return repositorio.ActualizarCarrito(DocumentoID, estadoCarrito);
         }
 
         /// <summary>
