@@ -10,6 +10,7 @@ using NLog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace eWebApi.Controllers
@@ -138,13 +139,15 @@ namespace eWebApi.Controllers
         /// <param name="hook"></param>
         /// <returns></returns>
         [HttpPost("Carrito/WebHook")]
-        public ActionResult WebHook([FromBody] WebHookModel hook)
+        public ActionResult WebHook([FromBody] JsonElement json)
         {
             ///ok primeramente logueamos lo que viene
             ///
-            logger.Debug($"WebHookModel: {JsonConvert.SerializeObject(hook)}. Request: {JsonConvert.SerializeObject(httpContextAccessor.HttpContext.Request.Headers)}");
+            logger.Debug($"WebHookModel: {json}. Request: {JsonConvert.SerializeObject(httpContextAccessor.HttpContext.Request.Headers)}");
 
             ResponseModel respuesta = new ResponseModel();
+
+            WebHookModel hook = new WebHookModel();
 
             respuesta = apiCarrito.WebHook(hook);
 
