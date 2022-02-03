@@ -162,7 +162,7 @@ namespace eInfrastructure.Repositories
 
             if (!String.IsNullOrEmpty(parametro.DocId))
             {
-                listado.Where(ll => ll.DocIDAdamsPay == parametro.DocId).ToList();
+               listado = listado.Where(ll => ll.DocIDAdamsPay == parametro.DocId).ToList();
             }
 
             return listado;
@@ -272,7 +272,7 @@ namespace eInfrastructure.Repositories
 
                 if (responseAdams.meta.status == "error")
                 {
-                    logger.Error($"Error en el envio a AdamsPay. Error: {JsonConvert.SerializeObject(responseAdams)}");
+                    logger.Error($"Error en el envio a AdamsPay. Error: {JsonConvert.SerializeObject(responseAdams)}. Request: {JsonConvert.SerializeObject(parametros)}");
 
                     respuesta.CodRespuesta = EstadoRespuesta.Error;
 
@@ -312,7 +312,7 @@ namespace eInfrastructure.Repositories
         {
             ResponseModel respuesta = new ResponseModel();
 
-            List<Carrito> lista = Listar(new ParamFiltroBusquedaCarritoModel { IdUsuario = 0, EstadoCarrito = EstadoCarritoModel.Todos, DocId = DocumentoID });
+            List<Carrito> lista = Listar(new ParamFiltroBusquedaCarritoModel { IdUsuario = datosUsuario.IdUsuario, EstadoCarrito = EstadoCarritoModel.Todos, DocId = DocumentoID });
 
             foreach (Carrito item in lista)
             {
