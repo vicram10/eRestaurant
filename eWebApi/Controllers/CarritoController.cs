@@ -14,7 +14,6 @@ using System.Threading.Tasks;
 
 namespace eWebApi.Controllers
 {
-    [AuthorizationFilter]
     public class CarritoController : Controller
     {
         private readonly IHttpContextAccessor httpContextAccessor;
@@ -57,8 +56,11 @@ namespace eWebApi.Controllers
         /// para poder visualizar la lista de productos que existen en mi carrito de compra
         /// </summary>
         /// <returns></returns>
+        [AuthorizationFilter]
         public IActionResult Index()
         {
+            logger.Error("Carrito_Index");
+
             List<Carrito> listadoCarrito = apiCarrito.Listar(new ParamFiltroBusquedaCarritoModel { IdUsuario = datosUsuario.IdUsuario, EstadoCarrito = EstadoCarritoModel.Pendiente });
 
             ViewBag.ListadoCarrito = listadoCarrito;
@@ -70,7 +72,7 @@ namespace eWebApi.Controllers
         /// Para poder preparar el pago en AdamsPay
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
+        [AuthorizationFilter]
         public IActionResult PrepararPago()
         {
             ResponseModel respuesta = new ResponseModel();
@@ -100,18 +102,26 @@ namespace eWebApi.Controllers
         /// tus pedidos
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
+        [AuthorizationFilter]
         public IActionResult Pedidos()
         {
             if (datosUsuario.IdUsuario == 0) { return RedirectToAction("Iniciar", "Usuario"); }
 
             List<Carrito> listaCarrito = apiCarrito.Listar(new ParamFiltroBusquedaCarritoModel { IdUsuario = datosUsuario.IdUsuario, EstadoCarrito = EstadoCarritoModel.Todos });
 
+            logger.Debug($"ListadoCarrito: {JsonConvert.SerializeObject(listaCarrito)}");
+
             ViewBag.ListaCarrito = listaCarrito;
 
             return View();
         }
 
+        /// <summary>
+        /// Eliminar Carrito
+        /// </summary>
+        /// <param name="IdCarrito"></param>
+        /// <returns></returns>
+        [AuthorizationFilter]
         [HttpGet("Carrito/EliminarItem/{IdCarrito}")]
         public JsonResult EliminarItem(int IdCarrito)
         {
@@ -132,7 +142,7 @@ namespace eWebApi.Controllers
         {
             ///ok primeramente logueamos lo que viene
             ///
-            logger.Debug($"WebHookModel: {JsonConvert.SerializeObject(hook)}");
+            logger.Debug($"WebHookModel: {JsonConvert.SerializeObject(hook)}. Request: {JsonConvert.SerializeObject(httpContextAccessor.HttpContext.Request)}");
 
             ResponseModel respuesta = new ResponseModel();
 

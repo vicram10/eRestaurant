@@ -8,7 +8,7 @@ namespace eInfrastructure.Models.Carrito
     {
         public Notificacion notify { get; set; }
 
-        public Deuda debt { get; set; }
+        public DeudaWebHook debt { get; set; }
     }
 
     public class Notificacion
@@ -29,5 +29,10 @@ namespace eInfrastructure.Models.Carrito
 
         //ambiente: produccion o test
         public string env { get; set; }
+    }
+
+    public class DeudaWebHook: Deuda
+    {
+        public StatusPago objStatus { get; set; }
     }
 }

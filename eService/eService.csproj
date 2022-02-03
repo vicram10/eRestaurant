@@ -1,11 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\eInfrastructure\eInfrastructure.csproj" />
+    <ProjectReference Include="..\eInfrastructure\eInfrastructure.csproj" />    
   </ItemGroup>
 
   <ItemGroup>
@@ -13,6 +13,10 @@
       <HintPath>..\eGeek.ApiWebClient.dll</HintPath>
       <Private>true</Private>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="..\eWebApi\nlog.config" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>

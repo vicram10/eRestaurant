@@ -8,6 +8,8 @@ namespace eInfrastructure.Models.Carrito
     {
         public int IdUsuario { get; set; }
 
+        public string DocId { get; set; }
+
         public EstadoCarritoModel EstadoCarrito { get; set; }
     }
 }

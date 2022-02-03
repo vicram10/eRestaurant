@@ -153,9 +153,16 @@ namespace eInfrastructure.Repositories
                                        .Where(pp => pp.IdUsuario == parametro.IdUsuario || parametro.IdUsuario == 0)
                                        .ToList();
 
+            logger.Debug($"Listado: {JsonConvert.SerializeObject(listado)}");
+
             if (parametro.EstadoCarrito != EstadoCarritoModel.Todos)
             {
                 listado = listado.Where(ww => ww.Estado == parametro.EstadoCarrito).ToList();
+            }
+
+            if (!String.IsNullOrEmpty(parametro.DocId))
+            {
+                listado.Where(ll => ll.DocIDAdamsPay == parametro.DocId).ToList();
             }
 
             return listado;
@@ -203,13 +210,17 @@ namespace eInfrastructure.Repositories
                 value = totalPagar.ToString()
             };
 
-            DateTime inicio = DateTime.Now;
-            
+            DateTime ahora = DateTime.Now;
+
+            string inicio = ahora.ToString("yyyy-MM-dd'T'hh:mm:ss");
+
+            string endValidez = DateTime.Parse(inicio).AddHours(configuraciones.TiempoSesionHora).ToString("yyyy-MM-dd'T'hh:mm:ss");
+
             ValidezPeriodo validPeriod = new ValidezPeriodo() 
             {
-                start = inicio.ToString("yyyy-MM-dd'T'hh:mm:ss"),
+                start = inicio,
 
-                end = inicio.AddHours(configuraciones.TiempoSesionHora).ToString("yyyy-MM-dd'T'hh:mm:ss")
+                end = endValidez
             };
 
             string documentoID = "";
@@ -257,10 +268,22 @@ namespace eInfrastructure.Repositories
             }
             else
             {
+                AdamsPayResponseModel responseAdams = JsonConvert.DeserializeObject<AdamsPayResponseModel>(resultado);
+
+                if (responseAdams.meta.status == "error")
+                {
+                    logger.Error($"Error en el envio a AdamsPay. Error: {JsonConvert.SerializeObject(responseAdams)}");
+
+                    respuesta.CodRespuesta = EstadoRespuesta.Error;
+
+                    respuesta.MensajeRespuesta = responseAdams.meta.description;
+
+                    return respuesta;
+                }
 
                 respuesta.CodRespuesta = EstadoRespuesta.Ok;
 
-                respuesta.MensajeRespuesta = $"[OK]";
+                respuesta.MensajeRespuesta = $"[OK];{resultado}";
 
                 ///si llegamos aca entonces esta todo ok
                 ///
@@ -289,31 +312,21 @@ namespace eInfrastructure.Repositories
         {
             ResponseModel respuesta = new ResponseModel();
 
-            var carrito = dbContext.Carrito.AsNoTracking().Where(pp => pp.DocIDAdamsPay == DocumentoID);
+            List<Carrito> lista = Listar(new ParamFiltroBusquedaCarritoModel { IdUsuario = 0, EstadoCarrito = EstadoCarritoModel.Todos, DocId = DocumentoID });
 
-            List<Carrito> listaNueva = new List<Carrito>();
-
-            Carrito tabla = new Carrito();
-
-            foreach(Carrito item in carrito)
+            foreach (Carrito item in lista)
             {
-                tabla = new Carrito();
+                var carrito = dbContext.Carrito.Where(ii => ii.IdCarrito == item.IdCarrito).FirstOrDefault();
 
-                tabla = item;
+                carrito.Estado = estadoCarrito;
 
-                tabla.Estado = estadoCarrito;
+                dbContext.Carrito.Update(carrito);
 
-                listaNueva.Add(tabla);
+                dbContext.SaveChanges();
+
+                dbContext.Entry(carrito).State = EntityState.Detached;
             }
-
-            dbContext.Entry(tabla).State = EntityState.Detached;
-
-            dbContext.Entry(tabla).State = EntityState.Modified;
-
-            dbContext.UpdateRange(listaNueva);
-
-            dbContext.SaveChanges();
-
+            
             int Existencia = Listar(new ParamFiltroBusquedaCarritoModel { IdUsuario = datosUsuario.IdUsuario, EstadoCarrito = EstadoCarritoModel.Pendiente }).Count();
 
             datosUsuario.CantidadCarrito = Existencia;

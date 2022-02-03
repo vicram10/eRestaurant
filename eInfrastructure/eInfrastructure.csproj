@@ -29,9 +29,4 @@
       <Private>true</Private>
     </Reference>
   </ItemGroup>
-
-  <ItemGroup>
-    <Content Update="..\eWebApi\nlog.config" CopyToOutputDirectory="PreserveNewest" />
-  </ItemGroup>
-
 </Project>

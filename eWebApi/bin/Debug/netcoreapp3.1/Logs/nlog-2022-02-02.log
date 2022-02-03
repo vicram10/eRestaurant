@@ -34,3 +34,31 @@ CREATE UNIQUE INDEX `IX_Usuarios_Correo` ON `Usuarios` (`Correo`);
 2022-02-02 22:20:02.2519|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
 2022-02-02 22:20:02.2681|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
 2022-02-02 22:20:02.2681|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurtant.Project\0-eRestaurant.Desa\eWebApi
+2022-02-02 22:45:31.5294|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-02-02 22:45:31.5524|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-02-02 22:45:31.5543|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurtant.Project\0-eRestaurant.Desa\eWebApi
+2022-02-02 22:47:22.2966|ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware|An unhandled exception has occurred while executing the request.
+2022-02-02 22:50:19.2573|ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware|An unhandled exception has occurred while executing the request.
+2022-02-02 22:56:11.6231|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-02-02 22:56:11.6387|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-02-02 22:56:11.6387|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurtant.Project\0-eRestaurant.Desa\eWebApi
+2022-02-02 22:57:45.9343|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-02-02 22:57:45.9497|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-02-02 22:57:45.9497|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurtant.Project\0-eRestaurant.Desa\eWebApi
+2022-02-02 23:00:07.0031|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-02-02 23:00:07.0182|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-02-02 23:00:07.0182|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurtant.Project\0-eRestaurant.Desa\eWebApi
+2022-02-02 23:01:11.8258|ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware|An unhandled exception has occurred while executing the request.
+2022-02-02 23:20:37.3611|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-02-02 23:20:37.3770|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-02-02 23:20:37.3770|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurtant.Project\0-eRestaurant.Desa\eWebApi
+2022-02-02 23:21:53.3363|ERROR|Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware|An unhandled exception has occurred while executing the request.
+2022-02-02 23:27:34.0108|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-02-02 23:27:34.0261|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-02-02 23:27:34.0261|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurtant.Project\0-eRestaurant.Desa\eWebApi
+2022-02-02 23:58:07.4296|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-02-02 23:58:07.4451|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-02-02 23:58:07.4451|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurtant.Project\0-eRestaurant.Desa\eWebApi
+2022-02-02 23:59:43.3966|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-02-02 23:59:43.4119|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-02-02 23:59:43.4136|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurtant.Project\0-eRestaurant.Desa\eWebApi
