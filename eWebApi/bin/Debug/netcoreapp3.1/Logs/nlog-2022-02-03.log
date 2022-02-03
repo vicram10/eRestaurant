@@ -178,3 +178,10 @@ Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updatin
 2022-02-03 01:14:44.2582|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
 2022-02-03 01:14:44.2747|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
 2022-02-03 01:14:44.2747|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurtant.Project\0-eRestaurant.Desa\eWebApi
+2022-02-03 01:20:28.1664|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-02-03 01:20:28.1822|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-02-03 01:20:28.1822|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurtant.Project\0-eRestaurant.Desa\eWebApi
+2022-02-03 01:22:07.5455|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-02-03 01:22:07.5614|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-02-03 01:22:07.5614|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurtant.Project\0-eRestaurant.Desa\eWebApi
+2022-02-03 01:22:15.6600|DEBUG|eWebApi.Controllers.CarritoController|WebHookModel: {"notify":{"id":null,"type":null,"version":0,"time":null,"merchant":null,"app":null,"env":null},"debt":null}. Request: {"Accept":["*/*"],"Accept-Encoding":["gzip, deflate, br"],"Connection":["keep-alive"],"Content-Length":["37"],"Content-Type":["application/json"],"Host":["localhost:15299"],"User-Agent":["PostmanRuntime/7.29.0"],"Postman-Token":["3b23eeca-2c6a-49c2-b34d-2c870fffe24e"]}

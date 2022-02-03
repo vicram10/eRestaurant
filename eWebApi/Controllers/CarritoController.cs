@@ -142,7 +142,7 @@ namespace eWebApi.Controllers
         {
             ///ok primeramente logueamos lo que viene
             ///
-            logger.Debug($"WebHookModel: {JsonConvert.SerializeObject(hook)}. Request: {JsonConvert.SerializeObject(httpContextAccessor.HttpContext.Request)}");
+            logger.Debug($"WebHookModel: {JsonConvert.SerializeObject(hook)}. Request: {JsonConvert.SerializeObject(httpContextAccessor.HttpContext.Request.Headers)}");
 
             ResponseModel respuesta = new ResponseModel();
 
