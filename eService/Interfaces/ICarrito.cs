@@ -43,5 +43,12 @@ namespace eService.Interfaces
         /// <param name="IdCarrito"></param>
         /// <returns></returns>
         ResponseModel Eliminar(int IdCarrito);
+
+        /// <summary>
+        /// Para poder recibir notificaciones desde AdamsPay
+        /// </summary>
+        /// <param name="hook"></param>
+        /// <returns></returns>
+        ResponseModel WebHook(WebHookModel hook);
     }
 }

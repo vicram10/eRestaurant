@@ -121,5 +121,40 @@ namespace eWebApi.Controllers
 
             return Json(JsonConvert.SerializeObject(respuesta));
         }
+
+        /// <summary>
+        /// WebHook - Para recibir notificaciones desde AdamsPay
+        /// </summary>
+        /// <param name="hook"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult WebHook([FromBody] WebHookModel hook)
+        {
+            ///ok primeramente logueamos lo que viene
+            ///
+            logger.Debug($"WebHookModel: {JsonConvert.SerializeObject(hook)}");
+
+            ResponseModel respuesta = new ResponseModel();
+
+            respuesta = apiCarrito.WebHook(hook);
+
+            ///ok hicimos todo correctamente
+            ///
+            if (respuesta.CodRespuesta == EstadoRespuesta.Ok)
+            {
+                return Ok(JsonConvert.SerializeObject(respuesta));
+            }
+
+            ///ok le decimos que ignoramos la notificacion que nos enviaron
+            ///
+            if (respuesta.CodRespuesta == EstadoRespuesta.Ignore)
+            {
+                return Accepted(JsonConvert.SerializeObject(respuesta));
+            }
+
+            ///ok se rompio todo.. queremos que nos vuelva a avisar la notificacion
+            ///
+            return StatusCode(StatusCodes.Status500InternalServerError, JsonConvert.SerializeObject(respuesta));
+        }
     }
 }

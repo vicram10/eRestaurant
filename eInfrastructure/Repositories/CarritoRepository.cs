@@ -364,5 +364,19 @@ namespace eInfrastructure.Repositories
 
             return respuesta;
         }
+
+        /// <summary>
+        /// Para poder recibir notificaciones desde AdamsPay
+        /// </summary>
+        /// <param name="hook"></param>
+        /// <returns></returns>
+        public ResponseModel WebHook(WebHookModel hook)
+        {
+            ResponseModel respuesta = new ResponseModel();
+
+            respuesta.CodRespuesta = EstadoRespuesta.Ignore;
+
+            return respuesta;
+        }
     }
 }

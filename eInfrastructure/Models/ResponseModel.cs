@@ -15,6 +15,8 @@ namespace eInfrastructure.Models
     {
         Ok = 0,
 
-        Error=-1
+        Error=-1,
+
+        Ignore=202
     }
 }

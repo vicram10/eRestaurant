@@ -31,3 +31,6 @@ CREATE UNIQUE INDEX `IX_Usuarios_Correo` ON `Usuarios` (`Correo`);
 2022-02-02 19:53:26.6253|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
 2022-02-02 19:53:26.6412|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
 2022-02-02 19:53:26.6412|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurtant.Project\0-eRestaurant.Desa\eWebApi
+2022-02-02 22:20:02.2519|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2022-02-02 22:20:02.2681|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2022-02-02 22:20:02.2681|INFO|Microsoft.Hosting.Lifetime|Content root path: E:\Proyectos\0-NetCore\eRestaurtant.Project\0-eRestaurant.Desa\eWebApi

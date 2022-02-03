@@ -76,5 +76,15 @@ namespace eService.Implementations
         {
             return services.Eliminar(IdCarrito);
         }
+
+        /// <summary>
+        /// Para poder recibir notificaciones desde AdamsPay
+        /// </summary>
+        /// <param name="hook"></param>
+        /// <returns></returns>
+        public ResponseModel WebHook(WebHookModel hook)
+        {
+            return services.WebHook(hook);
+        }
     }
 }
