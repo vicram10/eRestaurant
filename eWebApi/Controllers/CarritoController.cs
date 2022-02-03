@@ -137,7 +137,7 @@ namespace eWebApi.Controllers
         /// </summary>
         /// <param name="hook"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpPost("Carrito/WebHook")]
         public ActionResult WebHook([FromBody] WebHookModel hook)
         {
             ///ok primeramente logueamos lo que viene
