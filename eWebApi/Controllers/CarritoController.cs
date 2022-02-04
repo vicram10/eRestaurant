@@ -1,15 +1,20 @@
 ﻿using eInfrastructure.Entities;
+using eInfrastructure.Languages;
 using eInfrastructure.Models;
 using eInfrastructure.Models.Carrito;
 using eService.Interfaces;
 using eWebApi.Filters;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using NLog;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
@@ -27,12 +32,14 @@ namespace eWebApi.Controllers
 
         private Logger logger = LogManager.GetCurrentClassLogger();
 
+        private readonly Localization languages;
+
         /// <summary>
         /// constructor principal
         /// </summary>
         /// <param name="httpContextAccessor"></param>
         /// <param name="apiCarrito"></param>
-        public CarritoController(IHttpContextAccessor httpContextAccessor, ICarrito apiCarrito)
+        public CarritoController(IOptions<ConfiguracionesModel> options, IHttpContextAccessor httpContextAccessor, ICarrito apiCarrito)
         {
             this.httpContextAccessor = httpContextAccessor;
 
@@ -44,11 +51,13 @@ namespace eWebApi.Controllers
 
             ISession session = httpContextAccessor.HttpContext.Session;
 
+            languages = new Localization(httpContextAccessor);
+
             try
             {
-                datosUsuario = JsonConvert.DeserializeObject<DatosUsuarioModel>(session.GetString("datosUsuario"));
+                configuraciones = options.Value;
 
-                configuraciones = JsonConvert.DeserializeObject<ConfiguracionesModel>(session.GetString("Configuraciones"));
+                datosUsuario = JsonConvert.DeserializeObject<DatosUsuarioModel>(session.GetString("datosUsuario"));                
             }
             catch { }
         }
@@ -60,7 +69,7 @@ namespace eWebApi.Controllers
         [AuthorizationFilter]
         public IActionResult Index()
         {
-            logger.Error("Carrito_Index");
+            logger.Debug("Carrito_Index");
 
             List<Carrito> listadoCarrito = apiCarrito.Listar(new ParamFiltroBusquedaCarritoModel { IdUsuario = datosUsuario.IdUsuario, EstadoCarrito = EstadoCarritoModel.Pendiente });
 
@@ -134,20 +143,75 @@ namespace eWebApi.Controllers
         }
 
         /// <summary>
+        /// MD5::Hash
+        /// </summary>
+        /// <param name="texto"></param>
+        /// <returns></returns>
+        private string MD5Hash(string texto)
+        {
+            byte[] txtBytes = Encoding.UTF8.GetBytes(texto);
+
+            byte[] hashedBytes = MD5.Create().ComputeHash(txtBytes);
+
+            string resultado = BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
+
+            return resultado;
+        }
+
+        /// <summary>
         /// WebHook - Para recibir notificaciones desde AdamsPay
         /// </summary>
         /// <param name="hook"></param>
         /// <returns></returns>
         [HttpPost("Carrito/WebHook")]
-        public ActionResult WebHook([FromBody] JsonElement json)
+        public ActionResult WebHook()
         {
-            ///ok primeramente logueamos lo que viene
-            ///
-            logger.Debug($"WebHookModel: {json}. Request: {JsonConvert.SerializeObject(httpContextAccessor.HttpContext.Request.Headers)}");
-
             ResponseModel respuesta = new ResponseModel();
 
-            WebHookModel hook = new WebHookModel();
+            ///verificamos si realmente es desde adamspay lo que me envian
+            ///
+            string adamsHash = httpContextAccessor.HttpContext.Request.Headers["x-adams-notify-hash"];
+
+            string _content = "";
+
+            string HeaderType = httpContextAccessor.HttpContext.Request.Headers["Content-Type"];
+
+            string Method = httpContextAccessor.HttpContext.Request.Method;
+
+            using (StreamReader reader = new StreamReader(Request.Body, Encoding.UTF8))
+            {
+                _content = reader.ReadToEnd();
+            }
+
+            ///ok primeramente logueamos lo que viene
+            ///
+            logger.Debug($"WebHookModel: {_content}. Request: {JsonConvert.SerializeObject(httpContextAccessor.HttpContext.Request.Headers)}");
+
+            ///vemos para generar nuestro propio hash
+            ///
+            string myHash = MD5Hash($"adams{_content}{configuraciones.ApiSecret}");
+
+            ///controlamos
+            ///
+            if (adamsHash != myHash)
+            {
+                logger.Debug($"AdamsHash: {adamsHash}, MyHash: {myHash}");
+
+                respuesta.CodRespuesta = EstadoRespuesta.Error;
+
+                respuesta.MensajeRespuesta = languages.getText("msgNoIgualHash", "Carrito");
+
+                ///firma no valida
+                ///
+                return StatusCode(StatusCodes.Status500InternalServerError, respuesta);
+            }
+
+            ///le agregamos a nuestro modelo
+            ///
+            WebHookModel hook = new WebHookModel()
+            {
+                               
+            };
 
             respuesta = apiCarrito.WebHook(hook);
 
@@ -155,19 +219,19 @@ namespace eWebApi.Controllers
             ///
             if (respuesta.CodRespuesta == EstadoRespuesta.Ok)
             {
-                return Ok(JsonConvert.SerializeObject(respuesta));
+                return Ok(respuesta);
             }
 
             ///ok le decimos que ignoramos la notificacion que nos enviaron
             ///
             if (respuesta.CodRespuesta == EstadoRespuesta.Ignore)
             {
-                return Accepted(JsonConvert.SerializeObject(respuesta));
+                return Accepted(respuesta);
             }
 
             ///ok se rompio todo.. queremos que nos vuelva a avisar la notificacion
             ///
-            return StatusCode(StatusCodes.Status500InternalServerError, JsonConvert.SerializeObject(respuesta));
+            return StatusCode(StatusCodes.Status500InternalServerError, respuesta);
         }
     }
 }

@@ -35,5 +35,7 @@ namespace eInfrastructure.Languages
         public string msgNoIDBorrado { get { return "Debe colocar una id para poder borrar!!!"; } }
 
         public string msgBorradoOK { get { return "Borrado con exito!!"; } }
+
+        public string msgNoIgualHash { get { return "No se puede procesar, no corresponde la firma enviada."; } }
     }
 }
