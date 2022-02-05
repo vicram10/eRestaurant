@@ -76,7 +76,7 @@
                             
                             @Html.Raw($"<span class='me-3 badge bg-{background}'>{estadoDoc}</span>")
 
-                            @if (estadoDoc.ToUpper() == "PENDIENTE")
+                            @if (estadoDoc.ToUpper() == "PENDIENTE" || estadoDoc.ToUpper() == "CREADADEUDA")
                             {
                                 <a href="@Url.Action("PrepararPago", "Carrito")" class="me-3 btn btn-secondary btn-sm">@language.getText("lbFinalizarCompra", "Carrito")</a>
                             }
