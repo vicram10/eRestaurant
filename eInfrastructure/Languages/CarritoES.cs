@@ -24,6 +24,8 @@ namespace eInfrastructure.Languages
 
         public string lbDocID { get { return "Codigo Adamspay"; } }
 
+        public string lbEstadosCarrito { get { return "Pendiente;Creada Deuda;Pagado"; } }
+
         ///mensajes
         ///
         public string msgNoSeleccionProducto { get { return "Debe especificar un producto para poder!!!"; } }

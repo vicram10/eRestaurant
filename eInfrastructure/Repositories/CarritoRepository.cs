@@ -416,7 +416,7 @@ namespace eInfrastructure.Repositories
             }
             else
             {
-                respuesta = ActualizarCarrito(hook.debt.docId, EstadoCarritoModel.Pendiente, hook.debt.payUrl);
+                respuesta = ActualizarCarrito(hook.debt.docId, EstadoCarritoModel.CreadaDeuda, hook.debt.payUrl);
             }
 
             ///ok finalizamos

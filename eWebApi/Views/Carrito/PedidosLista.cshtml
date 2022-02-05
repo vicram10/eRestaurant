@@ -1,0 +1,99 @@
+﻿@using Microsoft.AspNetCore.Http
+
+@using eInfrastructure.Entities
+
+@using eInfrastructure.Models
+
+@using eInfrastructure.Models.Carrito
+
+@using eInfrastructure.Languages
+
+@inject IHttpContextAccessor httpContextAccessor
+
+@{
+
+    Localization language = new Localization(httpContextAccessor);
+
+    List<Carrito> ListaPedidos = Model as List<Carrito>;
+
+    string estadoDoc = "";
+
+    string urlPago = "";
+
+    string EstadosCarrito = language.getText("lbEstadosCarrito", "Carrito");
+}
+
+@if (ListaPedidos.Count() > 0)
+{
+    <div class="mt-2 border p-3 table-responsive">
+        <table class="table table-striped displayDataTableSearch" style="width:100%">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">@language.getText("lbTusPedidos", "Carrito")</th>
+                    <th scope="col">@language.getText("lbEstado", "Carrito")</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">@language.getText("lbTusPedidos", "Carrito")</th>
+                    <th scope="col">@language.getText("lbEstado", "Carrito")</th>
+                </tr>
+            </tfoot>
+            <tbody>
+                @foreach (var item in ListaPedidos.GroupBy(pp => pp.DocIDAdamsPay))
+                {
+                    <tr>
+                        <td>@item.Key.ToString()</td>
+                        <td>
+                            <ul>
+                                @foreach (Carrito itemCarrito in ListaPedidos.Where(pp => pp.DocIDAdamsPay == item.Key.ToString()))
+                                {
+                                    <li>@($"{itemCarrito.Producto.NombreProducto} - {itemCarrito.Producto.Precio.ToString("n0")}")</li>
+
+                                    {
+                                        estadoDoc = Enum.GetName(typeof(EstadoCarritoModel), itemCarrito.Estado);
+
+                                        urlPago = itemCarrito.UrlPago;
+                                    }
+                                }
+                            </ul>
+                        </td>
+                        <td>
+                            @{
+                                string background = "";
+
+                                switch (estadoDoc.ToUpper())
+                                {
+                                    case "PAGADO":
+                                        background = "success";
+                                        break;
+                                    case "PENDIENTE":
+                                        background = "danger";
+                                        break;
+                                    case "CREADADEUDA":
+                                        background = "info";
+                                        break;
+                                }
+                            }
+
+                            @Html.Raw($"<span class='me-3 badge bg-{background}'>{estadoDoc}</span>")
+
+                            @if (estadoDoc.ToUpper() == "PENDIENTE" || estadoDoc.ToUpper() == "CREADADEUDA")
+                            {
+                                <a href="@urlPago" class="me-3 btn btn-secondary btn-sm">@language.getText("lbFinalizarCompra", "Carrito")</a>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <div class="alert alert-warning" role="alert">
+        @language.getText("msgNoExisteRegistro")
+    </div>
+}
