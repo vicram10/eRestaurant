@@ -21,6 +21,8 @@
     List<Carrito> ListaPedidos = ViewBag.ListaCarrito as List<Carrito>;
 
     string estadoDoc = "";
+
+    string urlPago = "";
 }
 
 @if (ListaPedidos.Count() > 0)
@@ -53,6 +55,8 @@
                                 <li>@($"{itemCarrito.Producto.NombreProducto} - {itemCarrito.Producto.Precio.ToString("n0")}")</li>
                                 
                                 @(estadoDoc = Enum.GetName(typeof(EstadoCarritoModel), itemCarrito.Estado))
+
+                                @(urlPago = itemCarrito.UrlPago)
                             }
                             </ul>
                         </td>
@@ -78,7 +82,7 @@
 
                             @if (estadoDoc.ToUpper() == "PENDIENTE" || estadoDoc.ToUpper() == "CREADADEUDA")
                             {
-                                <a href="@Url.Action("PrepararPago", "Carrito")" class="me-3 btn btn-secondary btn-sm">@language.getText("lbFinalizarCompra", "Carrito")</a>
+                                <a href="@urlPago" class="me-3 btn btn-secondary btn-sm">@language.getText("lbFinalizarCompra", "Carrito")</a>
                             }
                         </td>
                     </tr>
