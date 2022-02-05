@@ -164,7 +164,7 @@ namespace eWebApi.Controllers
         /// <param name="hook"></param>
         /// <returns></returns>
         [HttpPost("Carrito/WebHook")]
-        public ActionResult WebHook()
+        public async Task<ActionResult> WebHook()
         {
             ResponseModel respuesta = new ResponseModel();
 
@@ -180,7 +180,7 @@ namespace eWebApi.Controllers
 
             using (StreamReader reader = new StreamReader(Request.Body, Encoding.UTF8))
             {
-                _content = reader.ReadToEnd();
+                _content = await reader.ReadToEndAsync();
             }
 
             ///ok primeramente logueamos lo que viene
@@ -208,10 +208,7 @@ namespace eWebApi.Controllers
 
             ///le agregamos a nuestro modelo
             ///
-            WebHookModel hook = new WebHookModel()
-            {
-                               
-            };
+            WebHookModel hook = JsonConvert.DeserializeObject<WebHookModel>(_content);
 
             respuesta = apiCarrito.WebHook(hook);
 
