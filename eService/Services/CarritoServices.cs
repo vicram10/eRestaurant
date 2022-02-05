@@ -60,9 +60,9 @@ namespace eService.Services
         /// <param name="DocumentoID"></param>
         /// <param name="estadoCarrito"></param>
         /// <returns></returns>
-        public ResponseModel ActualizarCarrito(string DocumentoID, EstadoCarritoModel estadoCarrito)
+        public ResponseModel ActualizarCarrito(string DocumentoID, EstadoCarritoModel estadoCarrito, string urlPago)
         {
-            return repositorio.ActualizarCarrito(DocumentoID, estadoCarrito);
+            return repositorio.ActualizarCarrito(DocumentoID, estadoCarrito, urlPago);
         }
 
         /// <summary>

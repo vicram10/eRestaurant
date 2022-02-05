@@ -35,7 +35,7 @@ namespace eService.Interfaces
         /// <param name="DocumentoID"></param>
         /// <param name="estadoCarrito"></param>
         /// <returns></returns>
-        ResponseModel ActualizarCarrito(string DocumentoID, EstadoCarritoModel estadoCarrito);
+        ResponseModel ActualizarCarrito(string DocumentoID, EstadoCarritoModel estadoCarrito, string urlPago);
 
         /// <summary>
         /// para poder eliminar items

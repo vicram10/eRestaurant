@@ -287,7 +287,7 @@ namespace eInfrastructure.Repositories
 
                 ///si llegamos aca entonces esta todo ok
                 ///
-                ResponseModel respuestaActualizacion = ActualizarCarrito(parametros.debt.docId, EstadoCarritoModel.CreadaDeuda);
+                ResponseModel respuestaActualizacion = ActualizarCarrito(parametros.debt.docId, EstadoCarritoModel.CreadaDeuda, responseAdams.debt.payUrl);
 
                 if (respuestaActualizacion.CodRespuesta == EstadoRespuesta.Error)
                 {
@@ -308,7 +308,7 @@ namespace eInfrastructure.Repositories
         /// <param name="DocumentoID"></param>
         /// <param name="estadoCarrito"></param>
         /// <returns></returns>
-        public ResponseModel ActualizarCarrito(string DocumentoID, EstadoCarritoModel estadoCarrito)
+        public ResponseModel ActualizarCarrito(string DocumentoID, EstadoCarritoModel estadoCarrito, string urlPago)
         {
             ResponseModel respuesta = new ResponseModel();
 
@@ -323,6 +323,8 @@ namespace eInfrastructure.Repositories
                 if (estadoCarrito == EstadoCarritoModel.Pagado) { carrito.FechaPago = DateTime.Now; }
 
                 if (estadoCarrito == EstadoCarritoModel.Pendiente) { carrito.FechaPago = null; }
+
+                if (!String.IsNullOrEmpty(urlPago)) { carrito.UrlPago = urlPago; }
 
                 dbContext.Carrito.Update(carrito);
 
@@ -410,11 +412,11 @@ namespace eInfrastructure.Repositories
             ///
             if (deudaPagada)
             {
-                respuesta = ActualizarCarrito(hook.debt.docId, EstadoCarritoModel.Pagado);
+                respuesta = ActualizarCarrito(hook.debt.docId, EstadoCarritoModel.Pagado, hook.debt.payUrl);
             }
             else
             {
-                respuesta = ActualizarCarrito(hook.debt.docId, EstadoCarritoModel.Pendiente);
+                respuesta = ActualizarCarrito(hook.debt.docId, EstadoCarritoModel.Pendiente, hook.debt.payUrl);
             }
 
             ///ok finalizamos
