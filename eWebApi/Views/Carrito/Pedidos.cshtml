@@ -50,13 +50,15 @@
                         <td>@item.Key.ToString()</td>
                         <td>
                             <ul>
-                            @foreach(Carrito itemCarrito in ListaPedidos.Where(pp => pp.DocIDAdamsPay == item.Key.ToString()))
+                            @foreach (Carrito itemCarrito in ListaPedidos.Where(pp => pp.DocIDAdamsPay == item.Key.ToString()))
                             {
                                 <li>@($"{itemCarrito.Producto.NombreProducto} - {itemCarrito.Producto.Precio.ToString("n0")}")</li>
-                                
-                                @(estadoDoc = Enum.GetName(typeof(EstadoCarritoModel), itemCarrito.Estado))
 
-                                @(urlPago = itemCarrito.UrlPago)
+                                {
+                                    estadoDoc = Enum.GetName(typeof(EstadoCarritoModel), itemCarrito.Estado);
+
+                                    urlPago = itemCarrito.UrlPago;
+                                }
                             }
                             </ul>
                         </td>
