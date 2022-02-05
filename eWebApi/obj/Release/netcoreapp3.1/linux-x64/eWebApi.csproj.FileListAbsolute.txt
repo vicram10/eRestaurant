@@ -160,3 +160,4 @@ E:\Proyectos\0-NetCore\eRestaurtant.Project\0-eRestaurant.Desa\eWebApi\obj\Relea
 E:\Proyectos\0-NetCore\eRestaurtant.Project\0-eRestaurant.Desa\eWebApi\obj\Release\netcoreapp3.1\linux-x64\eWebApi.dll
 E:\Proyectos\0-NetCore\eRestaurtant.Project\0-eRestaurant.Desa\eWebApi\obj\Release\netcoreapp3.1\linux-x64\eWebApi.pdb
 E:\Proyectos\0-NetCore\eRestaurtant.Project\0-eRestaurant.Desa\eWebApi\obj\Release\netcoreapp3.1\linux-x64\eWebApi.genruntimeconfig.cache
+E:\Proyectos\0-NetCore\eRestaurtant.Project\0-eRestaurant.Desa\eWebApi\obj\Release\netcoreapp3.1\linux-x64\Razor\Views\Carrito\PedidosLista.cshtml.g.cs

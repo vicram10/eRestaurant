@@ -29,13 +29,13 @@
 
 <ul class="nav nav-tabs">
     <li class="nav-item">
-        <a href="#pendiente" class="nav-link active" data-bs-toggle="tab">@EstadosCarrito.Split(";")[0] <span class="badge bg-warning">@ListaPedidos.Where(pp => pp.Estado == EstadoCarritoModel.Pendiente).Count()</span></a>
+        <a href="#pendiente" class="nav-link active" data-bs-toggle="tab">@EstadosCarrito.Split(";")[0] <span class="badge bg-warning">@ListaPedidos.Where(pp => pp.Estado == EstadoCarritoModel.Pendiente).GroupBy(pp => pp.DocIDAdamsPay).Count()</span></a>
     </li>
     <li class="nav-item">
-        <a href="#creada-deuda" class="nav-link" data-bs-toggle="tab">@EstadosCarrito.Split(";")[1] <span class="badge bg-warning">@ListaPedidos.Where(pp => pp.Estado == EstadoCarritoModel.CreadaDeuda).Count()</span></a>
+        <a href="#creada-deuda" class="nav-link" data-bs-toggle="tab">@EstadosCarrito.Split(";")[1] <span class="badge bg-warning">@ListaPedidos.Where(pp => pp.Estado == EstadoCarritoModel.CreadaDeuda).GroupBy(pp => pp.DocIDAdamsPay).Count()</span></a>
     </li>
     <li class="nav-item">
-        <a href="#pagado" class="nav-link" data-bs-toggle="tab">@EstadosCarrito.Split(";")[2] <span class="badge bg-warning">@ListaPedidos.Where(pp => pp.Estado == EstadoCarritoModel.Pagado).Count()</span></a>
+        <a href="#pagado" class="nav-link" data-bs-toggle="tab">@EstadosCarrito.Split(";")[2] <span class="badge bg-warning">@ListaPedidos.Where(pp => pp.Estado == EstadoCarritoModel.Pagado).GroupBy(pp => pp.DocIDAdamsPay).Count()</span></a>
     </li>
 </ul>
 
