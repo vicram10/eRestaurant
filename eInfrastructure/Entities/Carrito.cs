@@ -28,6 +28,8 @@ namespace eInfrastructure.Entities
 
         public DateTime FechaRegistro { get; set; }
 
+        public DateTime? FechaPago { get; set; }
+
         public EstadoCarritoModel Estado { get; set; }
     }
 }

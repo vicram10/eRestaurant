@@ -320,6 +320,10 @@ namespace eInfrastructure.Repositories
 
                 carrito.Estado = estadoCarrito;
 
+                if (estadoCarrito == EstadoCarritoModel.Pagado) { carrito.FechaPago = DateTime.Now; }
+
+                if (estadoCarrito == EstadoCarritoModel.Pendiente) { carrito.FechaPago = null; }
+
                 dbContext.Carrito.Update(carrito);
 
                 dbContext.SaveChanges();
@@ -387,8 +391,35 @@ namespace eInfrastructure.Repositories
         {
             ResponseModel respuesta = new ResponseModel();
 
-            respuesta.CodRespuesta = EstadoRespuesta.Ignore;
+            ///revisamos primeramente si existe la deuda
+            ///
+            var deuda = Listar(new ParamFiltroBusquedaCarritoModel { IdUsuario = 0, EstadoCarrito = EstadoCarritoModel.Todos, DocId = hook.debt.docId }).FirstOrDefault();
 
+            if ( deuda == null )
+            {
+                respuesta.CodRespuesta = EstadoRespuesta.Error;
+
+                respuesta.MensajeRespuesta = language.getText("msgNoDeudaEncontrada", "Carrito");
+
+                goto Terminar;
+            }
+
+            bool deudaPagada = hook.debt.payStatus.status == "paid";
+
+            ///ok encontramos la deuda entonces ahora marcamos como pagado
+            ///
+            if (deudaPagada)
+            {
+                respuesta = ActualizarCarrito(hook.debt.docId, EstadoCarritoModel.Pagado);
+            }
+            else
+            {
+                respuesta = ActualizarCarrito(hook.debt.docId, EstadoCarritoModel.Pendiente);
+            }
+
+            ///ok finalizamos
+            ///
+            Terminar:
             return respuesta;
         }
     }

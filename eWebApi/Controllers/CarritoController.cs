@@ -168,67 +168,88 @@ namespace eWebApi.Controllers
         {
             ResponseModel respuesta = new ResponseModel();
 
-            ///verificamos si realmente es desde adamspay lo que me envian
-            ///
-            string adamsHash = httpContextAccessor.HttpContext.Request.Headers["x-adams-notify-hash"];
-
-            string _content = "";
-
-            string HeaderType = httpContextAccessor.HttpContext.Request.Headers["Content-Type"];
-
-            string Method = httpContextAccessor.HttpContext.Request.Method;
-
-            using (StreamReader reader = new StreamReader(Request.Body, Encoding.UTF8))
+            try
             {
-                _content = await reader.ReadToEndAsync();
+
+                ///verificamos si realmente es desde adamspay lo que me envian
+                ///
+                string adamsHash = httpContextAccessor.HttpContext.Request.Headers["x-adams-notify-hash"];
+
+                string _content = "";
+
+                string HeaderType = httpContextAccessor.HttpContext.Request.Headers["Content-Type"];
+
+                string Method = httpContextAccessor.HttpContext.Request.Method;
+
+                ///controlamos algunas cosas primeramente 
+                ///
+                if (HeaderType != "application/json" && Method != "POST")
+                {
+                    throw new Exception(languages.getText("msgNoMethodAndType", "Carrito"));
+                }
+
+                using (StreamReader reader = new StreamReader(Request.Body, Encoding.UTF8))
+                {
+                    _content = await reader.ReadToEndAsync();
+                }
+
+                ///ok primeramente logueamos lo que viene
+                ///
+                logger.Debug($"WebHookModel: {_content}. Request: {JsonConvert.SerializeObject(httpContextAccessor.HttpContext.Request.Headers)}");
+
+                ///vemos para generar nuestro propio hash
+                ///
+                string myHash = MD5Hash($"adams{_content}{configuraciones.ApiSecret}");
+
+                ///controlamos
+                ///
+                if (adamsHash != myHash)
+                {
+                    logger.Debug($"AdamsHash: {adamsHash}, MyHash: {myHash}");
+
+                    respuesta.CodRespuesta = EstadoRespuesta.Error;
+
+                    respuesta.MensajeRespuesta = languages.getText("msgNoIgualHash", "Carrito");
+
+                    logger.Error(respuesta.MensajeRespuesta);
+
+                    ///firma no valida
+                    ///
+                    throw new Exception(respuesta.MensajeRespuesta);
+                }
+
+                ///le agregamos a nuestro modelo
+                ///
+                WebHookModel hook = JsonConvert.DeserializeObject<WebHookModel>(_content);
+
+                ///es una notificacion relacionada a una deuda?
+                ///
+                if (hook.notify.type == "debtStatus")
+                {
+                    respuesta = apiCarrito.WebHook(hook);
+
+                    ///ok hicimos todo correctamente
+                    ///
+                    if (respuesta.CodRespuesta == EstadoRespuesta.Ok)
+                    {
+                        return Ok(respuesta);
+                    }
+                }
             }
-
-            ///ok primeramente logueamos lo que viene
-            ///
-            logger.Debug($"WebHookModel: {_content}. Request: {JsonConvert.SerializeObject(httpContextAccessor.HttpContext.Request.Headers)}");
-
-            ///vemos para generar nuestro propio hash
-            ///
-            string myHash = MD5Hash($"adams{_content}{configuraciones.ApiSecret}");
-
-            ///controlamos
-            ///
-            if (adamsHash != myHash)
+            catch (Exception ex)
             {
-                logger.Debug($"AdamsHash: {adamsHash}, MyHash: {myHash}");
-
                 respuesta.CodRespuesta = EstadoRespuesta.Error;
 
-                respuesta.MensajeRespuesta = languages.getText("msgNoIgualHash", "Carrito");
+                respuesta.MensajeRespuesta = ex.Message;
 
-                ///firma no valida
+                ///ok se rompio todo.. queremos que nos vuelva a avisar la notificacion
                 ///
                 return StatusCode(StatusCodes.Status500InternalServerError, respuesta);
             }
 
-            ///le agregamos a nuestro modelo
+            ///ok le decimos que ignoramos la notificacion que nos enviaron si llegamos aca
             ///
-            WebHookModel hook = JsonConvert.DeserializeObject<WebHookModel>(_content);
-
-            respuesta = apiCarrito.WebHook(hook);
-
-            ///ok hicimos todo correctamente
-            ///
-            if (respuesta.CodRespuesta == EstadoRespuesta.Ok)
-            {
-                return Ok(respuesta);
-            }
-
-            ///ok le decimos que ignoramos la notificacion que nos enviaron
-            ///
-            if (respuesta.CodRespuesta == EstadoRespuesta.Ignore)
-            {
-                return Accepted(respuesta);
-            }
-
-            ///ok se rompio todo.. queremos que nos vuelva a avisar la notificacion
-            ///
-            return StatusCode(StatusCodes.Status500InternalServerError, respuesta);
+            return Accepted(respuesta);
         }
     }
 }

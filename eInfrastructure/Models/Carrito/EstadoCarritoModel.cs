@@ -10,7 +10,7 @@ namespace eInfrastructure.Models.Carrito
         
         Pagado=2,
 
-        CreadaDeuda=3,
+        CreadaDeuda=3,               
 
         Todos = 100
     }

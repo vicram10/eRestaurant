@@ -37,5 +37,9 @@ namespace eInfrastructure.Languages
         public string msgBorradoOK { get { return "Borrado con exito!!"; } }
 
         public string msgNoIgualHash { get { return "No se puede procesar, no corresponde la firma enviada."; } }
+
+        public string msgNoMethodAndType { get { return "No corresponde el formato recibido!!!"; } }
+
+        public string msgNoDeudaEncontrada { get { return "No se encontro la deuda"; } }
     }
 }

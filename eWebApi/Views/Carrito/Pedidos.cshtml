@@ -57,7 +57,29 @@
                             </ul>
                         </td>
                         <td>
-                            @Html.Raw(estadoDoc.ToUpper() == "PAGADO" ? $"<span class='badge bg-success'>{estadoDoc}</span>" : $"<span class='badge bg-warning'>{estadoDoc}</span>" )
+                            @{ 
+                                string background = "";
+
+                                switch(estadoDoc.ToUpper())
+                                {
+                                    case "PAGADO":
+                                        background = "success";
+                                        break;
+                                    case "PENDIENTE":
+                                        background = "danger";
+                                        break;
+                                    case "CREADADEUDA":
+                                        background = "info";
+                                        break;
+                                }
+                            }
+                            
+                            @Html.Raw($"<span class='me-3 badge bg-{background}'>{estadoDoc}</span>")
+
+                            @if (estadoDoc.ToUpper() == "PENDIENTE")
+                            {
+                                <a href="@Url.Action("PrepararPago", "Carrito")" class="me-3 btn btn-secondary btn-sm">@language.getText("lbFinalizarCompra", "Carrito")</a>
+                            }
                         </td>
                     </tr>
                 }
