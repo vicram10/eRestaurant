@@ -183,7 +183,7 @@ namespace eWebApi.Controllers
 
                 ///controlamos algunas cosas primeramente 
                 ///
-                if (HeaderType != "application/json" && Method != "POST")
+                if (HeaderType != "application/json" || Method != "POST")
                 {
                     throw new Exception(languages.getText("msgNoMethodAndType", "Carrito"));
                 }
